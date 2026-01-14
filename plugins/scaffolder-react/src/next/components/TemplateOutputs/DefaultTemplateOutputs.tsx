@@ -18,7 +18,7 @@ import { useTranslationRef } from '@backstage/frontend-plugin-api';
 import {
   ScaffolderOutputText,
   ScaffolderTaskOutput,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import { useEffect, useMemo, useState } from 'react';

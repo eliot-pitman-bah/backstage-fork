@@ -23,7 +23,7 @@ import {
 } from '@backstage/core-components';
 import { errorApiRef, useAnalytics, useApi } from '@backstage/core-plugin-api';
 import { useTranslationRef } from '@backstage/frontend-plugin-api';
-import { ReviewStepProps } from '@backstage/plugin-scaffolder-react';
+import { ReviewStepProps } from '@bip-bih/plugin-scaffolder-react';
 import { JsonValue } from '@backstage/types';
 import { makeStyles } from '@material-ui/core/styles';
 import { ComponentType, useCallback, useEffect } from 'react';

@@ -19,7 +19,7 @@ import { z } from 'zod';
 import {
   ScaffolderFormDecorator,
   ScaffolderFormDecoratorContext,
-} from '@backstage/plugin-scaffolder-react/alpha';
+} from '@bip-bih/plugin-scaffolder-react/alpha';
 import { AnyApiRef } from '@backstage/frontend-plugin-api';
 
 /** @alpha */

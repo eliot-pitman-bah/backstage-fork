@@ -16,7 +16,7 @@ app:
       info:
         ownerEntityRefs: [cubic-belugas]
     - match:
-        packageName: '@backstage/plugin-scaffolder'
+        packageName: '@bip-bih/plugin-scaffolder'
       info:
         ownerEntityRefs: [cubic-belugas]
 

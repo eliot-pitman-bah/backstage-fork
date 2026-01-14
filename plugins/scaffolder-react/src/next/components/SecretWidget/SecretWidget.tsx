@@ -15,7 +15,7 @@
  */
 
 import { WidgetProps } from '@rjsf/utils';
-import { useTemplateSecrets } from '@backstage/plugin-scaffolder-react';
+import { useTemplateSecrets } from '@bip-bih/plugin-scaffolder-react';
 import TextField from '@material-ui/core/TextField';
 import { ChangeEvent, useMemo, useState } from 'react';
 import debounce from 'lodash/debounce';

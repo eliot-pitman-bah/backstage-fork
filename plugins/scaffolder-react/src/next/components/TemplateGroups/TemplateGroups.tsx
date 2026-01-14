@@ -20,7 +20,7 @@ import {
   isTemplateEntityV1beta3,
   TemplateEntityV1beta3,
 } from '@backstage/plugin-scaffolder-common';
-import { TemplateGroupFilter } from '@backstage/plugin-scaffolder-react';
+import { TemplateGroupFilter } from '@bip-bih/plugin-scaffolder-react';
 import Typography from '@material-ui/core/Typography';
 import { ComponentType, useCallback, useEffect } from 'react';
 

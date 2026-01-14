@@ -28,11 +28,11 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { CatalogImportPage } from '@backstage/plugin-catalog-import';
 import { HomepageCompositionRoot, VisitListener } from '@backstage/plugin-home';
 
-import { ScaffolderPage } from '@backstage/plugin-scaffolder';
+import { ScaffolderPage } from '@bip-bih/plugin-scaffolder';
 import {
   ScaffolderFieldExtensions,
   ScaffolderLayouts,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { SearchPage } from '@backstage/plugin-search';
 import {
   TechDocsIndexPage,

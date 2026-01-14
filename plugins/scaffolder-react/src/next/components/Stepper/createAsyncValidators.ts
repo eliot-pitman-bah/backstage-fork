@@ -26,7 +26,7 @@ import { createFieldValidation, extractSchemaFromStep } from '../../lib';
 import {
   CustomFieldValidator,
   FieldExtensionUiSchema,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { isObject } from './utils';
 
 /** @alpha */

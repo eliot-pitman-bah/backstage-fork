@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: backstage-plugin-scaffolder
-  title: '@backstage/plugin-scaffolder'
+  name: bip-bih-plugin-scaffolder
+  title: "@bip-bih/plugin-scaffolder"
   description: The Backstage plugin that helps you create new things
 spec:
   lifecycle: production

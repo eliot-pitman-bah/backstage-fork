@@ -21,7 +21,7 @@ import {
   LayoutOptions,
   ReviewStepProps,
   TemplateParameterSchema,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { JsonValue } from '@backstage/types';
 import Button from '@material-ui/core/Button';
 import LinearProgress from '@material-ui/core/LinearProgress';

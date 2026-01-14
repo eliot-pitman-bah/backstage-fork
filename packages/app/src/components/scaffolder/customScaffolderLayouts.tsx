@@ -17,7 +17,7 @@ import {
   createScaffolderLayout,
   LayoutTemplate,
   scaffolderPlugin,
-} from '@backstage/plugin-scaffolder';
+} from '@bip-bih/plugin-scaffolder';
 import Grid from '@material-ui/core/Grid';
 
 const TwoColumn: LayoutTemplate = ({ properties, description, title }) => {

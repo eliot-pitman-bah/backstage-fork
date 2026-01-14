@@ -28,11 +28,11 @@ import {
   identityApiRef,
 } from '@backstage/core-plugin-api';
 import { AuthProxyDiscoveryApi } from './AuthProxyDiscoveryApi';
-import { formDecoratorsApiRef } from '@backstage/plugin-scaffolder/alpha';
-import { DefaultScaffolderFormDecoratorsApi } from '@backstage/plugin-scaffolder/alpha';
+import { formDecoratorsApiRef } from '@bip-bih/plugin-scaffolder/alpha';
+import { DefaultScaffolderFormDecoratorsApi } from '@bip-bih/plugin-scaffolder/alpha';
 import { mockDecorator } from './components/scaffolder/decorators';
-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
-import { ScaffolderClient } from '@backstage/plugin-scaffolder';
+import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
+import { ScaffolderClient } from '@bip-bih/plugin-scaffolder';
 
 export const apis: AnyApiFactory[] = [
   createApiFactory({

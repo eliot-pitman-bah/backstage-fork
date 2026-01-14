@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { githubAuthApiRef } from '@backstage/core-plugin-api';
-import { createScaffolderFormDecorator } from '@backstage/plugin-scaffolder-react/alpha';
+import { createScaffolderFormDecorator } from '@bip-bih/plugin-scaffolder-react/alpha';
 
 export const mockDecorator = createScaffolderFormDecorator({
   id: 'mock-decorator',

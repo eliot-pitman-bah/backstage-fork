@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 import type { FieldValidation } from '@rjsf/utils';
-import { scaffolderPlugin } from '@backstage/plugin-scaffolder';
+import { scaffolderPlugin } from '@bip-bih/plugin-scaffolder';
 import TextField from '@material-ui/core/TextField';
 import {
   createScaffolderFieldExtension,
   FieldExtensionComponentProps,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 
 const TextValuePicker = (props: FieldExtensionComponentProps<string>) => {
   const {

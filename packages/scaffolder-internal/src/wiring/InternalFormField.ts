@@ -20,7 +20,7 @@ import { z } from 'zod';
 import {
   FormFieldExtensionData,
   FormField,
-} from '@backstage/plugin-scaffolder-react/alpha';
+} from '@bip-bih/plugin-scaffolder-react/alpha';
 
 /** @alpha */
 export const OpaqueFormField = OpaqueType.create<{
