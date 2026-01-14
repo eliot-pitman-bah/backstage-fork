@@ -50,7 +50,7 @@ import { ListTasksPage } from '../../components/ListTasksPage';
 import {
   TemplateListPageProps,
   TemplateWizardPageProps,
-} from '@backstage/plugin-scaffolder/alpha';
+} from '@bip-bih/plugin-scaffolder/alpha';
 import { TemplateListPage, TemplateWizardPage } from '../../alpha/components';
 import { OngoingTask } from '../OngoingTask';
 import {

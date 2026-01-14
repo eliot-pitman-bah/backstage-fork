@@ -1,6 +1,6 @@
 {
   "name": "@bip-bih/plugin-scaffolder",
-  "version": "1.34.2",
+  "version": "1.34.7",
   "description": "The Backstage plugin that helps you create new things",
   "backstage": {
     "role": "frontend-plugin",
@@ -30,16 +30,16 @@
   "license": "Apache-2.0",
   "sideEffects": false,
   "exports": {
-    ".": "./src/index.ts",
-    "./alpha": "./src/alpha/index.ts",
+    ".": "./dist/index.esm.js",
+    "./alpha": "./dist/alpha.esm.js",
     "./package.json": "./package.json"
   },
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "typesVersions": {
     "*": {
       "alpha": [
-        "src/alpha/index.ts"
+        "dist/alpha.d.ts"
       ],
       "package.json": [
         "package.json"
@@ -59,23 +59,23 @@
     "test": "backstage-cli package test"
   },
   "dependencies": {
-    "@backstage/catalog-client": "workspace:^",
-    "@backstage/catalog-model": "workspace:^",
-    "@backstage/core-compat-api": "workspace:^",
-    "@backstage/core-components": "workspace:^",
-    "@backstage/core-plugin-api": "workspace:^",
-    "@backstage/errors": "workspace:^",
-    "@backstage/frontend-plugin-api": "workspace:^",
-    "@backstage/integration": "workspace:^",
-    "@backstage/integration-react": "workspace:^",
-    "@backstage/plugin-catalog-common": "workspace:^",
-    "@backstage/plugin-catalog-react": "workspace:^",
-    "@backstage/plugin-permission-react": "workspace:^",
-    "@backstage/plugin-scaffolder-common": "workspace:^",
-    "@backstage/plugin-techdocs-common": "workspace:^",
-    "@backstage/plugin-techdocs-react": "workspace:^",
-    "@backstage/types": "workspace:^",
-    "@bip-bih/plugin-scaffolder-react": "^1.19.2",
+    "@backstage/catalog-client": "^1.12.0",
+    "@backstage/catalog-model": "^1.7.5",
+    "@backstage/core-compat-api": "^0.5.3",
+    "@backstage/core-components": "^0.18.2",
+    "@backstage/core-plugin-api": "^1.11.1",
+    "@backstage/errors": "^1.2.7",
+    "@backstage/frontend-plugin-api": "^0.12.1",
+    "@backstage/integration": "^1.18.1",
+    "@backstage/integration-react": "^1.2.11",
+    "@backstage/plugin-catalog-common": "^1.1.6",
+    "@backstage/plugin-catalog-react": "^1.21.2",
+    "@backstage/plugin-permission-react": "^0.4.37",
+    "@backstage/plugin-scaffolder-common": "^1.7.2",
+    "@backstage/plugin-techdocs-common": "^0.1.1",
+    "@backstage/plugin-techdocs-react": "^1.3.4",
+    "@backstage/types": "^1.2.2",
+    "@bip-bih/plugin-scaffolder-react": "^1.19.7",
     "@codemirror/language": "^6.0.0",
     "@codemirror/legacy-modes": "^6.1.0",
     "@codemirror/view": "^6.0.0",
