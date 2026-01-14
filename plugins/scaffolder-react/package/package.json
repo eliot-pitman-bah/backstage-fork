@@ -1,6 +1,6 @@
 {
   "name": "@bip-bih/plugin-scaffolder-react",
-  "version": "1.19.2",
+  "version": "1.19.4",
   "description": "A frontend library that helps other Backstage plugins interact with the Scaffolder",
   "backstage": {
     "role": "web-library",
@@ -15,7 +15,8 @@
     ]
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://nexus.dev.bip.va.gov/repository/npm-internal/"
   },
   "keywords": [
     "backstage"

@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@backstage/frontend-plugin-api": "workspace:^",
-    "@bip-bih/plugin-scaffolder-react": "^1.19.2",
+    "@bip-bih/plugin-scaffolder-react": "^1.19.5",
     "zod": "^3.22.4"
   },
   "devDependencies": {

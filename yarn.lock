@@ -3191,7 +3191,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/catalog-client@workspace:^, @backstage/catalog-client@workspace:packages/catalog-client":
+"@backstage/catalog-client@npm:^1.12.0, @backstage/catalog-client@workspace:^, @backstage/catalog-client@workspace:packages/catalog-client":
   version: 0.0.0-use.local
   resolution: "@backstage/catalog-client@workspace:packages/catalog-client"
   dependencies:
@@ -3205,7 +3205,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/catalog-model@workspace:^, @backstage/catalog-model@workspace:packages/catalog-model":
+"@backstage/catalog-model@npm:^1.7.5, @backstage/catalog-model@workspace:^, @backstage/catalog-model@workspace:packages/catalog-model":
   version: 0.0.0-use.local
   resolution: "@backstage/catalog-model@workspace:packages/catalog-model"
   dependencies:
@@ -3529,7 +3529,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/core-compat-api@workspace:^, @backstage/core-compat-api@workspace:packages/core-compat-api":
+"@backstage/core-compat-api@npm:^0.5.3, @backstage/core-compat-api@workspace:^, @backstage/core-compat-api@workspace:packages/core-compat-api":
   version: 0.0.0-use.local
   resolution: "@backstage/core-compat-api@workspace:packages/core-compat-api"
   dependencies:
@@ -3563,7 +3563,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/core-components@workspace:^, @backstage/core-components@workspace:packages/core-components":
+"@backstage/core-components@npm:^0.18.2, @backstage/core-components@workspace:^, @backstage/core-components@workspace:packages/core-components":
   version: 0.0.0-use.local
   resolution: "@backstage/core-components@workspace:packages/core-components"
   dependencies:
@@ -3643,7 +3643,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/core-plugin-api@workspace:^, @backstage/core-plugin-api@workspace:packages/core-plugin-api":
+"@backstage/core-plugin-api@npm:^1.11.1, @backstage/core-plugin-api@workspace:^, @backstage/core-plugin-api@workspace:packages/core-plugin-api":
   version: 0.0.0-use.local
   resolution: "@backstage/core-plugin-api@workspace:packages/core-plugin-api"
   dependencies:
@@ -3755,7 +3755,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/errors@workspace:^, @backstage/errors@workspace:packages/errors":
+"@backstage/errors@npm:^1.2.7, @backstage/errors@workspace:^, @backstage/errors@workspace:packages/errors":
   version: 0.0.0-use.local
   resolution: "@backstage/errors@workspace:packages/errors"
   dependencies:
@@ -3874,7 +3874,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/frontend-plugin-api@workspace:^, @backstage/frontend-plugin-api@workspace:packages/frontend-plugin-api":
+"@backstage/frontend-plugin-api@npm:^0.12.1, @backstage/frontend-plugin-api@workspace:^, @backstage/frontend-plugin-api@workspace:packages/frontend-plugin-api":
   version: 0.0.0-use.local
   resolution: "@backstage/frontend-plugin-api@workspace:packages/frontend-plugin-api"
   dependencies:
@@ -3957,7 +3957,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/integration-react@workspace:^, @backstage/integration-react@workspace:packages/integration-react":
+"@backstage/integration-react@npm:^1.2.11, @backstage/integration-react@workspace:^, @backstage/integration-react@workspace:packages/integration-react":
   version: 0.0.0-use.local
   resolution: "@backstage/integration-react@workspace:packages/integration-react"
   dependencies:
@@ -3988,7 +3988,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/integration@workspace:^, @backstage/integration@workspace:packages/integration":
+"@backstage/integration@npm:^1.18.1, @backstage/integration@workspace:^, @backstage/integration@workspace:packages/integration":
   version: 0.0.0-use.local
   resolution: "@backstage/integration@workspace:packages/integration"
   dependencies:
@@ -5188,7 +5188,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/plugin-catalog-common@workspace:^, @backstage/plugin-catalog-common@workspace:plugins/catalog-common":
+"@backstage/plugin-catalog-common@npm:^1.1.6, @backstage/plugin-catalog-common@workspace:^, @backstage/plugin-catalog-common@workspace:plugins/catalog-common":
   version: 0.0.0-use.local
   resolution: "@backstage/plugin-catalog-common@workspace:plugins/catalog-common"
   dependencies:
@@ -5314,7 +5314,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/plugin-catalog-react@workspace:^, @backstage/plugin-catalog-react@workspace:plugins/catalog-react":
+"@backstage/plugin-catalog-react@npm:^1.21.2, @backstage/plugin-catalog-react@workspace:^, @backstage/plugin-catalog-react@workspace:plugins/catalog-react":
   version: 0.0.0-use.local
   resolution: "@backstage/plugin-catalog-react@workspace:plugins/catalog-react"
   dependencies:
@@ -6440,7 +6440,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/plugin-permission-react@workspace:^, @backstage/plugin-permission-react@workspace:plugins/permission-react":
+"@backstage/plugin-permission-react@npm:^0.4.37, @backstage/plugin-permission-react@workspace:^, @backstage/plugin-permission-react@workspace:plugins/permission-react":
   version: 0.0.0-use.local
   resolution: "@backstage/plugin-permission-react@workspace:plugins/permission-react"
   dependencies:
@@ -6859,7 +6859,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/plugin-scaffolder-common@workspace:^, @backstage/plugin-scaffolder-common@workspace:plugins/scaffolder-common":
+"@backstage/plugin-scaffolder-common@npm:^1.7.2, @backstage/plugin-scaffolder-common@workspace:^, @backstage/plugin-scaffolder-common@workspace:plugins/scaffolder-common":
   version: 0.0.0-use.local
   resolution: "@backstage/plugin-scaffolder-common@workspace:plugins/scaffolder-common"
   dependencies:
@@ -7370,7 +7370,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/plugin-techdocs-common@workspace:^, @backstage/plugin-techdocs-common@workspace:plugins/techdocs-common":
+"@backstage/plugin-techdocs-common@npm:^0.1.1, @backstage/plugin-techdocs-common@workspace:^, @backstage/plugin-techdocs-common@workspace:plugins/techdocs-common":
   version: 0.0.0-use.local
   resolution: "@backstage/plugin-techdocs-common@workspace:plugins/techdocs-common"
   dependencies:
@@ -7460,7 +7460,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/plugin-techdocs-react@workspace:^, @backstage/plugin-techdocs-react@workspace:plugins/techdocs-react":
+"@backstage/plugin-techdocs-react@npm:^1.3.4, @backstage/plugin-techdocs-react@workspace:^, @backstage/plugin-techdocs-react@workspace:plugins/techdocs-react":
   version: 0.0.0-use.local
   resolution: "@backstage/plugin-techdocs-react@workspace:plugins/techdocs-react"
   dependencies:
@@ -7748,7 +7748,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/theme@workspace:^, @backstage/theme@workspace:packages/theme":
+"@backstage/theme@npm:^0.7.0, @backstage/theme@workspace:^, @backstage/theme@workspace:packages/theme":
   version: 0.0.0-use.local
   resolution: "@backstage/theme@workspace:packages/theme"
   dependencies:
@@ -7775,7 +7775,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/types@workspace:^, @backstage/types@workspace:packages/types":
+"@backstage/types@npm:^1.2.2, @backstage/types@workspace:^, @backstage/types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@backstage/types@workspace:packages/types"
   dependencies:
@@ -7819,7 +7819,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@backstage/version-bridge@workspace:^, @backstage/version-bridge@workspace:packages/version-bridge":
+"@backstage/version-bridge@npm:^1.0.11, @backstage/version-bridge@workspace:^, @backstage/version-bridge@workspace:packages/version-bridge":
   version: 0.0.0-use.local
   resolution: "@backstage/version-bridge@workspace:packages/version-bridge"
   dependencies:
@@ -7876,27 +7876,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bip-bih/plugin-scaffolder-react@npm:^1.19.2, @bip-bih/plugin-scaffolder-react@workspace:plugins/scaffolder-react":
+"@bip-bih/plugin-scaffolder-react@npm:^1.19.5, @bip-bih/plugin-scaffolder-react@npm:^1.19.7, @bip-bih/plugin-scaffolder-react@workspace:plugins/scaffolder-react":
   version: 0.0.0-use.local
   resolution: "@bip-bih/plugin-scaffolder-react@workspace:plugins/scaffolder-react"
   dependencies:
-    "@backstage/catalog-client": "workspace:^"
-    "@backstage/catalog-model": "workspace:^"
+    "@backstage/catalog-client": "npm:^1.12.0"
+    "@backstage/catalog-model": "npm:^1.7.5"
     "@backstage/cli": "workspace:^"
     "@backstage/core-app-api": "workspace:^"
-    "@backstage/core-components": "workspace:^"
-    "@backstage/core-plugin-api": "workspace:^"
-    "@backstage/frontend-plugin-api": "workspace:^"
+    "@backstage/core-components": "npm:^0.18.2"
+    "@backstage/core-plugin-api": "npm:^1.11.1"
+    "@backstage/frontend-plugin-api": "npm:^0.12.1"
     "@backstage/plugin-catalog": "workspace:^"
     "@backstage/plugin-catalog-common": "workspace:^"
-    "@backstage/plugin-catalog-react": "workspace:^"
+    "@backstage/plugin-catalog-react": "npm:^1.21.2"
     "@backstage/plugin-permission-common": "workspace:^"
-    "@backstage/plugin-permission-react": "workspace:^"
-    "@backstage/plugin-scaffolder-common": "workspace:^"
+    "@backstage/plugin-permission-react": "npm:^0.4.37"
+    "@backstage/plugin-scaffolder-common": "npm:^1.7.2"
     "@backstage/test-utils": "workspace:^"
-    "@backstage/theme": "workspace:^"
-    "@backstage/types": "workspace:^"
-    "@backstage/version-bridge": "workspace:^"
+    "@backstage/theme": "npm:^0.7.0"
+    "@backstage/types": "npm:^1.2.2"
+    "@backstage/version-bridge": "npm:^1.0.11"
     "@material-ui/core": "npm:^4.12.2"
     "@material-ui/icons": "npm:^4.9.1"
     "@material-ui/lab": "npm:4.0.0-alpha.61"
@@ -7948,30 +7948,30 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@bip-bih/plugin-scaffolder@workspace:plugins/scaffolder"
   dependencies:
-    "@backstage/catalog-client": "workspace:^"
-    "@backstage/catalog-model": "workspace:^"
+    "@backstage/catalog-client": "npm:^1.12.0"
+    "@backstage/catalog-model": "npm:^1.7.5"
     "@backstage/cli": "workspace:^"
     "@backstage/core-app-api": "workspace:^"
-    "@backstage/core-compat-api": "workspace:^"
-    "@backstage/core-components": "workspace:^"
-    "@backstage/core-plugin-api": "workspace:^"
+    "@backstage/core-compat-api": "npm:^0.5.3"
+    "@backstage/core-components": "npm:^0.18.2"
+    "@backstage/core-plugin-api": "npm:^1.11.1"
     "@backstage/dev-utils": "workspace:^"
-    "@backstage/errors": "workspace:^"
-    "@backstage/frontend-plugin-api": "workspace:^"
-    "@backstage/integration": "workspace:^"
-    "@backstage/integration-react": "workspace:^"
+    "@backstage/errors": "npm:^1.2.7"
+    "@backstage/frontend-plugin-api": "npm:^0.12.1"
+    "@backstage/integration": "npm:^1.18.1"
+    "@backstage/integration-react": "npm:^1.2.11"
     "@backstage/plugin-catalog": "workspace:^"
-    "@backstage/plugin-catalog-common": "workspace:^"
-    "@backstage/plugin-catalog-react": "workspace:^"
+    "@backstage/plugin-catalog-common": "npm:^1.1.6"
+    "@backstage/plugin-catalog-react": "npm:^1.21.2"
     "@backstage/plugin-permission-common": "workspace:^"
-    "@backstage/plugin-permission-react": "workspace:^"
-    "@backstage/plugin-scaffolder-common": "workspace:^"
+    "@backstage/plugin-permission-react": "npm:^0.4.37"
+    "@backstage/plugin-scaffolder-common": "npm:^1.7.2"
     "@backstage/plugin-techdocs": "workspace:^"
-    "@backstage/plugin-techdocs-common": "workspace:^"
-    "@backstage/plugin-techdocs-react": "workspace:^"
+    "@backstage/plugin-techdocs-common": "npm:^0.1.1"
+    "@backstage/plugin-techdocs-react": "npm:^1.3.4"
     "@backstage/test-utils": "workspace:^"
-    "@backstage/types": "workspace:^"
-    "@bip-bih/plugin-scaffolder-react": "npm:^1.19.2"
+    "@backstage/types": "npm:^1.2.2"
+    "@bip-bih/plugin-scaffolder-react": "npm:^1.19.7"
     "@codemirror/language": "npm:^6.0.0"
     "@codemirror/legacy-modes": "npm:^6.1.0"
     "@codemirror/view": "npm:^6.0.0"
@@ -10039,7 +10039,7 @@ __metadata:
   dependencies:
     "@backstage/cli": "workspace:^"
     "@backstage/frontend-plugin-api": "workspace:^"
-    "@bip-bih/plugin-scaffolder-react": "npm:^1.19.2"
+    "@bip-bih/plugin-scaffolder-react": "npm:^1.19.5"
     zod: "npm:^3.22.4"
   languageName: unknown
   linkType: soft
@@ -30433,7 +30433,7 @@ __metadata:
     "@backstage/theme": "workspace:^"
     "@backstage/ui": "workspace:^"
     "@bip-bih/plugin-scaffolder": "workspace:^"
-    "@bip-bih/plugin-scaffolder-react": "npm:^1.19.2"
+    "@bip-bih/plugin-scaffolder-react": "npm:^1.19.5"
     "@material-ui/core": "npm:^4.12.2"
     "@material-ui/icons": "npm:^4.9.1"
     "@material-ui/lab": "npm:4.0.0-alpha.61"
@@ -30504,7 +30504,7 @@ __metadata:
     "@backstage/theme": "workspace:^"
     "@backstage/ui": "workspace:^"
     "@bip-bih/plugin-scaffolder": "workspace:^"
-    "@bip-bih/plugin-scaffolder-react": "npm:^1.19.2"
+    "@bip-bih/plugin-scaffolder-react": "npm:^1.19.5"
     "@material-ui/core": "npm:^4.12.2"
     "@material-ui/icons": "npm:^4.9.1"
     "@material-ui/lab": "npm:4.0.0-alpha.61"

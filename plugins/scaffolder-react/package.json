@@ -1,6 +1,6 @@
 {
   "name": "@bip-bih/plugin-scaffolder-react",
-  "version": "1.19.2",
+  "version": "1.19.7",
   "description": "A frontend library that helps other Backstage plugins interact with the Scaffolder",
   "backstage": {
     "role": "web-library",
@@ -15,7 +15,8 @@
     ]
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://nexus.dev.bip.va.gov/repository/npm-internal/"
   },
   "keywords": [
     "backstage"
@@ -29,16 +30,16 @@
   "license": "Apache-2.0",
   "sideEffects": false,
   "exports": {
-    ".": "./src/index.ts",
-    "./alpha": "./src/alpha.ts",
+    ".": "./dist/index.esm.js",
+    "./alpha": "./dist/alpha.esm.js",
     "./package.json": "./package.json"
   },
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "typesVersions": {
     "*": {
       "alpha": [
-        "src/alpha.ts"
+        "dist/alpha.d.ts"
       ],
       "package.json": [
         "package.json"
@@ -58,17 +59,17 @@
     "test": "backstage-cli package test"
   },
   "dependencies": {
-    "@backstage/catalog-client": "workspace:^",
-    "@backstage/catalog-model": "workspace:^",
-    "@backstage/core-components": "workspace:^",
-    "@backstage/core-plugin-api": "workspace:^",
-    "@backstage/frontend-plugin-api": "workspace:^",
-    "@backstage/plugin-catalog-react": "workspace:^",
-    "@backstage/plugin-permission-react": "workspace:^",
-    "@backstage/plugin-scaffolder-common": "workspace:^",
-    "@backstage/theme": "workspace:^",
-    "@backstage/types": "workspace:^",
-    "@backstage/version-bridge": "workspace:^",
+    "@backstage/catalog-client": "^1.12.0",
+    "@backstage/catalog-model": "^1.7.5",
+    "@backstage/core-components": "^0.18.2",
+    "@backstage/core-plugin-api": "^1.11.1",
+    "@backstage/frontend-plugin-api": "^0.12.1",
+    "@backstage/plugin-catalog-react": "^1.21.2",
+    "@backstage/plugin-permission-react": "^0.4.37",
+    "@backstage/plugin-scaffolder-common": "^1.7.2",
+    "@backstage/theme": "^0.7.0",
+    "@backstage/types": "^1.2.2",
+    "@backstage/version-bridge": "^1.0.11",
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "4.0.0-alpha.61",
