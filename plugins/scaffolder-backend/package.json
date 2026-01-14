@@ -11,7 +11,7 @@
       "@backstage/plugin-scaffolder-common",
       "@backstage/plugin-scaffolder-node",
       "@backstage/plugin-scaffolder-node-test-utils",
-      "@backstage/plugin-scaffolder-react"
+      "@bip-bih/plugin-scaffolder-react"
     ]
   },
   "publishConfig": {

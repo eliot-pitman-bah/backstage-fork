@@ -11,7 +11,7 @@
       "@backstage/plugin-scaffolder-common",
       "@backstage/plugin-scaffolder-node",
       "@backstage/plugin-scaffolder-node-test-utils",
-      "@backstage/plugin-scaffolder-react"
+      "@bip-bih/plugin-scaffolder-react"
     ]
   },
   "publishConfig": {
@@ -71,10 +71,10 @@
     "@backstage/plugin-catalog-react": "workspace:^",
     "@backstage/plugin-permission-react": "workspace:^",
     "@backstage/plugin-scaffolder-common": "workspace:^",
-    "@backstage/plugin-scaffolder-react": "workspace:^",
     "@backstage/plugin-techdocs-common": "workspace:^",
     "@backstage/plugin-techdocs-react": "workspace:^",
     "@backstage/types": "workspace:^",
+    "@bip-bih/plugin-scaffolder-react": "^1.19.2",
     "@codemirror/language": "^6.0.0",
     "@codemirror/legacy-modes": "^6.1.0",
     "@codemirror/view": "^6.0.0",

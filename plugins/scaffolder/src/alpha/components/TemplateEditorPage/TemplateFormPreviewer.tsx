@@ -30,7 +30,7 @@ import {
   LayoutOptions,
   FieldExtensionOptions,
   FormProps,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 
 import { editRouteRef } from '../../../routes';
 

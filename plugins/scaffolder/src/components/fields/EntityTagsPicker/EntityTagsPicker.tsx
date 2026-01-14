@@ -25,7 +25,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import { EntityTagsPickerProps } from './schema';
 import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
 import { scaffolderTranslationRef } from '../../../translation';
-import { ScaffolderField } from '@backstage/plugin-scaffolder-react/alpha';
+import { ScaffolderField } from '@bip-bih/plugin-scaffolder-react/alpha';
 
 export { EntityTagsPickerSchema } from './schema';
 

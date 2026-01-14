@@ -33,7 +33,7 @@ import {
   identityApiRef,
 } from '@backstage/core-plugin-api';
 import userEvent from '@testing-library/user-event';
-import { ScaffolderRJSFFieldProps as FieldProps } from '@backstage/plugin-scaffolder-react';
+import { ScaffolderRJSFFieldProps as FieldProps } from '@bip-bih/plugin-scaffolder-react';
 import { DefaultEntityPresentationApi } from '@backstage/plugin-catalog';
 import { ComponentType, PropsWithChildren, ReactNode } from 'react';
 import { useTranslationRef } from '@backstage/frontend-plugin-api';

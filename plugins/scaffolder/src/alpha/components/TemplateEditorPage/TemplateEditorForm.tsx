@@ -27,11 +27,11 @@ import {
   TemplateParameterSchema,
   FieldExtensionOptions,
   FormProps,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import {
   Stepper,
   createAsyncValidators,
-} from '@backstage/plugin-scaffolder-react/alpha';
+} from '@bip-bih/plugin-scaffolder-react/alpha';
 import { useDryRun } from './DryRunContext';
 import { useDirectoryEditor } from './DirectoryEditorContext';
 

@@ -27,7 +27,7 @@ import { errorApiRef } from '@backstage/core-plugin-api';
 import {
   scaffolderApiRef,
   SecretsContextProvider,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { renderHook } from '@testing-library/react';
 import { PropsWithChildren } from 'react';
 import { formDecoratorsApiRef } from '../../api';

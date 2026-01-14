@@ -17,9 +17,9 @@ import { errorApiRef, useApi, useApiHolder } from '@backstage/core-plugin-api';
 import { formDecoratorsApiRef } from '../api/ref';
 import useAsync from 'react-use/esm/useAsync';
 import { useCallback, useMemo } from 'react';
-import { ScaffolderFormDecoratorContext } from '@backstage/plugin-scaffolder-react/alpha';
+import { ScaffolderFormDecoratorContext } from '@bip-bih/plugin-scaffolder-react/alpha';
 import { OpaqueFormDecorator } from '@internal/scaffolder';
-import { TemplateParameterSchema } from '@backstage/plugin-scaffolder-react';
+import { TemplateParameterSchema } from '@bip-bih/plugin-scaffolder-react';
 import { JsonValue } from '@backstage/types';
 
 /** @internal */

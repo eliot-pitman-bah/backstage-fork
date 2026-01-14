@@ -20,7 +20,7 @@ import { catalogApiRef } from '@backstage/plugin-catalog-react';
 import {
   scaffolderApiRef,
   SecretsContextProvider,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { TemplateEditorPage } from './TemplateEditorPage';
 import { rootRouteRef } from '../../../routes';
 import { formDecoratorsApiRef } from '../../api';

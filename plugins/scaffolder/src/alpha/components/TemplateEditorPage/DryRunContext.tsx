@@ -30,7 +30,7 @@ import {
   scaffolderApiRef,
   ScaffolderDryRunResponse,
   useTemplateSecrets,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { useFormDecorators } from '../../hooks/useFormDecorators';
 
 const MAX_CONTENT_SIZE = 64 * 1024;

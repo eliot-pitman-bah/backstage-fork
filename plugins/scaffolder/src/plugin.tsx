@@ -18,7 +18,7 @@ import { scmIntegrationsApiRef } from '@backstage/integration-react';
 import {
   createScaffolderFieldExtension,
   scaffolderApiRef,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { ScaffolderClient } from './api';
 import {
   EntityPicker,
@@ -81,7 +81,7 @@ import { RepoBranchPicker } from './components/fields/RepoBranchPicker/RepoBranc
 import { RepoBranchPickerSchema } from './components/fields/RepoBranchPicker/schema';
 import { formDecoratorsApiRef } from './alpha/api/ref';
 import { DefaultScaffolderFormDecoratorsApi } from './alpha/api/FormDecoratorsApi';
-import { formFieldsApiRef } from '@backstage/plugin-scaffolder-react/alpha';
+import { formFieldsApiRef } from '@bip-bih/plugin-scaffolder-react/alpha';
 
 /**
  * The main plugin export for the scaffolder.

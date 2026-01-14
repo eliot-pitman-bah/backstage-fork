@@ -15,7 +15,7 @@
  */
 import { useEffect, useState } from 'react';
 import useAsync from 'react-use/esm/useAsync';
-import { Action, scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
+import { Action, scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -40,7 +40,7 @@ import {
   Page,
   Progress,
 } from '@backstage/core-components';
-import { ScaffolderPageContextMenu } from '@backstage/plugin-scaffolder-react/alpha';
+import { ScaffolderPageContextMenu } from '@bip-bih/plugin-scaffolder-react/alpha';
 import { useNavigate } from 'react-router-dom';
 import {
   editRouteRef,

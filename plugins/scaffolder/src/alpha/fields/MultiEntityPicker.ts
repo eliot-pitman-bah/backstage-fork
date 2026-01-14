@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { createFormField } from '@backstage/plugin-scaffolder-react/alpha';
+import { createFormField } from '@bip-bih/plugin-scaffolder-react/alpha';
 import {
   MultiEntityPicker as Component,
   MultiEntityPickerFieldSchema,

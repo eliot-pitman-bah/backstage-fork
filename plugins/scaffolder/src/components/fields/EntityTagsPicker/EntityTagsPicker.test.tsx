@@ -17,7 +17,7 @@
 import { Entity } from '@backstage/catalog-model';
 import { catalogApiRef } from '@backstage/plugin-catalog-react';
 import { catalogApiMock } from '@backstage/plugin-catalog-react/testUtils';
-import { ScaffolderRJSFFieldProps as FieldProps } from '@backstage/plugin-scaffolder-react';
+import { ScaffolderRJSFFieldProps as FieldProps } from '@bip-bih/plugin-scaffolder-react';
 import { renderInTestApp, TestApiProvider } from '@backstage/test-utils';
 import { ComponentType, PropsWithChildren, ReactNode } from 'react';
 import { EntityTagsPicker } from './EntityTagsPicker';

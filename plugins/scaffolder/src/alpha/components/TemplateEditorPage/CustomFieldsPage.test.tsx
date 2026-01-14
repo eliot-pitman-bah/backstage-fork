@@ -17,7 +17,7 @@
 import { screen } from '@testing-library/react';
 import { renderInTestApp, TestApiProvider } from '@backstage/test-utils';
 import { catalogApiRef } from '@backstage/plugin-catalog-react';
-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
+import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
 import { rootRouteRef } from '../../../routes';
 import { CustomFieldsPage } from './CustomFieldsPage';
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { CodeSnippet, MarkdownContent } from '@backstage/core-components';
-import { ScaffolderUsageExample } from '@backstage/plugin-scaffolder-react';
+import { ScaffolderUsageExample } from '@bip-bih/plugin-scaffolder-react';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import { Fragment } from 'react';

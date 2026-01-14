@@ -21,7 +21,7 @@ import {
   MockStarredEntitiesApi,
 } from '@backstage/plugin-catalog-react';
 import { ScaffolderClient } from '../src';
-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
+import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
 import { ScaffolderPage } from '../src/plugin';
 import {
   discoveryApiRef,

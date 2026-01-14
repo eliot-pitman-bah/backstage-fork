@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { makeFieldSchema } from '@backstage/plugin-scaffolder-react';
+import { makeFieldSchema } from '@bip-bih/plugin-scaffolder-react';
 
 export const RepoBranchPickerFieldSchema = makeFieldSchema({
   output: z => z.string(),

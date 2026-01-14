@@ -23,14 +23,14 @@ import {
 import {
   createScaffolderFieldExtension,
   ScaffolderFieldExtensions,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { scaffolderPlugin } from '../../plugin';
 import {
   createScaffolderLayout,
   ScaffolderLayouts,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { TemplateListPage, TemplateWizardPage } from '../../alpha/components';
-import { formFieldsApiRef } from '@backstage/plugin-scaffolder-react/alpha';
+import { formFieldsApiRef } from '@bip-bih/plugin-scaffolder-react/alpha';
 
 jest.mock('../../alpha/components', () => ({
   TemplateWizardPage: jest.fn(() => null),

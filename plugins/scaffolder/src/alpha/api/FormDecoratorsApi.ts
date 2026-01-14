@@ -19,9 +19,9 @@ import {
   createExtensionInput,
 } from '@backstage/frontend-plugin-api';
 import { ScaffolderFormDecoratorsApi } from './types';
-import { ScaffolderFormDecorator } from '@backstage/plugin-scaffolder-react/alpha';
+import { ScaffolderFormDecorator } from '@bip-bih/plugin-scaffolder-react/alpha';
 import { formDecoratorsApiRef } from './ref';
-import { FormDecoratorBlueprint } from '@backstage/plugin-scaffolder-react/alpha';
+import { FormDecoratorBlueprint } from '@bip-bih/plugin-scaffolder-react/alpha';
 
 /** @alpha */
 export class DefaultScaffolderFormDecoratorsApi

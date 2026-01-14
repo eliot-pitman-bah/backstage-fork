@@ -17,7 +17,7 @@
 import {
   ScaffolderApi,
   scaffolderApiRef,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { BitbucketRepoBranchPicker } from './BitbucketRepoBranchPicker';
 import {
   act,

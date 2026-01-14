@@ -28,6 +28,6 @@ export * from './api';
 export {
   formFieldsApiRef,
   type ScaffolderFormFieldsApi,
-} from '@backstage/plugin-scaffolder-react/alpha';
+} from '@bip-bih/plugin-scaffolder-react/alpha';
 
 export { default } from './plugin';

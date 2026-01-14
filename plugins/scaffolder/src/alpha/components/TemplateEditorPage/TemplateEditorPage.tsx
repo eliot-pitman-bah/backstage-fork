@@ -21,7 +21,7 @@ import {
   FormProps,
   FieldExtensionOptions,
   type LayoutOptions,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { scaffolderTranslationRef } from '../../../translation';
 import { editRouteRef } from '../../../routes';
 import { TemplateEditor } from './TemplateEditor';

@@ -21,13 +21,13 @@ import {
   FormProps,
   ReviewStepProps,
   TemplateGroupFilter,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import {
   ScaffolderTaskOutput,
   SecretsContextProvider,
   useCustomFieldExtensions,
   useCustomLayouts,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 
 import { TemplateEntityV1beta3 } from '@backstage/plugin-scaffolder-common';
 import { DEFAULT_SCAFFOLDER_FIELD_EXTENSIONS } from '../../extensions/default';
@@ -65,7 +65,7 @@ import { useApp } from '@backstage/core-plugin-api';
 import { OpaqueFormField } from '@internal/scaffolder';
 import { useAsync, useMountEffect } from '@react-hookz/web';
 import { TemplatingExtensionsPage } from '../TemplatingExtensionsPage';
-import { FormField } from '@backstage/plugin-scaffolder-react/alpha';
+import { FormField } from '@bip-bih/plugin-scaffolder-react/alpha';
 
 /**
  * The Props for the Scaffolder Router

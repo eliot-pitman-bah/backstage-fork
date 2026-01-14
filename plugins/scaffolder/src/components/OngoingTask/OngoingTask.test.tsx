@@ -20,7 +20,7 @@ import {
   renderInTestApp,
   TestApiProvider,
 } from '@backstage/test-utils';
-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
+import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
 import { act, fireEvent, waitFor, within } from '@testing-library/react';
 import {
   PermissionApi,
@@ -36,8 +36,8 @@ jest.mock('react-router-dom', () => ({
   useParams: () => ({ taskId: 'my-task' }),
 }));
 
-jest.mock('@backstage/plugin-scaffolder-react', () => ({
-  ...jest.requireActual('@backstage/plugin-scaffolder-react'),
+jest.mock('@bip-bih/plugin-scaffolder-react', () => ({
+  ...jest.requireActual('@bip-bih/plugin-scaffolder-react'),
   useTaskEventStream: () => ({
     cancelled: false,
     loading: true,

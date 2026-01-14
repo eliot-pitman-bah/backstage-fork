@@ -37,11 +37,11 @@ import {
   Page,
   Progress,
 } from '@backstage/core-components';
-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
+import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
 import {
   ScaffolderPageContextMenu,
   ScaffolderPageContextMenuProps,
-} from '@backstage/plugin-scaffolder-react/alpha';
+} from '@bip-bih/plugin-scaffolder-react/alpha';
 import Box from '@material-ui/core/Box';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import ListItemText from '@material-ui/core/ListItemText';

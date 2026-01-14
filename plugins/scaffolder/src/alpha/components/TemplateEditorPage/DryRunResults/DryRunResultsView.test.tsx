@@ -22,7 +22,7 @@ import { ReactNode, useEffect } from 'react';
 import {
   scaffolderApiRef,
   SecretsContextProvider,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { DryRunProvider, useDryRun } from '../DryRunContext';
 import { DryRunResultsView } from './DryRunResultsView';
 import { formDecoratorsApiRef } from '../../../api';

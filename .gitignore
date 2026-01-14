@@ -1,6 +1,10 @@
 # macOS
 .DS_Store
 
+# Configuration files with credentials
+.npmrc
+.yarnrc.yml
+
 # IntelliJ
 .idea/
 *.iml
@@ -187,3 +191,7 @@ tsconfig.typedoc.tmp.json
 
 # Storybook
 dist-storybook/
+
+.npmrc
+
+.yarnrc.yml

@@ -27,7 +27,7 @@ import { userEvent } from '@testing-library/user-event';
 import { PropsWithChildren, ComponentType, ReactNode } from 'react';
 import { MultiEntityPicker } from './MultiEntityPicker';
 import { MultiEntityPickerProps } from './schema';
-import { ScaffolderRJSFFieldProps as FieldProps } from '@backstage/plugin-scaffolder-react';
+import { ScaffolderRJSFFieldProps as FieldProps } from '@bip-bih/plugin-scaffolder-react';
 import { DefaultEntityPresentationApi } from '@backstage/plugin-catalog';
 import { catalogApiMock } from '@backstage/plugin-catalog-react/testUtils';
 import { useTranslationRef } from '@backstage/frontend-plugin-api';

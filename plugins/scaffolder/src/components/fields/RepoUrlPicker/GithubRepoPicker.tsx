@@ -22,7 +22,7 @@ import { BaseRepoUrlPickerProps } from './types';
 import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
 import { scaffolderTranslationRef } from '../../../translation';
 import { useApi } from '@backstage/core-plugin-api';
-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
+import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
 import useDebounce from 'react-use/esm/useDebounce';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import uniq from 'lodash/uniq';

@@ -26,7 +26,7 @@ import {
   ScaffolderApi,
   scaffolderApiRef,
   SecretsContextProvider,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { TemplateWizardPage } from './TemplateWizardPage';
 import { rootRouteRef } from '../../../routes';
 import { ANNOTATION_EDIT_URL } from '@backstage/catalog-model';

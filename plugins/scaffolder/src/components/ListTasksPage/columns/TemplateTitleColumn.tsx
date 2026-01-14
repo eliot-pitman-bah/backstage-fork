@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { useApi } from '@backstage/core-plugin-api';
-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
+import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
 import useAsync from 'react-use/esm/useAsync';
 import { parseEntityRef } from '@backstage/catalog-model';
 import { EntityRefLink } from '@backstage/plugin-catalog-react';

@@ -29,7 +29,7 @@ import { TaskStep } from '@backstage/plugin-scaffolder-common';
 import { StepIcon } from './StepIcon';
 import { StepTime } from './StepTime';
 import { TaskBorder } from './TaskBorder';
-import { ScaffolderStep } from '@backstage/plugin-scaffolder-react';
+import { ScaffolderStep } from '@bip-bih/plugin-scaffolder-react';
 import React from 'react';
 
 /**

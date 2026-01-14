@@ -40,7 +40,7 @@ import {
   ScaffolderPageContextMenu,
   TemplateCategoryPicker,
   TemplateGroups,
-} from '@backstage/plugin-scaffolder-react/alpha';
+} from '@bip-bih/plugin-scaffolder-react/alpha';
 
 import { RegisterExistingButton } from './RegisterExistingButton';
 import {
@@ -53,7 +53,7 @@ import {
   viewTechDocRouteRef,
 } from '../../../routes';
 import { parseEntityRef, stringifyEntityRef } from '@backstage/catalog-model';
-import { TemplateGroupFilter } from '@backstage/plugin-scaffolder-react';
+import { TemplateGroupFilter } from '@bip-bih/plugin-scaffolder-react';
 import {
   TranslationFunction,
   useTranslationRef,

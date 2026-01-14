@@ -16,11 +16,11 @@
 import { JSONSchema7 } from 'json-schema';
 import { z } from 'zod';
 import zodToJsonSchema from 'zod-to-json-schema';
-import { FieldSchema as FieldSchemaType } from '@backstage/plugin-scaffolder-react';
+import { FieldSchema as FieldSchemaType } from '@bip-bih/plugin-scaffolder-react';
 
 /**
  * @public
- * @deprecated - import from {@link @backstage/plugin-scaffolder-react#FieldSchema} instead
+ * @deprecated - import from {@link @bip-bih/plugin-scaffolder-react#FieldSchema} instead
  */
 export interface FieldSchema<T, P> extends FieldSchemaType<T, P> {}
 

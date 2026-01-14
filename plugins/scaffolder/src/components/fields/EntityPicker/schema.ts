@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { z as zod } from 'zod';
-import { makeFieldSchema } from '@backstage/plugin-scaffolder-react';
+import { makeFieldSchema } from '@bip-bih/plugin-scaffolder-react';
 
 export const createEntityQueryFilterExpressionSchema = (z: typeof zod) =>
   z.record(

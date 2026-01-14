@@ -33,13 +33,13 @@ import {
   FormProps,
   FieldExtensionOptions,
   ReviewStepProps,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { catalogApiRef } from '@backstage/plugin-catalog-react';
 
 import {
   Workflow,
   useTemplateParameterSchema,
-} from '@backstage/plugin-scaffolder-react/alpha';
+} from '@bip-bih/plugin-scaffolder-react/alpha';
 import { JsonValue } from '@backstage/types';
 import { Header, Page, Progress } from '@backstage/core-components';
 

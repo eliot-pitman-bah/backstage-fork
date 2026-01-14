@@ -18,7 +18,7 @@ import { Progress, Select, SelectItem } from '@backstage/core-components';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import { useApi } from '@backstage/core-plugin-api';
-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
+import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
 import useAsync from 'react-use/esm/useAsync';
 import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
 import { scaffolderTranslationRef } from '../../../translation';

@@ -17,7 +17,7 @@
 import {
   ScaffolderApi,
   scaffolderApiRef,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { renderInTestApp, TestApiProvider } from '@backstage/test-utils';
 import { fireEvent } from '@testing-library/react';
 import { GitlabRepoPicker } from './GitlabRepoPicker';

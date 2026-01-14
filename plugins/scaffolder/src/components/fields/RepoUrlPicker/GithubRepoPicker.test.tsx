@@ -21,7 +21,7 @@ import { renderInTestApp, TestApiProvider } from '@backstage/test-utils';
 import {
   ScaffolderApi,
   scaffolderApiRef,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import userEvent from '@testing-library/user-event';
 
 describe('GithubRepoPicker', () => {

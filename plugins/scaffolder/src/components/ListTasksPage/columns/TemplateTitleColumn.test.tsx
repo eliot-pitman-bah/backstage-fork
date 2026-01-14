@@ -21,7 +21,7 @@ import { entityRouteRef } from '@backstage/plugin-catalog-react';
 import {
   scaffolderApiRef,
   ScaffolderApi,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 
 describe('<TemplateTitleColumn />', () => {
   const scaffolderApiMock: jest.Mocked<ScaffolderApi> = {

@@ -18,7 +18,7 @@ import {
   scmAuthApiRef,
   scmIntegrationsApiRef,
 } from '@backstage/integration-react';
-import { useTemplateSecrets } from '@backstage/plugin-scaffolder-react';
+import { useTemplateSecrets } from '@bip-bih/plugin-scaffolder-react';
 import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';

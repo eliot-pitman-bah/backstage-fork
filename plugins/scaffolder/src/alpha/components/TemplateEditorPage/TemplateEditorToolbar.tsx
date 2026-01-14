@@ -33,7 +33,7 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import FunctionsIcon from '@material-ui/icons/Functions';
 
 import { useTranslationRef } from '@backstage/frontend-plugin-api';
-import { FieldExtensionOptions } from '@backstage/plugin-scaffolder-react';
+import { FieldExtensionOptions } from '@bip-bih/plugin-scaffolder-react';
 
 import { ActionPageContent } from '../../../components/ActionsPage/ActionsPage';
 import { scaffolderTranslationRef } from '../../../translation';

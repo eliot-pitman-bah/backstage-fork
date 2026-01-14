@@ -27,7 +27,7 @@ import { ListTasksPage } from './ListTasksPage';
 import {
   ScaffolderApi,
   scaffolderApiRef,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { act, fireEvent } from '@testing-library/react';
 import { rootRouteRef } from '../../routes';
 import { permissionApiRef } from '@backstage/plugin-permission-react';

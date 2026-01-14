@@ -34,8 +34,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import SearchIcon from '@material-ui/icons/Search';
 
 import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
-import { Form } from '@backstage/plugin-scaffolder-react/alpha';
-import { FieldExtensionOptions } from '@backstage/plugin-scaffolder-react';
+import { Form } from '@bip-bih/plugin-scaffolder-react/alpha';
+import { FieldExtensionOptions } from '@bip-bih/plugin-scaffolder-react';
 
 import { scaffolderTranslationRef } from '../../../translation';
 import { TemplateEditorForm } from './TemplateEditorForm';

@@ -1,5 +1,5 @@
 {
-  "name": "@backstage/plugin-scaffolder-react",
+  "name": "@bip-bih/plugin-scaffolder-react",
   "version": "1.19.2",
   "description": "A frontend library that helps other Backstage plugins interact with the Scaffolder",
   "backstage": {
@@ -11,7 +11,7 @@
       "@backstage/plugin-scaffolder-common",
       "@backstage/plugin-scaffolder-node",
       "@backstage/plugin-scaffolder-node-test-utils",
-      "@backstage/plugin-scaffolder-react"
+      "@bip-bih/plugin-scaffolder-react"
     ]
   },
   "publishConfig": {

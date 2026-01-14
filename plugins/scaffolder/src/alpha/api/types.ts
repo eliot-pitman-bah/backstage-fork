@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { ScaffolderFormDecorator } from '@backstage/plugin-scaffolder-react/alpha';
+import { ScaffolderFormDecorator } from '@bip-bih/plugin-scaffolder-react/alpha';
 
 /** @alpha */
 export interface ScaffolderFormDecoratorsApi {

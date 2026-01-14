@@ -30,7 +30,7 @@ import {
   scaffolderApiRef,
   ScaffolderTaskOutput,
   useTaskEventStream,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { selectedTemplateRouteRef } from '../../routes';
 import {
   AnalyticsContext,
@@ -44,7 +44,7 @@ import {
   DefaultTemplateOutputs,
   TaskLogStream,
   TaskSteps,
-} from '@backstage/plugin-scaffolder-react/alpha';
+} from '@bip-bih/plugin-scaffolder-react/alpha';
 import { useAsync } from '@react-hookz/web';
 import { usePermission } from '@backstage/plugin-permission-react';
 import {

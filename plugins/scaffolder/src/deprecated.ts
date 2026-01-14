@@ -53,7 +53,7 @@ import {
   type FieldExtensionOptions as FieldExtensionOptionsTemp,
   type FieldExtensionComponentProps as FieldExtensionComponentPropsTemp,
   type FieldExtensionComponent as FieldExtensionComponentTemp,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 
 import { rootRouteRef as rootRouteRefTemp } from './routes';
 
@@ -64,23 +64,23 @@ import { rootRouteRef as rootRouteRefTemp } from './routes';
 export const rootRouteRef = rootRouteRefTemp;
 /**
  * @public
- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#createScaffolderFieldExtension} instead as this has now been moved.
+ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#createScaffolderFieldExtension} instead as this has now been moved.
  */
 export const createScaffolderFieldExtension =
   createScaffolderFieldExtensionTemp;
 /**
  * @public
- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#ScaffolderFieldExtensions} instead as this has now been moved.
+ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#ScaffolderFieldExtensions} instead as this has now been moved.
  */
 export const ScaffolderFieldExtensions = ScaffolderFieldExtensionsTemp;
 /**
  * @public
- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#useTemplateSecrets} instead as this has now been moved.
+ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#useTemplateSecrets} instead as this has now been moved.
  */
 export const useTemplateSecrets = useTemplateSecretsTemp;
 /**
  * @public
- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#scaffolderApiRef} instead as this has now been moved.
+ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#scaffolderApiRef} instead as this has now been moved.
  */
 export const scaffolderApiRef = scaffolderApiRefTemp;
 /**
@@ -90,7 +90,7 @@ export const scaffolderApiRef = scaffolderApiRefTemp;
 export type ScaffolderApi = ScaffolderApiTemp;
 /**
  * @public
- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#ScaffolderUseTemplateSecrets} instead as this has now been moved.
+ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#ScaffolderUseTemplateSecrets} instead as this has now been moved.
  */
 export type ScaffolderUseTemplateSecrets = ScaffolderUseTemplateSecretsTemp;
 /**
@@ -100,23 +100,23 @@ export type ScaffolderUseTemplateSecrets = ScaffolderUseTemplateSecretsTemp;
 export type TemplateParameterSchema = TemplateParameterSchemaTemp;
 /**
  * @public
- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#CustomFieldExtensionSchema} instead as this has now been moved.
+ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#CustomFieldExtensionSchema} instead as this has now been moved.
  */
 export type CustomFieldExtensionSchema = CustomFieldExtensionSchemaTemp;
 /**
  * @public
- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#CustomFieldValidator} instead as this has now been moved.
+ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#CustomFieldValidator} instead as this has now been moved.
  */
 export type CustomFieldValidator<TReturnFieldData> =
   CustomFieldValidatorTemp<TReturnFieldData>;
 /**
  * @public
- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#FieldExtensionOptions} instead as this has now been moved.
+ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#FieldExtensionOptions} instead as this has now been moved.
  */
 export type FieldExtensionOptions = FieldExtensionOptionsTemp;
 /**
  * @public
- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#FieldExtensionComponentProps} instead as this has now been moved.
+ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#FieldExtensionComponentProps} instead as this has now been moved.
  */
 export type FieldExtensionComponentProps<
   TFieldReturnValue,
@@ -124,7 +124,7 @@ export type FieldExtensionComponentProps<
 > = FieldExtensionComponentPropsTemp<TFieldReturnValue, TUiOptions>;
 /**
  * @public
- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#FieldExtensionComponent} instead as this has now been moved.
+ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#FieldExtensionComponent} instead as this has now been moved.
  */
 export type FieldExtensionComponent<_TReturnValue, _TInputProps> =
   FieldExtensionComponentTemp<_TReturnValue, _TInputProps>;
@@ -197,22 +197,22 @@ export type ScaffolderTaskOutput = ScaffolderTaskOutputTemp;
 export type ScaffolderTaskStatus = ScaffolderTaskStatusTemp;
 /**
  * @public
- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#createScaffolderLayout} instead as this has now been moved.
+ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#createScaffolderLayout} instead as this has now been moved.
  */
 export const createScaffolderLayout = createScaffolderLayoutTemp;
 /**
  * @public
- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#ScaffolderLayouts} instead as this has now been moved.
+ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#ScaffolderLayouts} instead as this has now been moved.
  */
 export const ScaffolderLayouts = ScaffolderLayoutsTemp;
 /**
  * @public
- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#LayoutTemplate} instead as this has now been moved.
+ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#LayoutTemplate} instead as this has now been moved.
  */
 export type LayoutTemplate = LayoutTemplateTemp;
 /**
  * @public
- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#LayoutOptions} instead as this has now been moved.
+ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#LayoutOptions} instead as this has now been moved.
  */
 export type LayoutOptions = LayoutOptionsTemp;
 

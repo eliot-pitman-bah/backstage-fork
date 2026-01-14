@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { ScaffolderRJSFFieldProps } from '@backstage/plugin-scaffolder-react';
+import { ScaffolderRJSFFieldProps } from '@bip-bih/plugin-scaffolder-react';
 import {
   ScaffolderField,
   SecretWidget,
-} from '@backstage/plugin-scaffolder-react/alpha';
+} from '@bip-bih/plugin-scaffolder-react/alpha';
 
 export const SecretInput = (props: ScaffolderRJSFFieldProps) => {
   const {

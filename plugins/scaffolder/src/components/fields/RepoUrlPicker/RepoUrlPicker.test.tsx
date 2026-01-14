@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { RepoUrlPicker } from './RepoUrlPicker';
-import { Form } from '@backstage/plugin-scaffolder-react/alpha';
+import { Form } from '@bip-bih/plugin-scaffolder-react/alpha';
 import validator from '@rjsf/validator-ajv8';
 import { renderInTestApp, TestApiProvider } from '@backstage/test-utils';
 import {
@@ -31,7 +31,7 @@ import {
   useTemplateSecrets,
   ScaffolderRJSFField,
   ScaffolderRJSFFormProps as FormProps,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ComponentType, PropsWithChildren, ReactNode } from 'react';

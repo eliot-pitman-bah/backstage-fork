@@ -19,7 +19,7 @@ import {
   ListTemplatingExtensionsResponse,
   ScaffolderApi,
   scaffolderApiRef,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { renderInTestApp, TestApiRegistry } from '@backstage/test-utils';
 import { fireEvent, within } from '@testing-library/react';
 import { capitalize } from 'lodash';

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { ScaffolderUsageExample } from '@backstage/plugin-scaffolder-react';
+import { ScaffolderUsageExample } from '@bip-bih/plugin-scaffolder-react';
 import { renderInTestApp } from '@backstage/test-utils';
 import { within } from '@testing-library/react';
 import { ScaffolderUsageExamplesTable } from './ScaffolderUsageExamplesTable';

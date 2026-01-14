@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { ListTemplatingExtensionsResponse } from '@backstage/plugin-scaffolder-react';
+import { ListTemplatingExtensionsResponse } from '@bip-bih/plugin-scaffolder-react';
 
 const kinds = ['filter', 'function', 'value'] as const;
 

@@ -20,7 +20,7 @@ import { renderInTestApp, TestApiRegistry } from '@backstage/test-utils';
 import {
   ScaffolderApi,
   scaffolderApiRef,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { ApiProvider } from '@backstage/core-app-api';
 import { DEFAULT_SCAFFOLDER_FIELD_EXTENSIONS } from '../../../extensions/default';
 import { TemplateEditorToolbar } from './TemplateEditorToolbar';

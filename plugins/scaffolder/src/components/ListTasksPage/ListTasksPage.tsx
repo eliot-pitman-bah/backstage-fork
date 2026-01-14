@@ -30,7 +30,7 @@ import { useState } from 'react';
 import {
   scaffolderApiRef,
   ScaffolderTask,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { OwnerListPicker } from './OwnerListPicker';
 import {
   CreatedAtColumn,
@@ -44,7 +44,7 @@ import {
   rootRouteRef,
   templatingExtensionsRouteRef,
 } from '../../routes';
-import { ScaffolderPageContextMenu } from '@backstage/plugin-scaffolder-react/alpha';
+import { ScaffolderPageContextMenu } from '@bip-bih/plugin-scaffolder-react/alpha';
 import { useNavigate } from 'react-router-dom';
 import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
 import { scaffolderTranslationRef } from '../../translation';

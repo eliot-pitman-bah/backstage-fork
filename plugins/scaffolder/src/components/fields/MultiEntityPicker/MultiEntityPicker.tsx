@@ -44,7 +44,7 @@ import {
   MultiEntityPickerFilterQuery,
 } from './schema';
 import { VirtualizedListbox } from '../VirtualizedListbox';
-import { ScaffolderField } from '@backstage/plugin-scaffolder-react/alpha';
+import { ScaffolderField } from '@bip-bih/plugin-scaffolder-react/alpha';
 import { useTranslationRef } from '@backstage/frontend-plugin-api';
 import { scaffolderTranslationRef } from '../../../translation';
 

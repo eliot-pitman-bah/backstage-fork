@@ -21,7 +21,7 @@ import {
 } from '@backstage/integration-react';
 import { useEffect, useState, useCallback } from 'react';
 import useDebounce from 'react-use/esm/useDebounce';
-import { useTemplateSecrets } from '@backstage/plugin-scaffolder-react';
+import { useTemplateSecrets } from '@bip-bih/plugin-scaffolder-react';
 import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';

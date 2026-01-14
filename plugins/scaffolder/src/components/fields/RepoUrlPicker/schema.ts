@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { makeFieldSchema } from '@backstage/plugin-scaffolder-react';
+import { makeFieldSchema } from '@bip-bih/plugin-scaffolder-react';
 
 /**
  * @public

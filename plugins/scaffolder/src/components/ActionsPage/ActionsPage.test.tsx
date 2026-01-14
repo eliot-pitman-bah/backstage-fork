@@ -17,7 +17,7 @@ import { ActionsPage } from './ActionsPage';
 import {
   ScaffolderApi,
   scaffolderApiRef,
-} from '@backstage/plugin-scaffolder-react';
+} from '@bip-bih/plugin-scaffolder-react';
 import { renderInTestApp, TestApiRegistry } from '@backstage/test-utils';
 import { ApiProvider } from '@backstage/core-app-api';
 import { rootRouteRef } from '../../routes';

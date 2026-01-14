@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 import { DefaultScaffolderFormDecoratorsApi } from '../api/FormDecoratorsApi';
-import { createScaffolderFormDecorator } from '@backstage/plugin-scaffolder-react/alpha';
+import { createScaffolderFormDecorator } from '@bip-bih/plugin-scaffolder-react/alpha';
 import { createApiRef, errorApiRef } from '@backstage/core-plugin-api';
 
 import { TestApiProvider } from '@backstage/test-utils';
 import { renderHook, waitFor } from '@testing-library/react';
 import { useFormDecorators } from './useFormDecorators';
 import { formDecoratorsApiRef } from '../api/ref';
-import { TemplateParameterSchema } from '@backstage/plugin-scaffolder-react';
+import { TemplateParameterSchema } from '@bip-bih/plugin-scaffolder-react';
 
 describe('useFormDecorators', () => {
   const mockApiRef = createApiRef<{

@@ -16,7 +16,7 @@
 import { Select, SelectItem } from '@backstage/core-components';
 import { useApi } from '@backstage/core-plugin-api';
 import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
+import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import TextField from '@material-ui/core/TextField';

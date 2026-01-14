@@ -17,7 +17,7 @@
 import { Page, Header, Content } from '@backstage/core-components';
 import { useRouteRef } from '@backstage/core-plugin-api';
 import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
-import { FieldExtensionOptions } from '@backstage/plugin-scaffolder-react';
+import { FieldExtensionOptions } from '@bip-bih/plugin-scaffolder-react';
 
 import { editRouteRef } from '../../../routes';
 import { scaffolderTranslationRef } from '../../../translation';
