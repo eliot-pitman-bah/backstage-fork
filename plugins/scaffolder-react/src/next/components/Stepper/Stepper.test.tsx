@@ -756,7 +756,7 @@ describe('Stepper', () => {
       const FieldExtension = ({
         formData,
         onChange,
-      }: FieldExtensionComponentProps<{ repoOrg?: string }>) => {
+      }: FieldExtensionComponentProps<any, any>): JSX.Element => {
         useEffect(() => {
           if (!formData?.repoOrg) onChange({ repoOrg: 'backstage' });
         }, [formData, onChange]);
