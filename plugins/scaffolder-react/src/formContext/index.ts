@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 The Backstage Authors
+ * Copyright 2026 The Backstage Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,8 @@
  * limitations under the License.
  */
 
-export * from './extensions';
-export * from './components';
-export * from './types';
-export * from './secrets';
-export * from './api';
-export * from './hooks';
-export * from './layouts';
-export * from './utils';
+export {
+  useTemplateFormData,
+  FormContextProvider,
+  type ScaffolderUseTemplateFormData,
+} from './FormContext';

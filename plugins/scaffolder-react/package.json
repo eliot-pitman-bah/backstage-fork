@@ -30,16 +30,16 @@
   "license": "Apache-2.0",
   "sideEffects": false,
   "exports": {
-    ".": "./dist/index.esm.js",
-    "./alpha": "./dist/alpha.esm.js",
+    ".": "./src/index.ts",
+    "./alpha": "./src/alpha.ts",
     "./package.json": "./package.json"
   },
-  "main": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "typesVersions": {
     "*": {
       "alpha": [
-        "dist/alpha.d.ts"
+        "src/alpha.ts"
       ],
       "package.json": [
         "package.json"

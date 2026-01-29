@@ -56,6 +56,7 @@ import {
 import { ErrorListTemplate } from './ErrorListTemplate';
 import * as FieldOverrides from './FieldOverrides';
 import { hasErrors } from './utils';
+import { useTemplateFormData } from '@bip-bih/plugin-scaffolder-react';
 
 const validator = customizeValidator();
 ajvErrors(validator.ajv);
@@ -136,6 +137,8 @@ export const Stepper = (stepperProps: StepperProps) => {
   const [errors, setErrors] = useState<undefined | FormValidation>();
   const styles = useStyles();
 
+  const { formData: _, setFormData } = useTemplateFormData();
+
   const backLabel =
     presentation?.buttonLabels?.backButtonText ?? backButtonText;
   const createLabel =
@@ -185,8 +188,9 @@ export const Stepper = (stepperProps: StepperProps) => {
       setStepsState(current => {
         return { ...current, ...e.formData };
       });
+      setFormData(e.formData);
     },
-    [setStepsState],
+    [setStepsState, setFormData],
   );
 
   const handleNext = useCallback(
