@@ -1,0 +1,25 @@
+From ff483c9c6efce303e5f677ec9cf5b2789c3f23d9 Mon Sep 17 00:00:00 2001
+From: eliot-pitman-bah <pitman_eliot@bah.com>
+Date: Mon, 26 Jan 2026 15:01:32 -0600
+Subject: [PATCH 6/7] updates docs and tsc error
+
+---
+ .../src/next/components/Stepper/Stepper.test.tsx                | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/scaffolder-react/src/next/components/Stepper/Stepper.test.tsx b/plugins/scaffolder-react/src/next/components/Stepper/Stepper.test.tsx
+index b0746e067210..0ce0b3be9496 100644
+--- a/plugins/scaffolder-react/src/next/components/Stepper/Stepper.test.tsx
++++ b/plugins/scaffolder-react/src/next/components/Stepper/Stepper.test.tsx
+@@ -756,7 +756,7 @@ describe('Stepper', () => {
+       const FieldExtension = ({
+         formData,
+         onChange,
+-      }: FieldExtensionComponentProps<{ repoOrg?: string }>) => {
++      }: FieldExtensionComponentProps<any, any>): JSX.Element => {
+         useEffect(() => {
+           if (!formData?.repoOrg) onChange({ repoOrg: 'backstage' });
+         }, [formData, onChange]);
+-- 
+2.45.2
+

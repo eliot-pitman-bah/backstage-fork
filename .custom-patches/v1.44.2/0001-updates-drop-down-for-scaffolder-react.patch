@@ -1,0 +1,140 @@
+From abec60a83d3cdc81f614c8d236daab2d52d65c85 Mon Sep 17 00:00:00 2001
+From: eliot-pitman-bah <pitman_eliot@bah.com>
+Date: Wed, 14 Jan 2026 12:19:46 -0600
+Subject: [PATCH 1/7] updates drop down for scaffolder react
+
+---
+ .../next/components/TaskSteps/TaskSteps.tsx   | 97 ++++++++++++-------
+ 1 file changed, 62 insertions(+), 35 deletions(-)
+
+diff --git a/plugins/scaffolder-react/src/next/components/TaskSteps/TaskSteps.tsx b/plugins/scaffolder-react/src/next/components/TaskSteps/TaskSteps.tsx
+index 33a6da19bb5a..a7bf03534a74 100644
+--- a/plugins/scaffolder-react/src/next/components/TaskSteps/TaskSteps.tsx
++++ b/plugins/scaffolder-react/src/next/components/TaskSteps/TaskSteps.tsx
+@@ -20,11 +20,17 @@ import MuiStepLabel from '@material-ui/core/StepLabel';
+ import { StepIconProps } from '@material-ui/core/StepIcon';
+ import Box from '@material-ui/core/Box';
+ import Paper from '@material-ui/core/Paper';
++import Accordion from '@material-ui/core/Accordion';
++import AccordionSummary from '@material-ui/core/AccordionSummary';
++import AccordionDetails from '@material-ui/core/AccordionDetails';
++import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
++import Typography from '@material-ui/core/Typography';
+ import { TaskStep } from '@backstage/plugin-scaffolder-common';
+ import { StepIcon } from './StepIcon';
+ import { StepTime } from './StepTime';
+ import { TaskBorder } from './TaskBorder';
+ import { ScaffolderStep } from '@backstage/plugin-scaffolder-react';
++import React from 'react';
+ 
+ /**
+  * Props for the TaskSteps component
+@@ -44,49 +50,70 @@ export interface TaskStepsProps {
+  * @alpha
+  */
+ export const TaskSteps = (props: TaskStepsProps) => {
++  const [expanded, setExpanded] = React.useState(false);
++
++  const handleAccordionChange = (
++    _event: React.ChangeEvent<{}>,
++    isExpanded: boolean,
++  ) => {
++    setExpanded(isExpanded);
++  };
++
+   return (
+     <Paper style={{ position: 'relative', overflow: 'hidden' }}>
+       <TaskBorder
+         isComplete={props.isComplete ?? false}
+         isError={props.isError ?? false}
+       />
+-      <Box padding={2}>
+-        <MuiStepper
+-          activeStep={props.activeStep}
+-          alternativeLabel
+-          variant="elevation"
+-          style={{ overflowX: 'auto' }}
++      <Accordion expanded={expanded} onChange={handleAccordionChange}>
++        <AccordionSummary
++          expandIcon={<ExpandMoreIcon />}
++          aria-controls="task-steps-content"
++          id="task-steps-header"
+         >
+-          {props.steps.map(step => {
+-            const isCompleted = step.status === 'completed';
+-            const isFailed = step.status === 'failed';
+-            const isActive = step.status === 'processing';
+-            const isSkipped = step.status === 'skipped';
+-            const stepIconProps: Partial<StepIconProps & { skipped: boolean }> =
+-              {
+-                completed: isCompleted,
+-                error: isFailed,
+-                active: isActive,
+-                skipped: isSkipped,
+-              };
++          <Typography variant="h6">Task Steps</Typography>
++        </AccordionSummary>
++        <AccordionDetails>
++          <Box padding={2} width="100%">
++            <MuiStepper
++              activeStep={props.activeStep}
++              alternativeLabel
++              variant="elevation"
++              style={{ overflowX: 'auto' }}
++            >
++              {props.steps.map(step => {
++                const isCompleted = step.status === 'completed';
++                const isFailed = step.status === 'failed';
++                const isActive = step.status === 'processing';
++                const isSkipped = step.status === 'skipped';
++                const stepIconProps: Partial<
++                  StepIconProps & { skipped: boolean }
++                > = {
++                  completed: isCompleted,
++                  error: isFailed,
++                  active: isActive,
++                  skipped: isSkipped,
++                };
+ 
+-            return (
+-              <MuiStep key={step.id}>
+-                <MuiStepButton>
+-                  <MuiStepLabel
+-                    StepIconProps={stepIconProps}
+-                    StepIconComponent={StepIcon}
+-                    data-testid="step-label"
+-                  >
+-                    <Box>{step.name}</Box>
+-                    {!isSkipped && <StepTime step={step} />}
+-                  </MuiStepLabel>
+-                </MuiStepButton>
+-              </MuiStep>
+-            );
+-          })}
+-        </MuiStepper>
+-      </Box>
++                return (
++                  <MuiStep key={step.id}>
++                    <MuiStepButton>
++                      <MuiStepLabel
++                        StepIconProps={stepIconProps}
++                        StepIconComponent={StepIcon}
++                        data-testid="step-label"
++                      >
++                        <Box>{step.name}</Box>
++                        {!isSkipped && <StepTime step={step} />}
++                      </MuiStepLabel>
++                    </MuiStepButton>
++                  </MuiStep>
++                );
++              })}
++            </MuiStepper>
++          </Box>
++        </AccordionDetails>
++      </Accordion>
+     </Paper>
+   );
+ };
+-- 
+2.45.2
+
