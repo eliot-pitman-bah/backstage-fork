@@ -20,6 +20,12 @@ import MuiStepLabel from '@material-ui/core/StepLabel';
 import { StepIconProps } from '@material-ui/core/StepIcon';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Typography from '@material-ui/core/Typography';
+import React from 'react';
 import { TaskStep } from '@backstage/plugin-scaffolder-common';
 import { StepIcon } from './StepIcon';
 import { StepTime } from './StepTime';
@@ -44,49 +50,70 @@ export interface TaskStepsProps {
  * @alpha
  */
 export const TaskSteps = (props: TaskStepsProps) => {
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleAccordionChange = (
+    _event: React.ChangeEvent<{}>,
+    isExpanded: boolean,
+  ) => {
+    setExpanded(isExpanded);
+  };
+
   return (
     <Paper style={{ position: 'relative', overflow: 'hidden' }}>
       <TaskBorder
         isComplete={props.isComplete ?? false}
         isError={props.isError ?? false}
       />
-      <Box padding={2}>
-        <MuiStepper
-          activeStep={props.activeStep}
-          alternativeLabel
-          variant="elevation"
-          style={{ overflowX: 'auto' }}
+      <Accordion expanded={expanded} onChange={handleAccordionChange}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="task-steps-content"
+          id="task-steps-header"
         >
-          {props.steps.map(step => {
-            const isCompleted = step.status === 'completed';
-            const isFailed = step.status === 'failed';
-            const isActive = step.status === 'processing';
-            const isSkipped = step.status === 'skipped';
-            const stepIconProps: Partial<StepIconProps & { skipped: boolean }> =
-              {
-                completed: isCompleted,
-                error: isFailed,
-                active: isActive,
-                skipped: isSkipped,
-              };
+          <Typography variant="h6">Task Steps</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Box padding={2} width="100%">
+            <MuiStepper
+              activeStep={props.activeStep}
+              alternativeLabel
+              variant="elevation"
+              style={{ overflowX: 'auto' }}
+            >
+              {props.steps.map(step => {
+                const isCompleted = step.status === 'completed';
+                const isFailed = step.status === 'failed';
+                const isActive = step.status === 'processing';
+                const isSkipped = step.status === 'skipped';
+                const stepIconProps: Partial<
+                  StepIconProps & { skipped: boolean }
+                > = {
+                  completed: isCompleted,
+                  error: isFailed,
+                  active: isActive,
+                  skipped: isSkipped,
+                };
 
-            return (
-              <MuiStep key={step.id}>
-                <MuiStepButton>
-                  <MuiStepLabel
-                    StepIconProps={stepIconProps}
-                    StepIconComponent={StepIcon}
-                    data-testid="step-label"
-                  >
-                    <Box>{step.name}</Box>
-                    {!isSkipped && <StepTime step={step} />}
-                  </MuiStepLabel>
-                </MuiStepButton>
-              </MuiStep>
-            );
-          })}
-        </MuiStepper>
-      </Box>
+                return (
+                  <MuiStep key={step.id}>
+                    <MuiStepButton>
+                      <MuiStepLabel
+                        StepIconProps={stepIconProps}
+                        StepIconComponent={StepIcon}
+                        data-testid="step-label"
+                      >
+                        <Box>{step.name}</Box>
+                        {!isSkipped && <StepTime step={step} />}
+                      </MuiStepLabel>
+                    </MuiStepButton>
+                  </MuiStep>
+                );
+              })}
+            </MuiStepper>
+          </Box>
+        </AccordionDetails>
+      </Accordion>
     </Paper>
   );
 };
