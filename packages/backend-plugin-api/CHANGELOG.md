@@ -1,5 +1,133 @@
 # @backstage/backend-plugin-api
 
+## 1.8.0
+
+### Minor Changes
+
+- cc8348e: Added optional `visibilityPermission` field to `ActionsRegistryActionOptions`, allowing actions to declare a `BasicPermission` that controls visibility and access.
+
+  ```typescript
+  import { createPermission } from '@backstage/plugin-permission-common';
+
+  const myPermission = createPermission({
+    name: 'myPlugin.myAction.use',
+    attributes: {},
+  });
+
+  actionsRegistry.register({
+    name: 'my-action',
+    title: 'My Action',
+    description: 'An action that requires permission',
+    visibilityPermission: myPermission,
+    schema: {
+      input: z => z.object({ name: z.string() }),
+      output: z => z.object({ ok: z.boolean() }),
+    },
+    action: async ({ input }) => {
+      return { output: { ok: true } };
+    },
+  });
+  ```
+
+  Actions without a `visibilityPermission` field continue to work as before.
+
+- 015668c: Added `cancelTask` method to the `SchedulerService` interface and implementation, allowing cancellation of currently running scheduled tasks. For global tasks, the database lock is released and a periodic liveness check aborts the running task function. For local tasks, the task's abort signal is triggered directly. A new `POST /.backstage/scheduler/v1/tasks/:id/cancel` endpoint is also available.
+
+### Patch Changes
+
+- dee4283: Added `pluginId` field to `ActionsServiceAction` type, populated from the registering plugin's metadata.
+- 1ee5b28: Adds an alpha `MetricsService` to provide a unified interface for metrics instrumentation across Backstage plugins.
+- a49a40d: Updated dependency `zod` to `^3.25.76 || ^4.0.0` & migrated to `/v3` or `/v4` imports.
+- Updated dependencies
+  - @backstage/cli-common@0.2.0
+  - @backstage/plugin-permission-common@0.9.7
+  - @backstage/plugin-permission-node@0.10.11
+  - @backstage/plugin-auth-node@0.6.14
+
+## 1.8.0-next.1
+
+### Minor Changes
+
+- 015668c: Added `cancelTask` method to the `SchedulerService` interface and implementation, allowing cancellation of currently running scheduled tasks. For global tasks, the database lock is released and a periodic liveness check aborts the running task function. For local tasks, the task's abort signal is triggered directly. A new `POST /.backstage/scheduler/v1/tasks/:id/cancel` endpoint is also available.
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/cli-common@0.2.0-next.2
+  - @backstage/plugin-auth-node@0.6.14-next.2
+  - @backstage/plugin-permission-node@0.10.11-next.1
+
+## 1.7.1-next.0
+
+### Patch Changes
+
+- 1ee5b28: Adds an alpha `MetricsService` to provide a unified interface for metrics instrumentation across Backstage plugins.
+- Updated dependencies
+  - @backstage/cli-common@0.2.0-next.0
+  - @backstage/config@1.3.6
+  - @backstage/errors@1.2.7
+  - @backstage/types@1.2.2
+  - @backstage/plugin-auth-node@0.6.14-next.0
+  - @backstage/plugin-permission-common@0.9.6
+  - @backstage/plugin-permission-node@0.10.11-next.0
+
+## 1.7.0
+
+### Minor Changes
+
+- f1d29b4: Added support for extension point factories. This makes it possible to call `registerExtensionPoint` with a single options argument and provide a factory for the extension point rather than a direct implementation. The factory is passed a context with a `reportModuleStartupFailure` method that makes it possible for plugins to report and attribute startup errors to the module that consumed the extension point.
+- bb9b471: Plugin IDs that do not match the standard format are deprecated (letters, digits, and dashes only, starting with a letter). Plugin IDs that do no match this format will be rejected in a future release.
+
+  In addition, plugin IDs that don't match the legacy pattern that also allows underscores, with be rejected.
+
+### Patch Changes
+
+- 7455dae: Use node prefix on native imports
+- 69d880e: Bump to latest zod to ensure it has the latest features
+- Updated dependencies
+  - @backstage/cli-common@0.1.18
+  - @backstage/plugin-auth-node@0.6.13
+  - @backstage/plugin-permission-common@0.9.6
+  - @backstage/plugin-permission-node@0.10.10
+
+## 1.7.0-next.1
+
+### Minor Changes
+
+- bb9b471: Plugin IDs that do not match the standard format are deprecated (letters, digits, and dashes only, starting with a letter). Plugin IDs that do no match this format will be rejected in a future release.
+
+  In addition, plugin IDs that don't match the legacy pattern that also allows underscores, with be rejected.
+
+## 1.7.0-next.0
+
+### Minor Changes
+
+- f1d29b4: Added support for extension point factories. This makes it possible to call `registerExtensionPoint` with a single options argument and provide a factory for the extension point rather than a direct implementation. The factory is passed a context with a `reportModuleStartupFailure` method that makes it possible for plugins to report and attribute startup errors to the module that consumed the extension point.
+
+### Patch Changes
+
+- 7455dae: Use node prefix on native imports
+- 69d880e: Bump to latest zod to ensure it has the latest features
+- Updated dependencies
+  - @backstage/cli-common@0.1.18-next.0
+  - @backstage/plugin-auth-node@0.6.12-next.0
+  - @backstage/plugin-permission-common@0.9.5-next.0
+  - @backstage/plugin-permission-node@0.10.9-next.0
+  - @backstage/config@1.3.6
+  - @backstage/errors@1.2.7
+  - @backstage/types@1.2.2
+
+## 1.6.1
+
+### Patch Changes
+
+- ae4dd5d: Move some of the symlink resolution to `isChildPath`
+- Updated dependencies
+  - @backstage/cli-common@0.1.17
+  - @backstage/plugin-auth-node@0.6.11
+  - @backstage/plugin-permission-common@0.9.4
+  - @backstage/plugin-permission-node@0.10.8
+
 ## 1.6.0
 
 ### Minor Changes

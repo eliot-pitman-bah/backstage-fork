@@ -66,42 +66,14 @@ You need to setup the [DevTools backend plugin](../devtools-backend/README.md) b
 
 ### Frontend
 
-To setup the DevTools frontend you'll need to do the following steps:
+Install the `@backstage/plugin-devtools` package in your frontend app:
 
-1. First we need to add the `@backstage/plugin-devtools` package to your frontend app:
+```sh
+# From your Backstage root directory
+yarn --cwd packages/app add @backstage/plugin-devtools
+```
 
-   ```sh
-   # From your Backstage root directory
-   yarn --cwd packages/app add @backstage/plugin-devtools
-   ```
-
-2. Now open the `packages/app/src/App.tsx` file
-3. Then after all the import statements add the following line:
-
-   ```ts
-   import { DevToolsPage } from '@backstage/plugin-devtools';
-   ```
-
-4. In this same file just before the closing `</ FlatRoutes>`, this will be near the bottom of the file, add this line:
-
-   ```ts
-   <Route path="/devtools" element={<DevToolsPage />} />
-   ```
-
-5. Next open the `packages/app/src/components/Root/Root.tsx` file
-6. We want to add this icon import after all the existing import statements:
-
-   ```ts
-   import BuildIcon from '@material-ui/icons/Build';
-   ```
-
-7. Then add this line just after the `<SidebarSettings />` line:
-
-   ```ts
-   <SidebarItem icon={BuildIcon} to="devtools" text="DevTools" />
-   ```
-
-8. Now run `yarn start` from the root of your project and you should see the DevTools option show up just below Settings in your sidebar and clicking on it will get you to the [Info tab](#info)
+Once installed, the plugin is automatically available in your app through the default feature discovery. For more details and alternative installation methods, see [installing plugins](https://backstage.io/docs/frontend-system/building-apps/installing-plugins).
 
 ## Customizing
 
@@ -166,6 +138,37 @@ You can also add tabs to show content from other plugins that fit well with the 
 
 #### Catalog Unprocessed Entities Tab
 
+Create an extension and/or load a 3rd party extension to add additional tabs.
+
+```shell
+yarn --cwd plugins/<your-plugin> add @backstage/plugin-devtools-react
+```
+
+```tsx
+import { DevToolsContentBlueprint } from '@backstage/plugin-devtools-react';
+
+export const unprocessedEntitiesDevToolsContent = DevToolsContentBlueprint.make(
+  {
+    disabled: true,
+    params: {
+      path: 'unprocessed-entities',
+      title: 'Unprocessed Entities',
+      loader: () =>
+        import('../components/UnprocessedEntities').then(m => (
+          <m.UnprocessedEntitiesContent />
+        )),
+    },
+  },
+);
+
+const appFeature = createFrontendModule({
+  pluginId: 'catalog-unprocessed-entities',
+  extensions: [unprocessedEntitiesDevToolsContent],
+});
+```
+
+##### Old Frontend System
+
 Here's how to add the Catalog Unprocessed Entities tab:
 
 1. Install and setup the [Catalog Unprocessed Entities plugin](https://github.com/backstage/backstage/tree/master/plugins/catalog-unprocessed-entities) as per its documentation
@@ -196,6 +199,38 @@ Here's how to add the Catalog Unprocessed Entities tab:
    ```
 
 4. Now run `yarn start` and navigate to the DevTools you'll see a new tab for Unprocessed Entities
+
+## Old Frontend System
+
+If your Backstage app uses the old frontend system, you need to manually wire the plugin into your app as outlined in this section. If you are on the new frontend system, you can skip this.
+
+1. Open the `packages/app/src/App.tsx` file
+2. Then after all the import statements add the following line:
+
+   ```ts
+   import { DevToolsPage } from '@backstage/plugin-devtools';
+   ```
+
+3. In this same file just before the closing `</FlatRoutes>`, this will be near the bottom of the file, add this line:
+
+   ```ts
+   <Route path="/devtools" element={<DevToolsPage />} />
+   ```
+
+4. Next open the `packages/app/src/components/Root/Root.tsx` file
+5. We want to add this icon import after all the existing import statements:
+
+   ```ts
+   import BuildIcon from '@material-ui/icons/Build';
+   ```
+
+6. Then add this line just after the `<SidebarSettings />` line:
+
+   ```ts
+   <SidebarItem icon={BuildIcon} to="devtools" text="DevTools" />
+   ```
+
+7. Now run `yarn start` from the root of your project and you should see the DevTools option show up just below Settings in your sidebar and clicking on it will get you to the [Info tab](#info)
 
 ## Permissions
 

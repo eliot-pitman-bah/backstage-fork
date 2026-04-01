@@ -14,73 +14,113 @@
  * limitations under the License.
  */
 
-import clsx from 'clsx';
-import { Text, ButtonIcon, Select } from '../..';
-import type { TablePaginationProps } from './types';
-import { useStyles } from '../../hooks/useStyles';
+import { useId } from 'react-aria';
+import { Text } from '../Text';
+import { ButtonIcon } from '../ButtonIcon';
+import { Select } from '../Select';
+import type { TablePaginationProps, PageSizeOption } from './types';
+import { useDefinition } from '../../hooks/useDefinition';
 import { TablePaginationDefinition } from './definition';
-import styles from './TablePagination.module.css';
 import { RiArrowLeftSLine, RiArrowRightSLine } from '@remixicon/react';
-import { useId } from 'react';
+import { useMemo } from 'react';
+
+function getOptionValue(option: number | PageSizeOption): number {
+  return typeof option === 'number' ? option : option.value;
+}
+
+function isNumberArray(
+  options: number[] | PageSizeOption[],
+): options is number[] {
+  return options.length > 0 && typeof options[0] === 'number';
+}
+
+function normalizePageSizeOptions(
+  options: number[] | PageSizeOption[],
+): PageSizeOption[] {
+  if (isNumberArray(options)) {
+    return options.map(value => ({
+      label: `Show ${value} results`,
+      value,
+    }));
+  }
+  return options;
+}
 
 /**
  * Pagination controls for Table components with page navigation and size selection.
  *
  * @public
  */
-export function TablePagination({
-  pageSize,
-  offset,
-  totalCount,
-  hasNextPage,
-  hasPreviousPage,
-  onNextPage,
-  onPreviousPage,
-  onPageSizeChange,
-  showPageSizeOptions = true,
-  getLabel,
-}: TablePaginationProps) {
-  const { classNames } = useStyles(TablePaginationDefinition, {});
+export function TablePagination(props: TablePaginationProps) {
+  const { ownProps } = useDefinition(TablePaginationDefinition, props);
+  const {
+    classes,
+    pageSize,
+    pageSizeOptions,
+    offset,
+    totalCount,
+    hasNextPage,
+    hasPreviousPage,
+    onNextPage,
+    onPreviousPage,
+    onPageSizeChange,
+    showPageSizeOptions,
+    getLabel,
+  } = ownProps;
+
   const labelId = useId();
+  const normalizedOptions = useMemo(
+    () => normalizePageSizeOptions(pageSizeOptions),
+    [pageSizeOptions],
+  );
+
+  const effectivePageSize = useMemo(() => {
+    const isValid = pageSizeOptions.some(
+      opt => getOptionValue(opt) === pageSize,
+    );
+    if (isValid) {
+      return pageSize;
+    }
+    const firstValue = getOptionValue(pageSizeOptions[0]);
+    console.warn(
+      `TablePagination: pageSize ${pageSize} is not in pageSizeOptions, using ${firstValue} instead`,
+    );
+    return firstValue;
+  }, [pageSize, pageSizeOptions]);
 
   const hasItems = totalCount !== undefined && totalCount !== 0;
 
   let label = `${totalCount} items`;
   if (getLabel) {
-    label = getLabel({ pageSize, offset, totalCount });
+    label = getLabel({ pageSize: effectivePageSize, offset, totalCount });
   } else if (offset !== undefined) {
     const fromCount = offset + 1;
-    const toCount = Math.min(offset + pageSize, totalCount ?? 0);
+    const toCount = Math.min(offset + effectivePageSize, totalCount ?? 0);
     label = `${fromCount} - ${toCount} of ${totalCount}`;
   }
 
   return (
-    <div className={clsx(classNames.root, styles[classNames.root])}>
-      <div className={clsx(classNames.left, styles[classNames.left])}>
+    <div className={classes.root}>
+      <div className={classes.left}>
         {showPageSizeOptions && (
           <Select
             name="pageSize"
             size="small"
             aria-label="Select table page size"
-            placeholder="Show 10 results"
-            options={[
-              { label: 'Show 5 results', value: '5' },
-              { label: 'Show 10 results', value: '10' },
-              { label: 'Show 20 results', value: '20' },
-              { label: 'Show 30 results', value: '30' },
-              { label: 'Show 40 results', value: '40' },
-              { label: 'Show 50 results', value: '50' },
-            ]}
-            defaultValue={pageSize.toString()}
+            options={normalizedOptions.map(opt => ({
+              label: opt.label,
+              value: String(opt.value),
+            }))}
+            defaultValue={effectivePageSize.toString()}
             onChange={value => {
               const newPageSize = Number(value);
               onPageSizeChange?.(newPageSize);
             }}
-            className={clsx(classNames.select, styles[classNames.select])}
+            className={classes.select}
           />
         )}
       </div>
-      <div className={clsx(classNames.right, styles[classNames.right])}>
+      <div className={classes.right}>
         {hasItems && (
           <Text as="p" variant="body-medium" id={labelId}>
             {label}

@@ -15,7 +15,7 @@
  */
 import { createTranslationRef } from '@backstage/core-plugin-api/alpha';
 
-/** @alpha */
+/** @public */
 export const scaffolderTranslationRef = createTranslationRef({
   id: 'scaffolder',
   messages: {
@@ -182,6 +182,7 @@ export const scaffolderTranslationRef = createTranslationRef({
       hideLogsButtonTitle: 'Hide Logs',
       showLogsButtonTitle: 'Show Logs',
       contextMenu: {
+        moreOptions: 'More options',
         hideLogs: 'Hide Logs',
         showLogs: 'Show Logs',
         hideButtonBar: 'Hide Button Bar',
@@ -358,6 +359,7 @@ export const scaffolderTranslationRef = createTranslationRef({
       subtitle:
         'Create new software components using standard templates in your organization',
       pageTitle: 'Create a new component',
+      templateWithTitle: 'Create new {{templateTitle}}',
       pageContextMenu: {
         editConfigurationTitle: 'Edit Configuration',
       },

@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { AddressInfo } from 'net';
-import { Server } from 'http';
+import { AddressInfo } from 'node:net';
+import { Server } from 'node:http';
 import express, { Router, RequestHandler } from 'express';
 import { RestContext, rest } from 'msw';
 import { setupServer, SetupServer } from 'msw/node';
@@ -30,7 +30,7 @@ import {
   createPermissionRule,
 } from '@backstage/plugin-permission-node';
 import { PermissionIntegrationClient } from './PermissionIntegrationClient';
-import { z } from 'zod';
+import { z } from 'zod/v3';
 import { DiscoveryService } from '@backstage/backend-plugin-api';
 
 describe('PermissionIntegrationClient', () => {

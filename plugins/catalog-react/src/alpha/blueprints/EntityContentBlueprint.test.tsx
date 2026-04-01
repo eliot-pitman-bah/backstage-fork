@@ -110,6 +110,18 @@ describe('EntityContentBlueprint', () => {
                                   ],
                                   "type": "object",
                                 },
+                                {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "$hasPrefix": {
+                                      "type": "string",
+                                    },
+                                  },
+                                  "required": [
+                                    "$hasPrefix",
+                                  ],
+                                  "type": "object",
+                                },
                               ],
                             },
                             "propertyNames": {
@@ -188,6 +200,9 @@ describe('EntityContentBlueprint', () => {
                   },
                 ],
               },
+              "icon": {
+                "type": "string",
+              },
               "path": {
                 "type": "string",
               },
@@ -200,6 +215,7 @@ describe('EntityContentBlueprint', () => {
         },
         "disabled": false,
         "factory": [Function],
+        "if": undefined,
         "inputs": {},
         "kind": "entity-content",
         "name": "test",
@@ -240,6 +256,15 @@ describe('EntityContentBlueprint', () => {
               "optional": true,
             },
             "id": "catalog.entity-content-group",
+            "optional": [Function],
+            "toString": [Function],
+          },
+          {
+            "$$type": "@backstage/ExtensionDataRef",
+            "config": {
+              "optional": true,
+            },
+            "id": "catalog.entity-content-icon",
             "optional": [Function],
             "toString": [Function],
           },

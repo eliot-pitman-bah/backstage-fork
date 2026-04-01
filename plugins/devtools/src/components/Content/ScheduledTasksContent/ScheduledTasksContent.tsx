@@ -29,12 +29,14 @@ import {
   TableColumn,
 } from '@backstage/core-components';
 import Alert from '@material-ui/lab/Alert';
-import { useScheduledTasks, useTriggerScheduledTask } from '../../../hooks';
+import { useScheduledTasks, useScheduledTasksOperations } from '../../../hooks';
 import { TaskApiTasksResponse } from '@backstage/plugin-devtools-common/alpha';
 import { alertApiRef, configApiRef, useApi } from '@backstage/core-plugin-api';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import StopIcon from '@material-ui/icons/Stop';
 import NightsStay from '@material-ui/icons/NightsStay';
 import ErrorIcon from '@material-ui/icons/Error';
+import BlockIcon from '@material-ui/icons/Block';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { ScheduledTaskDetailPanel } from './ScheduledTaskDetailedPanel';
 import { RequirePermission } from '@backstage/plugin-permission-react';
@@ -89,6 +91,12 @@ const StatusDisplay = ({
   </Box>
 );
 
+const CreateNotAllowed = () => (
+  <Tooltip title="You are not allowed to perform this action">
+    <BlockIcon color="disabled" />
+  </Tooltip>
+);
+
 /** @public */
 export const ScheduledTasksContent = () => {
   const classes = useStyles();
@@ -98,7 +106,7 @@ export const ScheduledTasksContent = () => {
     configApi.getOptionalStringArray('devTools.scheduledTasks.plugins') || [];
   const [selectedPlugin, setSelectedPlugin] = useState(plugins[0] || '');
   const { scheduledTasks, loading, error } = useScheduledTasks(selectedPlugin);
-  const { triggerTask, isTriggering, triggerError } = useTriggerScheduledTask();
+  const { triggerTask, cancelTask, isLoading } = useScheduledTasksOperations();
 
   const [inputValue, setInputValue] = useState('');
 
@@ -198,33 +206,61 @@ export const ScheduledTasksContent = () => {
     {
       title: 'Actions',
       render: (rowData: TaskApiTasksResponse) => (
-        <RequirePermission permission={devToolsTaskSchedulerCreatePermission}>
-          <Tooltip title="Run Task">
-            <IconButton
-              aria-label="Trigger"
-              disabled={isTriggering}
-              onClick={() => {
-                triggerTask(selectedPlugin, rowData.taskId);
-                if (triggerError) {
-                  alertApi.post({
-                    message: `Error triggering task ${rowData.taskId}: ${error}`,
-                    severity: 'error',
-                  });
-                } else {
-                  alertApi.post({
-                    message: `Successfully triggered task ${rowData.taskId}`,
-                    severity: 'success',
-                  });
-                }
-              }}
-            >
-              <RefreshIcon />
-            </IconButton>
-          </Tooltip>
+        <RequirePermission
+          permission={devToolsTaskSchedulerCreatePermission}
+          errorPage={<CreateNotAllowed />}
+        >
+          <Box display="flex" justifyContent="center">
+            <Tooltip title="Run Task">
+              <IconButton
+                aria-label="Trigger"
+                disabled={isLoading}
+                onClick={async () => {
+                  try {
+                    await triggerTask(selectedPlugin, rowData.taskId);
+                    alertApi.post({
+                      message: `Successfully triggered task ${rowData.taskId}`,
+                      severity: 'success',
+                    });
+                  } catch (e) {
+                    alertApi.post({
+                      message: `Error triggering task ${rowData.taskId}: ${e.message}`,
+                      severity: 'error',
+                    });
+                  }
+                }}
+              >
+                <RefreshIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Cancel Task">
+              <IconButton
+                aria-label="Cancel"
+                disabled={isLoading}
+                onClick={async () => {
+                  try {
+                    await cancelTask(selectedPlugin, rowData.taskId);
+                    alertApi.post({
+                      message: `Successfully cancelled task ${rowData.taskId}`,
+                      severity: 'success',
+                    });
+                  } catch (e) {
+                    alertApi.post({
+                      message: `Error cancelling task ${rowData.taskId}: ${e.message}`,
+                      severity: 'error',
+                    });
+                  }
+                }}
+              >
+                <StopIcon />
+              </IconButton>
+            </Tooltip>
+          </Box>
         </RequirePermission>
       ),
       sorting: false,
       width: '10%',
+      align: 'center',
     },
   ];
 
@@ -252,7 +288,7 @@ export const ScheduledTasksContent = () => {
         )}
       />
 
-      {loading && <Progress />}
+      {loading && !scheduledTasks && <Progress />}
 
       {error && (
         <ErrorPanel
@@ -281,7 +317,7 @@ export const ScheduledTasksContent = () => {
         </ErrorPanel>
       )}
 
-      {!loading && !error && (
+      {scheduledTasks && (
         <Table
           title={`Scheduled Tasks (${selectedPlugin})`}
           options={{
@@ -289,6 +325,7 @@ export const ScheduledTasksContent = () => {
             search: true,
             sorting: true,
             searchFieldAlignment: 'right',
+            padding: 'dense',
           }}
           columns={columns}
           data={scheduledTasks || []}

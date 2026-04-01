@@ -1,5 +1,256 @@
 # @backstage/cli
 
+## 0.36.0
+
+### Minor Changes
+
+- d0f4cd2: Added new `auth` command group for authenticating the CLI with Backstage instances using OAuth 2.0 with a pre-registered client metadata document. Commands include `login`, `logout`, `list`, `show`, `print-token`, and `select` for managing multiple authenticated instances.
+- d806b0c: The CLI now automatically discovers CLI modules from the project root's `dependencies` and `devDependencies`. Any installed package with the `cli-module` Backstage role will be loaded automatically without needing to be hardcoded in the CLI itself.
+
+  If no CLI modules are found in the project dependencies, the CLI falls back to the built-in set of modules and prints a deprecation warning. This fallback will be removed in a future release. To prepare for this, add `@backstage/cli-defaults` as a `devDependency` in your root `package.json`:
+
+  ```json
+  {
+    "devDependencies": {
+      "@backstage/cli-defaults": "backstage:^"
+    }
+  }
+  ```
+
+  If you are not using the Backstage Yarn plugin, run the following instead:
+
+  ```sh
+  yarn workspace root add --dev @backstage/cli-defaults
+  ```
+
+  For fine-grained control you can instead install individual CLI modules:
+
+  ```json
+  {
+    "devDependencies": {
+      "@backstage/cli-module-auth": "backstage:^",
+      "@backstage/cli-module-build": "backstage:^",
+      "@backstage/cli-module-config": "backstage:^",
+      "@backstage/cli-module-github": "backstage:^",
+      "@backstage/cli-module-info": "backstage:^",
+      "@backstage/cli-module-lint": "backstage:^",
+      "@backstage/cli-module-maintenance": "backstage:^",
+      "@backstage/cli-module-migrate": "backstage:^",
+      "@backstage/cli-module-new": "backstage:^",
+      "@backstage/cli-module-test-jest": "backstage:^",
+      "@backstage/cli-module-translations": "backstage:^"
+    }
+  }
+  ```
+
+- 08d9770: **BREAKING**: The CLI templates for frontend plugins have been renamed:
+
+  - `new-frontend-plugin` → `frontend-plugin`
+  - `new-frontend-plugin-module` → `frontend-plugin-module`
+  - `frontend-plugin` (legacy) → `legacy-frontend-plugin`
+
+  To smooth out this breaking change, the CLI now auto-detects which frontend system your app uses based on the dependencies in `packages/app/package.json`. When using the default templates (no explicit `templates` configuration):
+
+  - Apps using `@backstage/frontend-defaults` will see the new frontend system templates (`frontend-plugin`, `frontend-plugin-module`)
+  - Apps using `@backstage/app-defaults` will see the legacy template (displayed as `frontend-plugin`)
+
+  This means existing projects that haven't migrated to the new frontend system will continue to create legacy plugins by default, while new projects will get the new frontend system templates. If you have explicit template configuration in your `package.json`, it will be used as-is without any auto-detection.
+
+- b36a60d: **BREAKING**: The `migrate package-exports` command has been removed. Use `repo fix` instead.
+
+### Patch Changes
+
+- edf2b77: Added a new `cli-module` template for creating CLI module packages.
+- 246877a: Updated dependency `bfj` to `^9.0.2`.
+- 0d2d0f2: Internal refactor of CLI modularization, moving individual commands to be implemented with cleye.
+- a4e5902: Internal refactor of the CLI command registration
+- bba2e49: Internal refactor to use new concurrency utilities from `@backstage/cli-node`.
+- 2fcba39: Internal refactor to move shared utilities into their consuming modules, reducing cross-module dependencies.
+- c85ac86: Internal refactor to split `loadCliConfig` into separate implementations for the build and config CLI modules, removing a cross-module dependency.
+- 94a885a: Added support for the new `cli-module` package role in the build system, ESLint configuration, Jest configuration, and maintenance commands.
+- fd50cb3: Added `translations export` and `translations import` commands for managing translation files.
+
+  The `translations export` command discovers all `TranslationRef` definitions across frontend plugin dependencies and exports their default messages as JSON files. The `translations import` command generates `TranslationResource` wiring code from translated JSON files, ready to be plugged into the app.
+
+  Both commands support a `--pattern` option for controlling the message file layout, for example `--pattern '{lang}/{id}.json'` for language-based directory grouping.
+
+- 0be3eab: Migrated CLI plugin modules to use `createCliModule` from `@backstage/cli-node`.
+- 61cb976: Migrated internal versioning utilities to use `@backstage/cli-node` instead of a local implementation.
+- 6738cf0: build(deps): bump `minimatch` from 9.0.5 to 10.2.1
+- ff4a45a: Migrated remaining CLI command handlers from `commander` to `cleye` for argument parsing. Several camelCase CLI flags have been deprecated in favor of their kebab-case equivalents (e.g. `--successCache` → `--success-cache`). The old camelCase forms still work but will now log a deprecation warning. Please update any scripts or CI configurations to use the kebab-case versions.
+- 70fc178: Migrated from deprecated `findPaths` to `targetPaths` and `findOwnPaths` from `@backstage/cli-common`.
+- 825c81d: Internal refactor of CLI command modules.
+- ea90ab0: The built-in `yarn new` templates have been moved to `@backstage/cli-module-new`. Existing references to `@backstage/cli/templates/*` in your root `package.json` will continue to work through a backwards compatibility rewrite in the `new` command.
+- ebeb0d4: Updated the new frontend plugin template to use `@backstage/frontend-dev-utils` in its `dev/` entry point instead of wiring `createApp` manually. Generated plugins now get the same dev app helper setup as the built-in examples.
+- 971cc94: The `new` command now prompts for the plugin package name when creating plugin modules, in order to properly populate the `package.json` file.
+- de62a9d: Upgraded `commander` dependency from `^12.0.0` to `^14.0.3` across all CLI packages.
+- 092b41f: Updated dependency `webpack` to `~5.105.0`.
+- 4a75544: Updated dependency `react-refresh` to `^0.18.0`.
+- a9d23c4: Properly support `package.json` `workspaces` field
+- Updated dependencies
+  - @backstage/cli-node@0.3.0
+  - @backstage/cli-common@0.2.0
+  - @backstage/cli-defaults@0.1.0
+  - @backstage/cli-module-build@0.1.0
+  - @backstage/eslint-plugin@0.2.2
+  - @backstage/cli-module-test-jest@0.1.0
+
+## 0.36.0-next.2
+
+### Minor Changes
+
+- d0f4cd2: Added new `auth` command group for authenticating the CLI with Backstage instances using OAuth 2.0 with a pre-registered client metadata document. Commands include `login`, `logout`, `list`, `show`, `print-token`, and `select` for managing multiple authenticated instances.
+
+### Patch Changes
+
+- a4e5902: Internal refactor of the CLI command registration
+- ff4a45a: Migrated remaining CLI command handlers from `commander` to `cleye` for argument parsing. Several camelCase CLI flags have been deprecated in favor of their kebab-case equivalents (e.g. `--successCache` → `--success-cache`). The old camelCase forms still work but will now log a deprecation warning. Please update any scripts or CI configurations to use the kebab-case versions.
+- 4a75544: Updated dependency `react-refresh` to `^0.18.0`.
+- Updated dependencies
+  - @backstage/cli-common@0.2.0-next.2
+  - @backstage/integration@2.0.0-next.2
+
+## 0.36.0-next.1
+
+### Minor Changes
+
+- b36a60d: **BREAKING**: The `migrate package-exports` command has been removed. Use `repo fix` instead.
+
+### Patch Changes
+
+- 0d2d0f2: Internal refactor of CLI modularization, moving individual commands to be implemented with cleye.
+- 2fcba39: Internal refactor to move shared utilities into their consuming modules, reducing cross-module dependencies.
+- c85ac86: Internal refactor to split `loadCliConfig` into separate implementations for the build and config CLI modules, removing a cross-module dependency.
+- 61cb976: Migrated internal versioning utilities to use `@backstage/cli-node` instead of a local implementation.
+- 825c81d: Internal refactor of CLI command modules.
+- a9d23c4: Properly support `package.json` `workspaces` field
+- Updated dependencies
+  - @backstage/cli-common@0.2.0-next.1
+  - @backstage/cli-node@0.2.19-next.1
+  - @backstage/module-federation-common@0.1.2-next.0
+  - @backstage/integration@2.0.0-next.1
+  - @backstage/catalog-model@1.7.6
+  - @backstage/config@1.3.6
+  - @backstage/config-loader@1.10.9-next.0
+  - @backstage/errors@1.2.7
+  - @backstage/eslint-plugin@0.2.2-next.0
+  - @backstage/release-manifests@0.0.13
+  - @backstage/types@1.2.2
+
+## 0.35.5-next.0
+
+### Patch Changes
+
+- 246877a: Updated dependency `bfj` to `^9.0.2`.
+- bba2e49: Internal refactor to use new concurrency utilities from `@backstage/cli-node`.
+- fd50cb3: Added `translations export` and `translations import` commands for managing translation files.
+
+  The `translations export` command discovers all `TranslationRef` definitions across frontend plugin dependencies and exports their default messages as JSON files. The `translations import` command generates `TranslationResource` wiring code from translated JSON files, ready to be plugged into the app.
+
+  Both commands support a `--pattern` option for controlling the message file layout, for example `--pattern '{lang}/{id}.json'` for language-based directory grouping.
+
+- 6738cf0: build(deps): bump `minimatch` from 9.0.5 to 10.2.1
+- 70fc178: Migrated from deprecated `findPaths` to `targetPaths` and `findOwnPaths` from `@backstage/cli-common`.
+- de62a9d: Upgraded `commander` dependency from `^12.0.0` to `^14.0.3` across all CLI packages.
+- 092b41f: Updated dependency `webpack` to `~5.105.0`.
+- Updated dependencies
+  - @backstage/cli-common@0.2.0-next.0
+  - @backstage/cli-node@0.2.19-next.0
+  - @backstage/eslint-plugin@0.2.2-next.0
+  - @backstage/integration@1.21.0-next.0
+  - @backstage/config-loader@1.10.9-next.0
+  - @backstage/catalog-model@1.7.6
+  - @backstage/config@1.3.6
+  - @backstage/errors@1.2.7
+  - @backstage/module-federation-common@0.1.0
+  - @backstage/release-manifests@0.0.13
+  - @backstage/types@1.2.2
+
+## 0.35.4
+
+### Patch Changes
+
+- cfd8103: Updated catalog provider module template to use stable catalog extension points from `@backstage/plugin-catalog-node` instead of alpha exports.
+- 20131c5: Added support for CSS exports in package builds. When a package declares a CSS file in its `exports` field (e.g., `"./styles.css": "./src/styles.css"`), the CLI will automatically bundle it during `backstage-cli package build`, resolving any `@import` statements. The export path is rewritten from `src/` to `dist/` at publish time.
+
+  Fixed `backstage-cli repo fix` to not add `typesVersions` entries for non-script exports like CSS files.
+
+- 7455dae: Use node prefix on native imports
+- 6ce4a13: Removed `/alpha` from `scaffolderActionsExtensionPoint` import
+- fdbd404: Removed the `EXPERIMENTAL_MODULE_FEDERATION` environment variable flag, making module federation host support always available during `package start`. The host shared dependencies are now managed through `@backstage/module-federation-common` and injected as a versioned runtime script at build time.
+- fdbd404: Updated `@module-federation/enhanced`, `@module-federation/runtime`, and `@module-federation/sdk` dependencies from `^0.9.0` to `^0.21.6`.
+- 4fc7bf0: Bump to tar v7
+- 5e3ef57: Added support for the new `peerModules` metadata field in `package.json`. This field allows plugin packages to declare modules that should be installed alongside them for cross-plugin integrations. The field is validated by `backstage-cli repo fix --publish`.
+- 122d39c: Completely removed support for the deprecated `app.experimental.packages` configuration. Replace existing usage directly with `app.packages`.
+- 73351c2: Updated dependency `webpack` to `~5.104.0`.
+- 69d880e: Bump to latest zod to ensure it has the latest features
+- Updated dependencies
+  - @backstage/integration@1.20.0
+  - @backstage/config-loader@1.10.8
+  - @backstage/eslint-plugin@0.2.1
+  - @backstage/cli-common@0.1.18
+  - @backstage/cli-node@0.2.18
+  - @backstage/module-federation-common@0.1.0
+
+## 0.35.4-next.2
+
+### Patch Changes
+
+- 20131c5: Added support for CSS exports in package builds. When a package declares a CSS file in its `exports` field (e.g., `"./styles.css": "./src/styles.css"`), the CLI will automatically bundle it during `backstage-cli package build`, resolving any `@import` statements. The export path is rewritten from `src/` to `dist/` at publish time.
+
+  Fixed `backstage-cli repo fix` to not add `typesVersions` entries for non-script exports like CSS files.
+
+- 6ce4a13: Removed `/alpha` from `scaffolderActionsExtensionPoint` import
+- 73351c2: Updated dependency `webpack` to `~5.104.0`.
+- Updated dependencies
+  - @backstage/integration@1.20.0-next.2
+  - @backstage/cli-node@0.2.18-next.1
+  - @backstage/config-loader@1.10.8-next.0
+
+## 0.35.4-next.1
+
+### Patch Changes
+
+- 5e3ef57: Added support for the new `peerModules` metadata field in `package.json`. This field allows plugin packages to declare modules that should be installed alongside them for cross-plugin integrations. The field is validated by `backstage-cli repo fix --publish`.
+- Updated dependencies
+  - @backstage/integration@1.20.0-next.1
+  - @backstage/cli-node@0.2.18-next.1
+
+## 0.35.3-next.0
+
+### Patch Changes
+
+- cfd8103: Updated catalog provider module template to use stable catalog extension points from `@backstage/plugin-catalog-node` instead of alpha exports.
+- 7455dae: Use node prefix on native imports
+- 4fc7bf0: Bump to tar v7
+- 122d39c: Completely removed support for the deprecated `app.experimental.packages` configuration. Replace existing usage directly with `app.packages`.
+- 69d880e: Bump to latest zod to ensure it has the latest features
+- Updated dependencies
+  - @backstage/config-loader@1.10.8-next.0
+  - @backstage/eslint-plugin@0.2.1-next.0
+  - @backstage/integration@1.19.3-next.0
+  - @backstage/cli-common@0.1.18-next.0
+  - @backstage/cli-node@0.2.17-next.0
+  - @backstage/catalog-model@1.7.6
+  - @backstage/config@1.3.6
+  - @backstage/errors@1.2.7
+  - @backstage/release-manifests@0.0.13
+  - @backstage/types@1.2.2
+
+## 0.35.2
+
+### Patch Changes
+
+- 320c6a9: Bump `@swc/core` to support `ES2023` and `ES2024`
+- c0d7bf6: Added `--include` and `--format` options to `backstage-cli info` command for including additional packages via glob patterns and outputting as JSON or Text.
+- f6a5d2f: Fixed CSS module class name collisions when running multiple versions of packages simultaneously by using content-based hashing for class name generation.
+- 140cbc2: Added `@backstage/backend-test-utils` to backend package templates.
+- 4eeba9e: Upgrade `zod-validation-error` to version 4
+- 9ee5996: Bump minimum required `@swc/core` to avoid transpilation bug
+- Updated dependencies
+  - @backstage/cli-common@0.1.17
+  - @backstage/integration@1.19.2
+
 ## 0.35.2-next.1
 
 ### Patch Changes

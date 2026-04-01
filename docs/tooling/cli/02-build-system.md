@@ -270,6 +270,12 @@ that are exported from the package, leaving a much cleaner type definition file
 and making sure that the type definitions are in sync with the generated
 JavaScript.
 
+### Building Module Federation Remotes
+
+Frontend plugin packages can be built as module federation remotes, which allows them to be loaded dynamically at runtime by a module federation host (typically your main frontend app). To build a package as a module federation remote, use the `--module-federation` option with the `package build` command.
+
+More details are given in the [Module Federation](../../frontend-system/building-apps/07-module-federation.md#building-module-federation-remotes) documentation.
+
 ## Bundling
 
 The goal of the bundling process is to combine multiple packages together into a
@@ -287,6 +293,20 @@ When running the start command, a development server
 will be set up that listens to the protocol, host and port set by `app.baseUrl`
 in the configuration. If needed it is also possible to override the listening
 options through the `app.listen` configuration.
+
+For frontend plugin packages using the new frontend system, the recommended way to
+set up the `dev/index` entry point is to use the `createDevApp` helper from
+`@backstage/frontend-dev-utils`. It creates and renders a minimal Backstage app
+with your plugin loaded:
+
+```tsx title="in dev/index.ts"
+import { createDevApp } from '@backstage/frontend-dev-utils';
+import myPlugin from '../src';
+
+createDevApp({ features: [myPlugin] });
+```
+
+For the legacy frontend system, the `@backstage/dev-utils` package provides equivalent helpers.
 
 The frontend development bundling is currently based on
 [Webpack](https://webpack.js.org/) and

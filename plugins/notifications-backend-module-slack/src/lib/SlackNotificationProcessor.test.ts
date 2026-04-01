@@ -15,9 +15,10 @@
  */
 
 import { mockServices } from '@backstage/backend-test-utils';
+import { metricsServiceMock } from '@backstage/backend-test-utils/alpha';
 import { SlackNotificationProcessor } from './SlackNotificationProcessor';
 import { catalogServiceMock } from '@backstage/plugin-catalog-node/testUtils';
-import { WebClient } from '@slack/web-api';
+import { KnownBlock, WebClient } from '@slack/web-api';
 import { Entity } from '@backstage/catalog-model';
 import pThrottle from 'p-throttle';
 import { durationToMilliseconds } from '@backstage/types';
@@ -125,6 +126,7 @@ const DEFAULT_ENTITIES_RESPONSE = {
 describe('SlackNotificationProcessor', () => {
   const logger = mockServices.logger.mock();
   const auth = mockServices.auth();
+  const metrics = metricsServiceMock.mock();
   const config = mockServices.rootConfig({
     data: {
       app: {
@@ -157,6 +159,7 @@ describe('SlackNotificationProcessor', () => {
       catalog: catalogServiceMock({
         entities: DEFAULT_ENTITIES_RESPONSE.items,
       }),
+      metrics,
       slack,
     })[0];
 
@@ -209,6 +212,44 @@ describe('SlackNotificationProcessor', () => {
     });
   });
 
+  it('should use a custom block kit renderer when provided', async () => {
+    const slack = new WebClient();
+    const customBlocks: KnownBlock[] = [
+      {
+        type: 'section',
+        text: { type: 'mrkdwn', text: 'Custom block' },
+      },
+    ];
+
+    const processor = SlackNotificationProcessor.fromConfig(config, {
+      auth,
+      logger,
+      catalog: catalogServiceMock({
+        entities: DEFAULT_ENTITIES_RESPONSE.items,
+      }),
+      metrics,
+      slack,
+      blockKitRenderer: () => customBlocks,
+    })[0];
+
+    await processor.processOptions({
+      recipients: { type: 'entity', entityRef: 'group:default/mock' },
+      payload: { title: 'notification' },
+    });
+
+    expect(slack.chat.postMessage).toHaveBeenCalledWith({
+      channel: 'C12345678',
+      text: 'notification',
+      attachments: [
+        {
+          color: '#00A699',
+          blocks: customBlocks,
+          fallback: 'notification',
+        },
+      ],
+    });
+  });
+
   describe('when a user notification is sent directly', () => {
     it('should send a notification to a user', async () => {
       const slack = new WebClient();
@@ -219,6 +260,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -294,6 +336,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -318,6 +361,52 @@ describe('SlackNotificationProcessor', () => {
     });
   });
 
+  describe('when recipients include both users and a group', () => {
+    it('should still DM explicit user recipients', async () => {
+      const slack = new WebClient();
+
+      const processor = SlackNotificationProcessor.fromConfig(config, {
+        auth,
+        logger,
+        catalog: catalogServiceMock({
+          entities: DEFAULT_ENTITIES_RESPONSE.items,
+        }),
+        metrics,
+        slack,
+      })[0];
+
+      await processor.processOptions({
+        recipients: {
+          type: 'entity',
+          entityRef: ['group:default/mock', 'user:default/mock'],
+        },
+        payload: { title: 'notification' },
+      });
+
+      await processor.postProcess(
+        {
+          origin: 'plugin',
+          id: 'explicit-user-1',
+          user: 'user:default/mock',
+          created: new Date(),
+          payload: { title: 'notification' },
+        },
+        {
+          recipients: {
+            type: 'entity',
+            entityRef: ['group:default/mock', 'user:default/mock'],
+          },
+          payload: { title: 'notification' },
+        },
+      );
+
+      expect(slack.chat.postMessage).toHaveBeenCalledTimes(2);
+      expect(slack.chat.postMessage).toHaveBeenCalledWith(
+        expect.objectContaining({ channel: 'U12345678' }),
+      );
+    });
+  });
+
   describe('when broadcast channels are not configured', () => {
     it('should not send broadcast messages', async () => {
       const slack = new WebClient();
@@ -328,6 +417,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -383,6 +473,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -447,6 +538,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -502,6 +594,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -557,6 +650,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -612,6 +706,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -668,6 +763,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -727,6 +823,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -781,6 +878,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -839,6 +937,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -877,6 +976,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -900,6 +1000,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: [DEFAULT_ENTITIES_RESPONSE.items[2]],
         }),
+        metrics,
         slack,
       })[0];
 
@@ -939,6 +1040,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -984,6 +1086,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -1043,6 +1146,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -1122,6 +1226,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -1216,6 +1321,7 @@ describe('SlackNotificationProcessor', () => {
           catalog: catalogServiceMock({
             entities: DEFAULT_ENTITIES_RESPONSE.items,
           }),
+          metrics,
           slack,
         },
       )[0];
@@ -1293,6 +1399,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -1359,6 +1466,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -1399,6 +1507,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -1438,6 +1547,7 @@ describe('SlackNotificationProcessor', () => {
         catalog: catalogServiceMock({
           entities: DEFAULT_ENTITIES_RESPONSE.items,
         }),
+        metrics,
         slack,
       })[0];
 
@@ -1486,6 +1596,7 @@ describe('SlackNotificationProcessor', () => {
           catalog: catalogServiceMock({
             entities: DEFAULT_ENTITIES_RESPONSE.items,
           }),
+          metrics,
           slack,
         },
       )[0];

@@ -22,6 +22,7 @@ import type {
   UseTableCompleteOptions,
 } from './types';
 import { useStableCallback } from './useStableCallback';
+import { getEffectivePageSize } from './getEffectivePageSize';
 
 /** @internal */
 export function useCompletePagination<T extends TableItem, TFilter>(
@@ -29,20 +30,22 @@ export function useCompletePagination<T extends TableItem, TFilter>(
   query: QueryState<TFilter>,
 ): PaginationResult<T> & { reload: () => void } {
   const {
-    getData: getDataProp,
+    data,
+    getData: getDataProp = () => [],
     paginationOptions = {},
     sortFn,
     filterFn,
     searchFn,
   } = options;
-  const { pageSize: defaultPageSize = 20, initialOffset = 0 } =
-    paginationOptions;
+  const hasGetData = 'getData' in options;
+  const { initialOffset = 0 } = paginationOptions;
+  const defaultPageSize = getEffectivePageSize(paginationOptions);
 
   const getData = useStableCallback(getDataProp);
   const { sort, filter, search } = query;
 
-  const [items, setItems] = useState<T[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [items, setItems] = useState<T[] | undefined>(undefined);
+  const [isLoading, setIsLoading] = useState(!data);
   const [error, setError] = useState<Error | undefined>(undefined);
   const [loadCount, setLoadCount] = useState(0);
 
@@ -51,6 +54,15 @@ export function useCompletePagination<T extends TableItem, TFilter>(
 
   // Load data on mount and when loadCount changes (reload trigger)
   useEffect(() => {
+    if (data) {
+      setIsLoading(false);
+      return;
+    }
+
+    if (!hasGetData) {
+      return;
+    }
+
     let cancelled = false;
     setIsLoading(true);
     setError(undefined);
@@ -58,9 +70,9 @@ export function useCompletePagination<T extends TableItem, TFilter>(
     (async () => {
       try {
         const result = getData();
-        const data = result instanceof Promise ? await result : result;
+        const resolvedData = result instanceof Promise ? await result : result;
         if (!cancelled) {
-          setItems(data);
+          setItems(resolvedData);
           setIsLoading(false);
         }
       } catch (err) {
@@ -74,7 +86,7 @@ export function useCompletePagination<T extends TableItem, TFilter>(
     return () => {
       cancelled = true;
     };
-  }, [getData, loadCount]);
+  }, [data, getData, hasGetData, loadCount]);
 
   // Reset offset when query changes (query object is memoized)
   const prevQueryRef = useRef(query);
@@ -85,9 +97,14 @@ export function useCompletePagination<T extends TableItem, TFilter>(
     }
   }, [query]);
 
+  const resolvedItems = useMemo(() => data ?? items, [data, items]);
+
   // Process data client-side (filter, search, sort)
   const processedData = useMemo(() => {
-    let result = [...items];
+    if (!resolvedItems) {
+      return undefined;
+    }
+    let result = [...resolvedItems];
     if (filter !== undefined && filterFn) {
       result = filterFn(result, filter);
     }
@@ -98,13 +115,13 @@ export function useCompletePagination<T extends TableItem, TFilter>(
       result = sortFn(result, sort);
     }
     return result;
-  }, [items, sort, filter, search, filterFn, searchFn, sortFn]);
+  }, [resolvedItems, sort, filter, search, filterFn, searchFn, sortFn]);
 
-  const totalCount = processedData.length;
+  const totalCount = processedData?.length ?? 0;
 
   // Paginate the processed data
   const paginatedData = useMemo(
-    () => processedData.slice(offset, offset + pageSize),
+    () => processedData?.slice(offset, offset + pageSize),
     [processedData, offset, pageSize],
   );
 
