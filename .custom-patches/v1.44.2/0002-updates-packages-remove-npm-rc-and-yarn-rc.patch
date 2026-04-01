@@ -1,0 +1,1698 @@
+From 0f6ab8a81e3c331f67803258a345f7da44075b39 Mon Sep 17 00:00:00 2001
+From: eliot-pitman-bah <pitman_eliot@bah.com>
+Date: Wed, 14 Jan 2026 13:00:55 -0600
+Subject: [PATCH 2/7] updates packages, remove npm rc and yarn rc
+
+---
+ plugins/scaffolder-react/catalog-info.yaml    |  4 +--
+ plugins/scaffolder-react/package.json         |  4 +--
+ .../next/components/TaskSteps/TaskSteps.tsx   |  2 +-
+ plugins/scaffolder/dev/index.tsx              |  2 +-
+ plugins/scaffolder/package.json               |  4 +--
+ .../src/alpha/api/FormDecoratorsApi.ts        |  4 +--
+ plugins/scaffolder/src/alpha/api/types.ts     |  2 +-
+ .../CustomFieldExplorer.tsx                   |  4 +--
+ .../CustomFieldPlayground.tsx                 |  4 +--
+ .../CustomFieldsPage.test.tsx                 |  2 +-
+ .../TemplateEditorPage/CustomFieldsPage.tsx   |  2 +-
+ .../TemplateEditorPage/DryRunContext.test.tsx |  2 +-
+ .../TemplateEditorPage/DryRunContext.tsx      |  2 +-
+ .../DryRunResults/DryRunResults.test.tsx      |  2 +-
+ .../DryRunResults/DryRunResultsList.test.tsx  |  2 +-
+ .../DryRunResults/DryRunResultsView.test.tsx  |  2 +-
+ .../DryRunResults/TaskPageLinks.tsx           |  2 +-
+ .../DryRunResults/TaskStatusStepper.tsx       |  2 +-
+ .../TemplateEditorPage/TemplateEditor.tsx     |  2 +-
+ .../TemplateEditorPage/TemplateEditorForm.tsx |  4 +--
+ .../TemplateEditorPage.test.tsx               |  2 +-
+ .../TemplateEditorPage/TemplateEditorPage.tsx |  2 +-
+ .../TemplateEditorToolbar.test.tsx            |  2 +-
+ .../TemplateEditorToolbar.tsx                 |  2 +-
+ .../TemplateEditorPage/TemplateFormPage.tsx   |  2 +-
+ .../TemplateFormPreviewer.tsx                 |  2 +-
+ .../TemplateListPage/TemplateListPage.tsx     |  4 +--
+ .../TemplateWizardPage.test.tsx               |  2 +-
+ .../TemplateWizardPage/TemplateWizardPage.tsx |  4 +--
+ .../scaffolder/src/alpha/components/types.ts  |  2 +-
+ plugins/scaffolder/src/alpha/extensions.tsx   |  4 +--
+ .../src/alpha/fields/EntityNamePicker.ts      |  2 +-
+ .../src/alpha/fields/EntityPicker.ts          |  2 +-
+ .../src/alpha/fields/EntityTagsPicker.ts      |  2 +-
+ .../src/alpha/fields/MultiEntityPicker.ts     |  2 +-
+ .../src/alpha/fields/MyGroupsPicker.ts        |  2 +-
+ .../src/alpha/fields/OwnedEntityPicker.ts     |  2 +-
+ .../src/alpha/fields/OwnerPicker.ts           |  2 +-
+ .../src/alpha/fields/RepoBranchPicker.ts      |  2 +-
+ .../src/alpha/fields/RepoUrlPicker.ts         |  2 +-
+ .../alpha/hooks/useFormDecorators.test.tsx    |  4 +--
+ .../src/alpha/hooks/useFormDecorators.ts      |  4 +--
+ plugins/scaffolder/src/alpha/index.ts         |  2 +-
+ plugins/scaffolder/src/alpha/plugin.tsx       |  2 +-
+ .../ActionsPage/ActionsPage.test.tsx          |  2 +-
+ .../components/ActionsPage/ActionsPage.tsx    |  4 +--
+ .../ListTasksPage/ListTaskPage.test.tsx       |  2 +-
+ .../ListTasksPage/ListTasksPage.tsx           |  4 +--
+ .../columns/TemplateTitleColumn.test.tsx      |  2 +-
+ .../columns/TemplateTitleColumn.tsx           |  2 +-
+ .../OngoingTask/OngoingTask.test.tsx          |  6 ++--
+ .../components/OngoingTask/OngoingTask.tsx    |  4 +--
+ .../src/components/Router/Router.test.tsx     |  6 ++--
+ .../src/components/Router/Router.tsx          |  6 ++--
+ .../ScaffolderUsageExamplesTable.test.tsx     |  2 +-
+ .../ScaffolderUsageExamplesTable.tsx          |  2 +-
+ .../TemplateFilters.tsx                       |  2 +-
+ .../TemplateGlobals.tsx                       |  2 +-
+ .../TemplatingExtensionsPage.test.tsx         |  2 +-
+ .../TemplatingExtensionsPage.tsx              |  4 +--
+ .../TemplatingExtensionsPage/navigation.ts    |  2 +-
+ .../fields/EntityNamePicker/schema.ts         |  2 +-
+ .../fields/EntityPicker/EntityPicker.test.tsx |  2 +-
+ .../fields/EntityPicker/EntityPicker.tsx      |  2 +-
+ .../components/fields/EntityPicker/schema.ts  |  2 +-
+ .../EntityTagsPicker.test.tsx                 |  2 +-
+ .../EntityTagsPicker/EntityTagsPicker.tsx     |  2 +-
+ .../fields/EntityTagsPicker/schema.ts         |  2 +-
+ .../MultiEntityPicker.test.tsx                |  2 +-
+ .../MultiEntityPicker/MultiEntityPicker.tsx   |  2 +-
+ .../fields/MultiEntityPicker/schema.ts        |  2 +-
+ .../MyGroupsPicker/MyGroupsPicker.test.tsx    |  2 +-
+ .../fields/MyGroupsPicker/MyGroupsPicker.tsx  |  2 +-
+ .../fields/MyGroupsPicker/schema.ts           |  2 +-
+ .../OwnedEntityPicker/OwnedEntityPicker.tsx   |  2 +-
+ .../fields/OwnerPicker/OwnerPicker.test.tsx   |  2 +-
+ .../components/fields/OwnerPicker/schema.ts   |  2 +-
+ .../BitbucketRepoBranchPicker.test.tsx        |  2 +-
+ .../BitbucketRepoBranchPicker.tsx             |  2 +-
+ .../GitHubRepoBranchPicker.test.tsx           |  2 +-
+ .../GitHubRepoBranchPicker.tsx                |  2 +-
+ .../RepoBranchPicker.test.tsx                 |  4 +--
+ .../RepoBranchPicker/RepoBranchPicker.tsx     |  2 +-
+ .../fields/RepoBranchPicker/schema.ts         |  2 +-
+ .../BitbucketRepoPicker.test.tsx              |  2 +-
+ .../RepoUrlPicker/BitbucketRepoPicker.tsx     |  2 +-
+ .../RepoUrlPicker/GithubRepoPicker.test.tsx   |  2 +-
+ .../fields/RepoUrlPicker/GithubRepoPicker.tsx |  2 +-
+ .../RepoUrlPicker/GitlabRepoPicker.test.tsx   |  2 +-
+ .../fields/RepoUrlPicker/GitlabRepoPicker.tsx |  2 +-
+ .../RepoUrlPicker/RepoUrlPicker.test.tsx      |  4 +--
+ .../fields/RepoUrlPicker/RepoUrlPicker.tsx    |  2 +-
+ .../RepoUrlPicker/RepoUrlPickerHost.test.tsx  |  2 +-
+ .../RepoUrlPicker/RepoUrlPickerHost.tsx       |  2 +-
+ .../components/fields/RepoUrlPicker/schema.ts |  2 +-
+ .../fields/SecretInput/SecretInput.test.tsx   |  6 ++--
+ .../fields/SecretInput/SecretInput.tsx        |  4 +--
+ .../scaffolder/src/components/fields/utils.ts |  4 +--
+ plugins/scaffolder/src/components/index.ts    |  2 +-
+ plugins/scaffolder/src/deprecated.ts          | 30 +++++++++----------
+ plugins/scaffolder/src/plugin.tsx             |  4 +--
+ 101 files changed, 144 insertions(+), 144 deletions(-)
+
+diff --git a/plugins/scaffolder-react/catalog-info.yaml b/plugins/scaffolder-react/catalog-info.yaml
+index 6294c3914794..abfb7b98cf60 100644
+--- a/plugins/scaffolder-react/catalog-info.yaml
++++ b/plugins/scaffolder-react/catalog-info.yaml
+@@ -1,8 +1,8 @@
+ apiVersion: backstage.io/v1alpha1
+ kind: Component
+ metadata:
+-  name: backstage-plugin-scaffolder-react
+-  title: '@backstage/plugin-scaffolder-react'
++  name: bip-bih-plugin-scaffolder-react
++  title: "@bip-bih/plugin-scaffolder-react"
+   description: >-
+     A frontend library that helps other Backstage plugins interact with the
+     Scaffolder
+diff --git a/plugins/scaffolder-react/package.json b/plugins/scaffolder-react/package.json
+index ab615dd8c3e1..1ed0329e5a67 100644
+--- a/plugins/scaffolder-react/package.json
++++ b/plugins/scaffolder-react/package.json
+@@ -1,5 +1,5 @@
+ {
+-  "name": "@backstage/plugin-scaffolder-react",
++  "name": "@bip-bih/plugin-scaffolder-react",
+   "version": "1.19.2",
+   "description": "A frontend library that helps other Backstage plugins interact with the Scaffolder",
+   "backstage": {
+@@ -11,7 +11,7 @@
+       "@backstage/plugin-scaffolder-common",
+       "@backstage/plugin-scaffolder-node",
+       "@backstage/plugin-scaffolder-node-test-utils",
+-      "@backstage/plugin-scaffolder-react"
++      "@bip-bih/plugin-scaffolder-react"
+     ]
+   },
+   "publishConfig": {
+diff --git a/plugins/scaffolder-react/src/next/components/TaskSteps/TaskSteps.tsx b/plugins/scaffolder-react/src/next/components/TaskSteps/TaskSteps.tsx
+index a7bf03534a74..3285decb64ea 100644
+--- a/plugins/scaffolder-react/src/next/components/TaskSteps/TaskSteps.tsx
++++ b/plugins/scaffolder-react/src/next/components/TaskSteps/TaskSteps.tsx
+@@ -29,7 +29,7 @@ import { TaskStep } from '@backstage/plugin-scaffolder-common';
+ import { StepIcon } from './StepIcon';
+ import { StepTime } from './StepTime';
+ import { TaskBorder } from './TaskBorder';
+-import { ScaffolderStep } from '@backstage/plugin-scaffolder-react';
++import { ScaffolderStep } from '@bip-bih/plugin-scaffolder-react';
+ import React from 'react';
+ 
+ /**
+diff --git a/plugins/scaffolder/dev/index.tsx b/plugins/scaffolder/dev/index.tsx
+index 3708685720cd..9e449bc2e8c4 100644
+--- a/plugins/scaffolder/dev/index.tsx
++++ b/plugins/scaffolder/dev/index.tsx
+@@ -21,7 +21,7 @@ import {
+   MockStarredEntitiesApi,
+ } from '@backstage/plugin-catalog-react';
+ import { ScaffolderClient } from '../src';
+-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
++import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
+ import { ScaffolderPage } from '../src/plugin';
+ import {
+   discoveryApiRef,
+diff --git a/plugins/scaffolder/package.json b/plugins/scaffolder/package.json
+index 729c53fa538d..a8f1667814fa 100644
+--- a/plugins/scaffolder/package.json
++++ b/plugins/scaffolder/package.json
+@@ -11,7 +11,7 @@
+       "@backstage/plugin-scaffolder-common",
+       "@backstage/plugin-scaffolder-node",
+       "@backstage/plugin-scaffolder-node-test-utils",
+-      "@backstage/plugin-scaffolder-react"
++      "@bip-bih/plugin-scaffolder-react"
+     ]
+   },
+   "publishConfig": {
+@@ -71,10 +71,10 @@
+     "@backstage/plugin-catalog-react": "workspace:^",
+     "@backstage/plugin-permission-react": "workspace:^",
+     "@backstage/plugin-scaffolder-common": "workspace:^",
+-    "@backstage/plugin-scaffolder-react": "workspace:^",
+     "@backstage/plugin-techdocs-common": "workspace:^",
+     "@backstage/plugin-techdocs-react": "workspace:^",
+     "@backstage/types": "workspace:^",
++    "@bip-bih/plugin-scaffolder-react": "^1.19.2",
+     "@codemirror/language": "^6.0.0",
+     "@codemirror/legacy-modes": "^6.1.0",
+     "@codemirror/view": "^6.0.0",
+diff --git a/plugins/scaffolder/src/alpha/api/FormDecoratorsApi.ts b/plugins/scaffolder/src/alpha/api/FormDecoratorsApi.ts
+index 63807f54efc1..d8c3a0b65f09 100644
+--- a/plugins/scaffolder/src/alpha/api/FormDecoratorsApi.ts
++++ b/plugins/scaffolder/src/alpha/api/FormDecoratorsApi.ts
+@@ -19,9 +19,9 @@ import {
+   createExtensionInput,
+ } from '@backstage/frontend-plugin-api';
+ import { ScaffolderFormDecoratorsApi } from './types';
+-import { ScaffolderFormDecorator } from '@backstage/plugin-scaffolder-react/alpha';
++import { ScaffolderFormDecorator } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import { formDecoratorsApiRef } from './ref';
+-import { FormDecoratorBlueprint } from '@backstage/plugin-scaffolder-react/alpha';
++import { FormDecoratorBlueprint } from '@bip-bih/plugin-scaffolder-react/alpha';
+ 
+ /** @alpha */
+ export class DefaultScaffolderFormDecoratorsApi
+diff --git a/plugins/scaffolder/src/alpha/api/types.ts b/plugins/scaffolder/src/alpha/api/types.ts
+index 1d2d331adfaf..1ffd8e09944a 100644
+--- a/plugins/scaffolder/src/alpha/api/types.ts
++++ b/plugins/scaffolder/src/alpha/api/types.ts
+@@ -14,7 +14,7 @@
+  * limitations under the License.
+  */
+ 
+-import { ScaffolderFormDecorator } from '@backstage/plugin-scaffolder-react/alpha';
++import { ScaffolderFormDecorator } from '@bip-bih/plugin-scaffolder-react/alpha';
+ 
+ /** @alpha */
+ export interface ScaffolderFormDecoratorsApi {
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldExplorer.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldExplorer.tsx
+index ebb6a383d6d3..e7d5c7642cea 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldExplorer.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldExplorer.tsx
+@@ -23,10 +23,10 @@ import { makeStyles } from '@material-ui/core/styles';
+ import CodeMirror from '@uiw/react-codemirror';
+ import { useCallback, useMemo, useState } from 'react';
+ import yaml from 'yaml';
+-import { Form } from '@backstage/plugin-scaffolder-react/alpha';
++import { Form } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import { TemplateEditorForm } from './TemplateEditorForm';
+ import validator from '@rjsf/validator-ajv8';
+-import { FieldExtensionOptions } from '@backstage/plugin-scaffolder-react';
++import { FieldExtensionOptions } from '@bip-bih/plugin-scaffolder-react';
+ import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
+ import { scaffolderTranslationRef } from '../../../translation';
+ import InputAdornment from '@material-ui/core/InputAdornment';
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldPlayground.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldPlayground.tsx
+index 88e192d51046..f45953eec95c 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldPlayground.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldPlayground.tsx
+@@ -34,8 +34,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+ import SearchIcon from '@material-ui/icons/Search';
+ 
+ import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
+-import { Form } from '@backstage/plugin-scaffolder-react/alpha';
+-import { FieldExtensionOptions } from '@backstage/plugin-scaffolder-react';
++import { Form } from '@bip-bih/plugin-scaffolder-react/alpha';
++import { FieldExtensionOptions } from '@bip-bih/plugin-scaffolder-react';
+ 
+ import { scaffolderTranslationRef } from '../../../translation';
+ import { TemplateEditorForm } from './TemplateEditorForm';
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldsPage.test.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldsPage.test.tsx
+index cbbd60048d9c..33b378c72297 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldsPage.test.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldsPage.test.tsx
+@@ -17,7 +17,7 @@
+ import { screen } from '@testing-library/react';
+ import { renderInTestApp, TestApiProvider } from '@backstage/test-utils';
+ import { catalogApiRef } from '@backstage/plugin-catalog-react';
+-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
++import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
+ import { rootRouteRef } from '../../../routes';
+ import { CustomFieldsPage } from './CustomFieldsPage';
+ 
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldsPage.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldsPage.tsx
+index d7f6525f47de..8b5d2c9ea2ce 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldsPage.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/CustomFieldsPage.tsx
+@@ -17,7 +17,7 @@
+ import { Page, Header, Content } from '@backstage/core-components';
+ import { useRouteRef } from '@backstage/core-plugin-api';
+ import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
+-import { FieldExtensionOptions } from '@backstage/plugin-scaffolder-react';
++import { FieldExtensionOptions } from '@bip-bih/plugin-scaffolder-react';
+ 
+ import { editRouteRef } from '../../../routes';
+ import { scaffolderTranslationRef } from '../../../translation';
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunContext.test.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunContext.test.tsx
+index 5f2187f083c6..be055d332354 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunContext.test.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunContext.test.tsx
+@@ -27,7 +27,7 @@ import { errorApiRef } from '@backstage/core-plugin-api';
+ import {
+   scaffolderApiRef,
+   SecretsContextProvider,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { renderHook } from '@testing-library/react';
+ import { PropsWithChildren } from 'react';
+ import { formDecoratorsApiRef } from '../../api';
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunContext.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunContext.tsx
+index 997b9e7babc8..37d42a71b2a7 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunContext.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunContext.tsx
+@@ -30,7 +30,7 @@ import {
+   scaffolderApiRef,
+   ScaffolderDryRunResponse,
+   useTemplateSecrets,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { useFormDecorators } from '../../hooks/useFormDecorators';
+ 
+ const MAX_CONTENT_SIZE = 64 * 1024;
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/DryRunResults.test.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/DryRunResults.test.tsx
+index 02e5ea9c5853..5d07c4b0617c 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/DryRunResults.test.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/DryRunResults.test.tsx
+@@ -21,7 +21,7 @@ import { useEffect } from 'react';
+ import {
+   scaffolderApiRef,
+   SecretsContextProvider,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { DryRunProvider, useDryRun } from '../DryRunContext';
+ import { DryRunResults } from './DryRunResults';
+ import { formDecoratorsApiRef } from '../../../api';
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/DryRunResultsList.test.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/DryRunResultsList.test.tsx
+index ca8693191821..e178b7e01225 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/DryRunResultsList.test.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/DryRunResultsList.test.tsx
+@@ -21,7 +21,7 @@ import { useEffect } from 'react';
+ import {
+   scaffolderApiRef,
+   SecretsContextProvider,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { DryRunProvider, useDryRun } from '../DryRunContext';
+ import { DryRunResultsList } from './DryRunResultsList';
+ import { formDecoratorsApiRef } from '../../../api';
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/DryRunResultsView.test.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/DryRunResultsView.test.tsx
+index e8f11ccfe2a7..adc74593f440 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/DryRunResultsView.test.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/DryRunResultsView.test.tsx
+@@ -22,7 +22,7 @@ import { ReactNode, useEffect } from 'react';
+ import {
+   scaffolderApiRef,
+   SecretsContextProvider,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { DryRunProvider, useDryRun } from '../DryRunContext';
+ import { DryRunResultsView } from './DryRunResultsView';
+ import { formDecoratorsApiRef } from '../../../api';
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/TaskPageLinks.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/TaskPageLinks.tsx
+index d043ff988f7a..655acc450a15 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/TaskPageLinks.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/TaskPageLinks.tsx
+@@ -18,7 +18,7 @@ import { parseEntityRef } from '@backstage/catalog-model';
+ import { entityRouteRef } from '@backstage/plugin-catalog-react';
+ import Box from '@material-ui/core/Box';
+ import LanguageIcon from '@material-ui/icons/Language';
+-import { ScaffolderTaskOutput } from '@backstage/plugin-scaffolder-react';
++import { ScaffolderTaskOutput } from '@bip-bih/plugin-scaffolder-react';
+ import { IconLink } from './IconLink';
+ import { IconComponent, useApp, useRouteRef } from '@backstage/core-plugin-api';
+ 
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/TaskStatusStepper.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/TaskStatusStepper.tsx
+index 8c56c19ea161..087157504d7b 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/TaskStatusStepper.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/DryRunResults/TaskStatusStepper.tsx
+@@ -19,7 +19,7 @@ import { memo } from 'react';
+ import Step from '@material-ui/core/Step';
+ import StepLabel from '@material-ui/core/StepLabel';
+ import Stepper from '@material-ui/core/Stepper';
+-import { ScaffolderTaskStatus } from '@backstage/plugin-scaffolder-react';
++import { ScaffolderTaskStatus } from '@bip-bih/plugin-scaffolder-react';
+ import StepButton from '@material-ui/core/StepButton';
+ import { StepIconProps } from '@material-ui/core/StepIcon';
+ import CircularProgress from '@material-ui/core/CircularProgress';
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditor.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditor.tsx
+index f845f1ca8d59..e6c1bab755f6 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditor.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditor.tsx
+@@ -21,7 +21,7 @@ import type {
+   FormProps,
+   LayoutOptions,
+   FieldExtensionOptions,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ 
+ import { editRouteRef } from '../../../routes';
+ 
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorForm.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorForm.tsx
+index 36a528597e61..1097f72b2997 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorForm.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorForm.tsx
+@@ -27,11 +27,11 @@ import {
+   TemplateParameterSchema,
+   FieldExtensionOptions,
+   FormProps,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import {
+   Stepper,
+   createAsyncValidators,
+-} from '@backstage/plugin-scaffolder-react/alpha';
++} from '@bip-bih/plugin-scaffolder-react/alpha';
+ import { useDryRun } from './DryRunContext';
+ import { useDirectoryEditor } from './DirectoryEditorContext';
+ 
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorPage.test.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorPage.test.tsx
+index 122e12ac8253..d3332f76bdb5 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorPage.test.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorPage.test.tsx
+@@ -20,7 +20,7 @@ import { catalogApiRef } from '@backstage/plugin-catalog-react';
+ import {
+   scaffolderApiRef,
+   SecretsContextProvider,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { TemplateEditorPage } from './TemplateEditorPage';
+ import { rootRouteRef } from '../../../routes';
+ import { formDecoratorsApiRef } from '../../api';
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorPage.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorPage.tsx
+index 13439c666f30..b031adf66908 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorPage.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorPage.tsx
+@@ -21,7 +21,7 @@ import {
+   FormProps,
+   FieldExtensionOptions,
+   type LayoutOptions,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { scaffolderTranslationRef } from '../../../translation';
+ import { editRouteRef } from '../../../routes';
+ import { TemplateEditor } from './TemplateEditor';
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorToolbar.test.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorToolbar.test.tsx
+index 016d775c43e5..0752d674e910 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorToolbar.test.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorToolbar.test.tsx
+@@ -20,7 +20,7 @@ import { renderInTestApp, TestApiRegistry } from '@backstage/test-utils';
+ import {
+   ScaffolderApi,
+   scaffolderApiRef,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { ApiProvider } from '@backstage/core-app-api';
+ import { DEFAULT_SCAFFOLDER_FIELD_EXTENSIONS } from '../../../extensions/default';
+ import { TemplateEditorToolbar } from './TemplateEditorToolbar';
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorToolbar.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorToolbar.tsx
+index 1ceb6b609739..89d0f124a7ee 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorToolbar.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateEditorToolbar.tsx
+@@ -33,7 +33,7 @@ import DescriptionIcon from '@material-ui/icons/Description';
+ import FunctionsIcon from '@material-ui/icons/Functions';
+ 
+ import { useTranslationRef } from '@backstage/frontend-plugin-api';
+-import { FieldExtensionOptions } from '@backstage/plugin-scaffolder-react';
++import { FieldExtensionOptions } from '@bip-bih/plugin-scaffolder-react';
+ 
+ import { ActionPageContent } from '../../../components/ActionsPage/ActionsPage';
+ import { scaffolderTranslationRef } from '../../../translation';
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateFormPage.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateFormPage.tsx
+index 4e726fec96bc..88adb0fd846e 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateFormPage.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateFormPage.tsx
+@@ -26,7 +26,7 @@ import {
+   FormProps,
+   LayoutOptions,
+   FieldExtensionOptions,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ 
+ import { editRouteRef } from '../../../routes';
+ import { scaffolderTranslationRef } from '../../../translation';
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateFormPreviewer.tsx b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateFormPreviewer.tsx
+index cb40ff276623..4531cbadcb23 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateFormPreviewer.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateEditorPage/TemplateFormPreviewer.tsx
+@@ -30,7 +30,7 @@ import {
+   LayoutOptions,
+   FieldExtensionOptions,
+   FormProps,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ 
+ import { editRouteRef } from '../../../routes';
+ 
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateListPage/TemplateListPage.tsx b/plugins/scaffolder/src/alpha/components/TemplateListPage/TemplateListPage.tsx
+index 37a50ed90449..02c0e46a30af 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateListPage/TemplateListPage.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateListPage/TemplateListPage.tsx
+@@ -40,7 +40,7 @@ import {
+   ScaffolderPageContextMenu,
+   TemplateCategoryPicker,
+   TemplateGroups,
+-} from '@backstage/plugin-scaffolder-react/alpha';
++} from '@bip-bih/plugin-scaffolder-react/alpha';
+ 
+ import { RegisterExistingButton } from './RegisterExistingButton';
+ import {
+@@ -53,7 +53,7 @@ import {
+   viewTechDocRouteRef,
+ } from '../../../routes';
+ import { parseEntityRef, stringifyEntityRef } from '@backstage/catalog-model';
+-import { TemplateGroupFilter } from '@backstage/plugin-scaffolder-react';
++import { TemplateGroupFilter } from '@bip-bih/plugin-scaffolder-react';
+ import {
+   TranslationFunction,
+   useTranslationRef,
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateWizardPage/TemplateWizardPage.test.tsx b/plugins/scaffolder/src/alpha/components/TemplateWizardPage/TemplateWizardPage.test.tsx
+index 6836259dd878..047dcb91d3af 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateWizardPage/TemplateWizardPage.test.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateWizardPage/TemplateWizardPage.test.tsx
+@@ -26,7 +26,7 @@ import {
+   ScaffolderApi,
+   scaffolderApiRef,
+   SecretsContextProvider,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { TemplateWizardPage } from './TemplateWizardPage';
+ import { rootRouteRef } from '../../../routes';
+ import { ANNOTATION_EDIT_URL } from '@backstage/catalog-model';
+diff --git a/plugins/scaffolder/src/alpha/components/TemplateWizardPage/TemplateWizardPage.tsx b/plugins/scaffolder/src/alpha/components/TemplateWizardPage/TemplateWizardPage.tsx
+index c86f793c5bb4..f847f0f8c105 100644
+--- a/plugins/scaffolder/src/alpha/components/TemplateWizardPage/TemplateWizardPage.tsx
++++ b/plugins/scaffolder/src/alpha/components/TemplateWizardPage/TemplateWizardPage.tsx
+@@ -33,13 +33,13 @@ import {
+   FormProps,
+   FieldExtensionOptions,
+   ReviewStepProps,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { catalogApiRef } from '@backstage/plugin-catalog-react';
+ 
+ import {
+   Workflow,
+   useTemplateParameterSchema,
+-} from '@backstage/plugin-scaffolder-react/alpha';
++} from '@bip-bih/plugin-scaffolder-react/alpha';
+ import { JsonValue } from '@backstage/types';
+ import { Header, Page, Progress } from '@backstage/core-components';
+ 
+diff --git a/plugins/scaffolder/src/alpha/components/types.ts b/plugins/scaffolder/src/alpha/components/types.ts
+index 80e01042f2ea..acf61edbdae0 100644
+--- a/plugins/scaffolder/src/alpha/components/types.ts
++++ b/plugins/scaffolder/src/alpha/components/types.ts
+@@ -26,7 +26,7 @@ import type { FormProps as SchemaFormProps } from '@rjsf/core';
+  * Any `@rjsf/core` form properties that are publicly exposed to the `NextScaffolderPage`
+  *
+  * @alpha
+- * @deprecated use the import from {@link @backstage/plugin-scaffolder-react/alpha#FormProps} instead
++ * @deprecated use the import from {@link @bip-bih/plugin-scaffolder-react/alpha#FormProps} instead
+  */
+ export type FormProps = Pick<
+   SchemaFormProps,
+diff --git a/plugins/scaffolder/src/alpha/extensions.tsx b/plugins/scaffolder/src/alpha/extensions.tsx
+index cb69e691b821..7347dd0361d8 100644
+--- a/plugins/scaffolder/src/alpha/extensions.tsx
++++ b/plugins/scaffolder/src/alpha/extensions.tsx
+@@ -29,9 +29,9 @@ import {
+ } from '@backstage/frontend-plugin-api';
+ import { rootRouteRef } from '../routes';
+ import CreateComponentIcon from '@material-ui/icons/AddCircleOutline';
+-import { FormFieldBlueprint } from '@backstage/plugin-scaffolder-react/alpha';
++import { FormFieldBlueprint } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import { scmIntegrationsApiRef } from '@backstage/integration-react';
+-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
++import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
+ import { ScaffolderClient } from '../api';
+ 
+ export const scaffolderPage = PageBlueprint.makeWithOverrides({
+diff --git a/plugins/scaffolder/src/alpha/fields/EntityNamePicker.ts b/plugins/scaffolder/src/alpha/fields/EntityNamePicker.ts
+index dcb68edd156e..e8a31c041d7d 100644
+--- a/plugins/scaffolder/src/alpha/fields/EntityNamePicker.ts
++++ b/plugins/scaffolder/src/alpha/fields/EntityNamePicker.ts
+@@ -13,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { createFormField } from '@backstage/plugin-scaffolder-react/alpha';
++import { createFormField } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import {
+   EntityNamePicker as Component,
+   EntityNamePickerFieldSchema,
+diff --git a/plugins/scaffolder/src/alpha/fields/EntityPicker.ts b/plugins/scaffolder/src/alpha/fields/EntityPicker.ts
+index c80b38fe43ed..2e5799fe140b 100644
+--- a/plugins/scaffolder/src/alpha/fields/EntityPicker.ts
++++ b/plugins/scaffolder/src/alpha/fields/EntityPicker.ts
+@@ -13,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { createFormField } from '@backstage/plugin-scaffolder-react/alpha';
++import { createFormField } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import {
+   EntityPicker as Component,
+   EntityPickerFieldSchema,
+diff --git a/plugins/scaffolder/src/alpha/fields/EntityTagsPicker.ts b/plugins/scaffolder/src/alpha/fields/EntityTagsPicker.ts
+index 9a8e86730eb3..f2284badd041 100644
+--- a/plugins/scaffolder/src/alpha/fields/EntityTagsPicker.ts
++++ b/plugins/scaffolder/src/alpha/fields/EntityTagsPicker.ts
+@@ -13,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { createFormField } from '@backstage/plugin-scaffolder-react/alpha';
++import { createFormField } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import {
+   EntityTagsPicker as Component,
+   EntityTagsPickerFieldSchema,
+diff --git a/plugins/scaffolder/src/alpha/fields/MultiEntityPicker.ts b/plugins/scaffolder/src/alpha/fields/MultiEntityPicker.ts
+index 8e8c65d67c7d..de5eaab1dce5 100644
+--- a/plugins/scaffolder/src/alpha/fields/MultiEntityPicker.ts
++++ b/plugins/scaffolder/src/alpha/fields/MultiEntityPicker.ts
+@@ -13,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { createFormField } from '@backstage/plugin-scaffolder-react/alpha';
++import { createFormField } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import {
+   MultiEntityPicker as Component,
+   MultiEntityPickerFieldSchema,
+diff --git a/plugins/scaffolder/src/alpha/fields/MyGroupsPicker.ts b/plugins/scaffolder/src/alpha/fields/MyGroupsPicker.ts
+index a2cd5823b4ce..a9d6fef78657 100644
+--- a/plugins/scaffolder/src/alpha/fields/MyGroupsPicker.ts
++++ b/plugins/scaffolder/src/alpha/fields/MyGroupsPicker.ts
+@@ -13,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { createFormField } from '@backstage/plugin-scaffolder-react/alpha';
++import { createFormField } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import {
+   MyGroupsPicker as Component,
+   MyGroupsPickerFieldSchema,
+diff --git a/plugins/scaffolder/src/alpha/fields/OwnedEntityPicker.ts b/plugins/scaffolder/src/alpha/fields/OwnedEntityPicker.ts
+index 7b13797ce171..0297e105235e 100644
+--- a/plugins/scaffolder/src/alpha/fields/OwnedEntityPicker.ts
++++ b/plugins/scaffolder/src/alpha/fields/OwnedEntityPicker.ts
+@@ -13,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { createFormField } from '@backstage/plugin-scaffolder-react/alpha';
++import { createFormField } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import {
+   OwnedEntityPicker as Component,
+   OwnedEntityPickerFieldSchema,
+diff --git a/plugins/scaffolder/src/alpha/fields/OwnerPicker.ts b/plugins/scaffolder/src/alpha/fields/OwnerPicker.ts
+index 00761207a099..cc19458035a2 100644
+--- a/plugins/scaffolder/src/alpha/fields/OwnerPicker.ts
++++ b/plugins/scaffolder/src/alpha/fields/OwnerPicker.ts
+@@ -13,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { createFormField } from '@backstage/plugin-scaffolder-react/alpha';
++import { createFormField } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import {
+   OwnerPicker as Component,
+   OwnerPickerFieldSchema,
+diff --git a/plugins/scaffolder/src/alpha/fields/RepoBranchPicker.ts b/plugins/scaffolder/src/alpha/fields/RepoBranchPicker.ts
+index b1cf2d880268..95ecccc8ede3 100644
+--- a/plugins/scaffolder/src/alpha/fields/RepoBranchPicker.ts
++++ b/plugins/scaffolder/src/alpha/fields/RepoBranchPicker.ts
+@@ -13,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { createFormField } from '@backstage/plugin-scaffolder-react/alpha';
++import { createFormField } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import {
+   RepoBranchPicker as Component,
+   RepoBranchPickerFieldSchema,
+diff --git a/plugins/scaffolder/src/alpha/fields/RepoUrlPicker.ts b/plugins/scaffolder/src/alpha/fields/RepoUrlPicker.ts
+index 10394f7df089..3685857ee1b6 100644
+--- a/plugins/scaffolder/src/alpha/fields/RepoUrlPicker.ts
++++ b/plugins/scaffolder/src/alpha/fields/RepoUrlPicker.ts
+@@ -13,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { createFormField } from '@backstage/plugin-scaffolder-react/alpha';
++import { createFormField } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import {
+   repoPickerValidation,
+   RepoUrlPicker as Component,
+diff --git a/plugins/scaffolder/src/alpha/hooks/useFormDecorators.test.tsx b/plugins/scaffolder/src/alpha/hooks/useFormDecorators.test.tsx
+index 444f53985ae0..b1bf7ba00d62 100644
+--- a/plugins/scaffolder/src/alpha/hooks/useFormDecorators.test.tsx
++++ b/plugins/scaffolder/src/alpha/hooks/useFormDecorators.test.tsx
+@@ -14,14 +14,14 @@
+  * limitations under the License.
+  */
+ import { DefaultScaffolderFormDecoratorsApi } from '../api/FormDecoratorsApi';
+-import { createScaffolderFormDecorator } from '@backstage/plugin-scaffolder-react/alpha';
++import { createScaffolderFormDecorator } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import { createApiRef, errorApiRef } from '@backstage/core-plugin-api';
+ 
+ import { TestApiProvider } from '@backstage/test-utils';
+ import { renderHook, waitFor } from '@testing-library/react';
+ import { useFormDecorators } from './useFormDecorators';
+ import { formDecoratorsApiRef } from '../api/ref';
+-import { TemplateParameterSchema } from '@backstage/plugin-scaffolder-react';
++import { TemplateParameterSchema } from '@bip-bih/plugin-scaffolder-react';
+ 
+ describe('useFormDecorators', () => {
+   const mockApiRef = createApiRef<{
+diff --git a/plugins/scaffolder/src/alpha/hooks/useFormDecorators.ts b/plugins/scaffolder/src/alpha/hooks/useFormDecorators.ts
+index a27d47fb5942..a1612980000b 100644
+--- a/plugins/scaffolder/src/alpha/hooks/useFormDecorators.ts
++++ b/plugins/scaffolder/src/alpha/hooks/useFormDecorators.ts
+@@ -17,9 +17,9 @@ import { errorApiRef, useApi, useApiHolder } from '@backstage/core-plugin-api';
+ import { formDecoratorsApiRef } from '../api/ref';
+ import useAsync from 'react-use/esm/useAsync';
+ import { useCallback, useMemo } from 'react';
+-import { ScaffolderFormDecoratorContext } from '@backstage/plugin-scaffolder-react/alpha';
++import { ScaffolderFormDecoratorContext } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import { OpaqueFormDecorator } from '@internal/scaffolder';
+-import { TemplateParameterSchema } from '@backstage/plugin-scaffolder-react';
++import { TemplateParameterSchema } from '@bip-bih/plugin-scaffolder-react';
+ import { JsonValue } from '@backstage/types';
+ 
+ /** @internal */
+diff --git a/plugins/scaffolder/src/alpha/index.ts b/plugins/scaffolder/src/alpha/index.ts
+index d239f44b4ff0..7abb3d5ebb67 100644
+--- a/plugins/scaffolder/src/alpha/index.ts
++++ b/plugins/scaffolder/src/alpha/index.ts
+@@ -28,6 +28,6 @@ export * from './api';
+ export {
+   formFieldsApiRef,
+   type ScaffolderFormFieldsApi,
+-} from '@backstage/plugin-scaffolder-react/alpha';
++} from '@bip-bih/plugin-scaffolder-react/alpha';
+ 
+ export { default } from './plugin';
+diff --git a/plugins/scaffolder/src/alpha/plugin.tsx b/plugins/scaffolder/src/alpha/plugin.tsx
+index 3b41aa389326..9990fef07411 100644
+--- a/plugins/scaffolder/src/alpha/plugin.tsx
++++ b/plugins/scaffolder/src/alpha/plugin.tsx
+@@ -42,7 +42,7 @@ import {
+   scaffolderPage,
+ } from './extensions';
+ import { isTemplateEntityV1beta3 } from '@backstage/plugin-scaffolder-common';
+-import { formFieldsApi } from '@backstage/plugin-scaffolder-react/alpha';
++import { formFieldsApi } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import { formDecoratorsApi } from './api';
+ import { EntityIconLinkBlueprint } from '@backstage/plugin-catalog-react/alpha';
+ import { useScaffolderTemplateIconLinkProps } from './hooks/useScaffolderTemplateIconLinkProps';
+diff --git a/plugins/scaffolder/src/components/ActionsPage/ActionsPage.test.tsx b/plugins/scaffolder/src/components/ActionsPage/ActionsPage.test.tsx
+index a86b44e72476..1ef29ccb5c6d 100644
+--- a/plugins/scaffolder/src/components/ActionsPage/ActionsPage.test.tsx
++++ b/plugins/scaffolder/src/components/ActionsPage/ActionsPage.test.tsx
+@@ -17,7 +17,7 @@ import { ActionsPage } from './ActionsPage';
+ import {
+   ScaffolderApi,
+   scaffolderApiRef,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { renderInTestApp, TestApiRegistry } from '@backstage/test-utils';
+ import { ApiProvider } from '@backstage/core-app-api';
+ import { rootRouteRef } from '../../routes';
+diff --git a/plugins/scaffolder/src/components/ActionsPage/ActionsPage.tsx b/plugins/scaffolder/src/components/ActionsPage/ActionsPage.tsx
+index 6be502659a39..8dedb6645d09 100644
+--- a/plugins/scaffolder/src/components/ActionsPage/ActionsPage.tsx
++++ b/plugins/scaffolder/src/components/ActionsPage/ActionsPage.tsx
+@@ -15,7 +15,7 @@
+  */
+ import { useEffect, useState } from 'react';
+ import useAsync from 'react-use/esm/useAsync';
+-import { Action, scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
++import { Action, scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
+ import Accordion from '@material-ui/core/Accordion';
+ import AccordionDetails from '@material-ui/core/AccordionDetails';
+ import AccordionSummary from '@material-ui/core/AccordionSummary';
+@@ -40,7 +40,7 @@ import {
+   Page,
+   Progress,
+ } from '@backstage/core-components';
+-import { ScaffolderPageContextMenu } from '@backstage/plugin-scaffolder-react/alpha';
++import { ScaffolderPageContextMenu } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import { useNavigate } from 'react-router-dom';
+ import {
+   editRouteRef,
+diff --git a/plugins/scaffolder/src/components/ListTasksPage/ListTaskPage.test.tsx b/plugins/scaffolder/src/components/ListTasksPage/ListTaskPage.test.tsx
+index 9843ebb5ee58..61e2407f4756 100644
+--- a/plugins/scaffolder/src/components/ListTasksPage/ListTaskPage.test.tsx
++++ b/plugins/scaffolder/src/components/ListTasksPage/ListTaskPage.test.tsx
+@@ -27,7 +27,7 @@ import { ListTasksPage } from './ListTasksPage';
+ import {
+   ScaffolderApi,
+   scaffolderApiRef,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { act, fireEvent } from '@testing-library/react';
+ import { rootRouteRef } from '../../routes';
+ import { permissionApiRef } from '@backstage/plugin-permission-react';
+diff --git a/plugins/scaffolder/src/components/ListTasksPage/ListTasksPage.tsx b/plugins/scaffolder/src/components/ListTasksPage/ListTasksPage.tsx
+index 6cce6c372767..6715506607fc 100644
+--- a/plugins/scaffolder/src/components/ListTasksPage/ListTasksPage.tsx
++++ b/plugins/scaffolder/src/components/ListTasksPage/ListTasksPage.tsx
+@@ -30,7 +30,7 @@ import { useState } from 'react';
+ import {
+   scaffolderApiRef,
+   ScaffolderTask,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { OwnerListPicker } from './OwnerListPicker';
+ import {
+   CreatedAtColumn,
+@@ -44,7 +44,7 @@ import {
+   rootRouteRef,
+   templatingExtensionsRouteRef,
+ } from '../../routes';
+-import { ScaffolderPageContextMenu } from '@backstage/plugin-scaffolder-react/alpha';
++import { ScaffolderPageContextMenu } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import { useNavigate } from 'react-router-dom';
+ import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
+ import { scaffolderTranslationRef } from '../../translation';
+diff --git a/plugins/scaffolder/src/components/ListTasksPage/columns/TemplateTitleColumn.test.tsx b/plugins/scaffolder/src/components/ListTasksPage/columns/TemplateTitleColumn.test.tsx
+index 4b05948318a2..e0374025e882 100644
+--- a/plugins/scaffolder/src/components/ListTasksPage/columns/TemplateTitleColumn.test.tsx
++++ b/plugins/scaffolder/src/components/ListTasksPage/columns/TemplateTitleColumn.test.tsx
+@@ -21,7 +21,7 @@ import { entityRouteRef } from '@backstage/plugin-catalog-react';
+ import {
+   scaffolderApiRef,
+   ScaffolderApi,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ 
+ describe('<TemplateTitleColumn />', () => {
+   const scaffolderApiMock: jest.Mocked<ScaffolderApi> = {
+diff --git a/plugins/scaffolder/src/components/ListTasksPage/columns/TemplateTitleColumn.tsx b/plugins/scaffolder/src/components/ListTasksPage/columns/TemplateTitleColumn.tsx
+index 0391e7c18ee5..098e07166848 100644
+--- a/plugins/scaffolder/src/components/ListTasksPage/columns/TemplateTitleColumn.tsx
++++ b/plugins/scaffolder/src/components/ListTasksPage/columns/TemplateTitleColumn.tsx
+@@ -14,7 +14,7 @@
+  * limitations under the License.
+  */
+ import { useApi } from '@backstage/core-plugin-api';
+-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
++import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
+ import useAsync from 'react-use/esm/useAsync';
+ import { parseEntityRef } from '@backstage/catalog-model';
+ import { EntityRefLink } from '@backstage/plugin-catalog-react';
+diff --git a/plugins/scaffolder/src/components/OngoingTask/OngoingTask.test.tsx b/plugins/scaffolder/src/components/OngoingTask/OngoingTask.test.tsx
+index 5e44d5cf43b5..729f65610145 100644
+--- a/plugins/scaffolder/src/components/OngoingTask/OngoingTask.test.tsx
++++ b/plugins/scaffolder/src/components/OngoingTask/OngoingTask.test.tsx
+@@ -20,7 +20,7 @@ import {
+   renderInTestApp,
+   TestApiProvider,
+ } from '@backstage/test-utils';
+-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
++import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
+ import { act, fireEvent, waitFor, within } from '@testing-library/react';
+ import {
+   PermissionApi,
+@@ -36,8 +36,8 @@ jest.mock('react-router-dom', () => ({
+   useParams: () => ({ taskId: 'my-task' }),
+ }));
+ 
+-jest.mock('@backstage/plugin-scaffolder-react', () => ({
+-  ...jest.requireActual('@backstage/plugin-scaffolder-react'),
++jest.mock('@bip-bih/plugin-scaffolder-react', () => ({
++  ...jest.requireActual('@bip-bih/plugin-scaffolder-react'),
+   useTaskEventStream: () => ({
+     cancelled: false,
+     loading: true,
+diff --git a/plugins/scaffolder/src/components/OngoingTask/OngoingTask.tsx b/plugins/scaffolder/src/components/OngoingTask/OngoingTask.tsx
+index bc0d5fe1aa12..a4c20ba7d994 100644
+--- a/plugins/scaffolder/src/components/OngoingTask/OngoingTask.tsx
++++ b/plugins/scaffolder/src/components/OngoingTask/OngoingTask.tsx
+@@ -30,7 +30,7 @@ import {
+   scaffolderApiRef,
+   ScaffolderTaskOutput,
+   useTaskEventStream,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { selectedTemplateRouteRef } from '../../routes';
+ import {
+   AnalyticsContext,
+@@ -44,7 +44,7 @@ import {
+   DefaultTemplateOutputs,
+   TaskLogStream,
+   TaskSteps,
+-} from '@backstage/plugin-scaffolder-react/alpha';
++} from '@bip-bih/plugin-scaffolder-react/alpha';
+ import { useAsync } from '@react-hookz/web';
+ import { usePermission } from '@backstage/plugin-permission-react';
+ import {
+diff --git a/plugins/scaffolder/src/components/Router/Router.test.tsx b/plugins/scaffolder/src/components/Router/Router.test.tsx
+index 20b21fabc7e5..571bb2bbc79b 100644
+--- a/plugins/scaffolder/src/components/Router/Router.test.tsx
++++ b/plugins/scaffolder/src/components/Router/Router.test.tsx
+@@ -23,14 +23,14 @@ import {
+ import {
+   createScaffolderFieldExtension,
+   ScaffolderFieldExtensions,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { scaffolderPlugin } from '../../plugin';
+ import {
+   createScaffolderLayout,
+   ScaffolderLayouts,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { TemplateListPage, TemplateWizardPage } from '../../alpha/components';
+-import { formFieldsApiRef } from '@backstage/plugin-scaffolder-react/alpha';
++import { formFieldsApiRef } from '@bip-bih/plugin-scaffolder-react/alpha';
+ 
+ jest.mock('../../alpha/components', () => ({
+   TemplateWizardPage: jest.fn(() => null),
+diff --git a/plugins/scaffolder/src/components/Router/Router.tsx b/plugins/scaffolder/src/components/Router/Router.tsx
+index 7a2496c046f1..d61b8a4e4c8b 100644
+--- a/plugins/scaffolder/src/components/Router/Router.tsx
++++ b/plugins/scaffolder/src/components/Router/Router.tsx
+@@ -21,13 +21,13 @@ import {
+   FormProps,
+   ReviewStepProps,
+   TemplateGroupFilter,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import {
+   ScaffolderTaskOutput,
+   SecretsContextProvider,
+   useCustomFieldExtensions,
+   useCustomLayouts,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ 
+ import { TemplateEntityV1beta3 } from '@backstage/plugin-scaffolder-common';
+ import { DEFAULT_SCAFFOLDER_FIELD_EXTENSIONS } from '../../extensions/default';
+@@ -65,7 +65,7 @@ import { useApp } from '@backstage/core-plugin-api';
+ import { OpaqueFormField } from '@internal/scaffolder';
+ import { useAsync, useMountEffect } from '@react-hookz/web';
+ import { TemplatingExtensionsPage } from '../TemplatingExtensionsPage';
+-import { FormField } from '@backstage/plugin-scaffolder-react/alpha';
++import { FormField } from '@bip-bih/plugin-scaffolder-react/alpha';
+ 
+ /**
+  * The Props for the Scaffolder Router
+diff --git a/plugins/scaffolder/src/components/ScaffolderUsageExamplesTable/ScaffolderUsageExamplesTable.test.tsx b/plugins/scaffolder/src/components/ScaffolderUsageExamplesTable/ScaffolderUsageExamplesTable.test.tsx
+index 9a3113124dc8..81f9a0e57c08 100644
+--- a/plugins/scaffolder/src/components/ScaffolderUsageExamplesTable/ScaffolderUsageExamplesTable.test.tsx
++++ b/plugins/scaffolder/src/components/ScaffolderUsageExamplesTable/ScaffolderUsageExamplesTable.test.tsx
+@@ -13,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { ScaffolderUsageExample } from '@backstage/plugin-scaffolder-react';
++import { ScaffolderUsageExample } from '@bip-bih/plugin-scaffolder-react';
+ import { renderInTestApp } from '@backstage/test-utils';
+ import { within } from '@testing-library/react';
+ import { ScaffolderUsageExamplesTable } from './ScaffolderUsageExamplesTable';
+diff --git a/plugins/scaffolder/src/components/ScaffolderUsageExamplesTable/ScaffolderUsageExamplesTable.tsx b/plugins/scaffolder/src/components/ScaffolderUsageExamplesTable/ScaffolderUsageExamplesTable.tsx
+index 92c17dfc21d3..8d8e4649adb9 100644
+--- a/plugins/scaffolder/src/components/ScaffolderUsageExamplesTable/ScaffolderUsageExamplesTable.tsx
++++ b/plugins/scaffolder/src/components/ScaffolderUsageExamplesTable/ScaffolderUsageExamplesTable.tsx
+@@ -14,7 +14,7 @@
+  * limitations under the License.
+  */
+ import { CodeSnippet, MarkdownContent } from '@backstage/core-components';
+-import { ScaffolderUsageExample } from '@backstage/plugin-scaffolder-react';
++import { ScaffolderUsageExample } from '@bip-bih/plugin-scaffolder-react';
+ import Box from '@material-ui/core/Box';
+ import Grid from '@material-ui/core/Grid';
+ import { Fragment } from 'react';
+diff --git a/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplateFilters.tsx b/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplateFilters.tsx
+index 05f3043dd1d0..ec6eb654574f 100644
+--- a/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplateFilters.tsx
++++ b/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplateFilters.tsx
+@@ -17,7 +17,7 @@ import { Link, MarkdownContent } from '@backstage/core-components';
+ import {
+   ListTemplatingExtensionsResponse,
+   TemplateFilter,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import Accordion from '@material-ui/core/Accordion';
+ import AccordionDetails from '@material-ui/core/AccordionDetails';
+ import AccordionSummary from '@material-ui/core/AccordionSummary';
+diff --git a/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplateGlobals.tsx b/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplateGlobals.tsx
+index 249e2a581d52..b1962ae3dfae 100644
+--- a/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplateGlobals.tsx
++++ b/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplateGlobals.tsx
+@@ -17,7 +17,7 @@ import { CodeSnippet, Link, MarkdownContent } from '@backstage/core-components';
+ import {
+   ListTemplatingExtensionsResponse,
+   TemplateGlobalFunction,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import Accordion from '@material-ui/core/Accordion';
+ import AccordionDetails from '@material-ui/core/AccordionDetails';
+ import AccordionSummary from '@material-ui/core/AccordionSummary';
+diff --git a/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplatingExtensionsPage.test.tsx b/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplatingExtensionsPage.test.tsx
+index 2c0680b5f810..3b6c65a08177 100644
+--- a/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplatingExtensionsPage.test.tsx
++++ b/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplatingExtensionsPage.test.tsx
+@@ -19,7 +19,7 @@ import {
+   ListTemplatingExtensionsResponse,
+   ScaffolderApi,
+   scaffolderApiRef,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { renderInTestApp, TestApiRegistry } from '@backstage/test-utils';
+ import { fireEvent, within } from '@testing-library/react';
+ import { capitalize } from 'lodash';
+diff --git a/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplatingExtensionsPage.tsx b/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplatingExtensionsPage.tsx
+index fc2b180596df..79e0f79eb45b 100644
+--- a/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplatingExtensionsPage.tsx
++++ b/plugins/scaffolder/src/components/TemplatingExtensionsPage/TemplatingExtensionsPage.tsx
+@@ -37,11 +37,11 @@ import {
+   Page,
+   Progress,
+ } from '@backstage/core-components';
+-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
++import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
+ import {
+   ScaffolderPageContextMenu,
+   ScaffolderPageContextMenuProps,
+-} from '@backstage/plugin-scaffolder-react/alpha';
++} from '@bip-bih/plugin-scaffolder-react/alpha';
+ import Box from '@material-ui/core/Box';
+ import InputAdornment from '@material-ui/core/InputAdornment';
+ import ListItemText from '@material-ui/core/ListItemText';
+diff --git a/plugins/scaffolder/src/components/TemplatingExtensionsPage/navigation.ts b/plugins/scaffolder/src/components/TemplatingExtensionsPage/navigation.ts
+index 7b85e270bc0b..d619adc9af08 100644
+--- a/plugins/scaffolder/src/components/TemplatingExtensionsPage/navigation.ts
++++ b/plugins/scaffolder/src/components/TemplatingExtensionsPage/navigation.ts
+@@ -13,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { ListTemplatingExtensionsResponse } from '@backstage/plugin-scaffolder-react';
++import { ListTemplatingExtensionsResponse } from '@bip-bih/plugin-scaffolder-react';
+ 
+ const kinds = ['filter', 'function', 'value'] as const;
+ 
+diff --git a/plugins/scaffolder/src/components/fields/EntityNamePicker/schema.ts b/plugins/scaffolder/src/components/fields/EntityNamePicker/schema.ts
+index 68c8d5157e59..b2e809e1b70d 100644
+--- a/plugins/scaffolder/src/components/fields/EntityNamePicker/schema.ts
++++ b/plugins/scaffolder/src/components/fields/EntityNamePicker/schema.ts
+@@ -13,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { makeFieldSchema } from '@backstage/plugin-scaffolder-react';
++import { makeFieldSchema } from '@bip-bih/plugin-scaffolder-react';
+ 
+ export const EntityNamePickerFieldSchema = makeFieldSchema({
+   output: z => z.string(),
+diff --git a/plugins/scaffolder/src/components/fields/EntityPicker/EntityPicker.test.tsx b/plugins/scaffolder/src/components/fields/EntityPicker/EntityPicker.test.tsx
+index 97c90b2aa522..8a6512054df8 100644
+--- a/plugins/scaffolder/src/components/fields/EntityPicker/EntityPicker.test.tsx
++++ b/plugins/scaffolder/src/components/fields/EntityPicker/EntityPicker.test.tsx
+@@ -25,7 +25,7 @@ import { fireEvent, screen } from '@testing-library/react';
+ import { PropsWithChildren, ComponentType, ReactNode } from 'react';
+ import { EntityPicker } from './EntityPicker';
+ import { EntityPickerProps } from './schema';
+-import { ScaffolderRJSFFieldProps as FieldProps } from '@backstage/plugin-scaffolder-react';
++import { ScaffolderRJSFFieldProps as FieldProps } from '@bip-bih/plugin-scaffolder-react';
+ import { DefaultEntityPresentationApi } from '@backstage/plugin-catalog';
+ import { catalogApiMock } from '@backstage/plugin-catalog-react/testUtils';
+ import { useTranslationRef } from '@backstage/frontend-plugin-api';
+diff --git a/plugins/scaffolder/src/components/fields/EntityPicker/EntityPicker.tsx b/plugins/scaffolder/src/components/fields/EntityPicker/EntityPicker.tsx
+index d2197d442603..17a70fb93ee0 100644
+--- a/plugins/scaffolder/src/components/fields/EntityPicker/EntityPicker.tsx
++++ b/plugins/scaffolder/src/components/fields/EntityPicker/EntityPicker.tsx
+@@ -45,7 +45,7 @@ import {
+ import { VirtualizedListbox } from '../VirtualizedListbox';
+ import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
+ import { scaffolderTranslationRef } from '../../../translation';
+-import { ScaffolderField } from '@backstage/plugin-scaffolder-react/alpha';
++import { ScaffolderField } from '@bip-bih/plugin-scaffolder-react/alpha';
+ 
+ export { EntityPickerSchema } from './schema';
+ 
+diff --git a/plugins/scaffolder/src/components/fields/EntityPicker/schema.ts b/plugins/scaffolder/src/components/fields/EntityPicker/schema.ts
+index 5102d248b772..a320bc430567 100644
+--- a/plugins/scaffolder/src/components/fields/EntityPicker/schema.ts
++++ b/plugins/scaffolder/src/components/fields/EntityPicker/schema.ts
+@@ -14,7 +14,7 @@
+  * limitations under the License.
+  */
+ import { z as zod } from 'zod';
+-import { makeFieldSchema } from '@backstage/plugin-scaffolder-react';
++import { makeFieldSchema } from '@bip-bih/plugin-scaffolder-react';
+ 
+ export const createEntityQueryFilterExpressionSchema = (z: typeof zod) =>
+   z.record(
+diff --git a/plugins/scaffolder/src/components/fields/EntityTagsPicker/EntityTagsPicker.test.tsx b/plugins/scaffolder/src/components/fields/EntityTagsPicker/EntityTagsPicker.test.tsx
+index 98091f5098e7..a5684b1d5714 100644
+--- a/plugins/scaffolder/src/components/fields/EntityTagsPicker/EntityTagsPicker.test.tsx
++++ b/plugins/scaffolder/src/components/fields/EntityTagsPicker/EntityTagsPicker.test.tsx
+@@ -17,7 +17,7 @@
+ import { Entity } from '@backstage/catalog-model';
+ import { catalogApiRef } from '@backstage/plugin-catalog-react';
+ import { catalogApiMock } from '@backstage/plugin-catalog-react/testUtils';
+-import { ScaffolderRJSFFieldProps as FieldProps } from '@backstage/plugin-scaffolder-react';
++import { ScaffolderRJSFFieldProps as FieldProps } from '@bip-bih/plugin-scaffolder-react';
+ import { renderInTestApp, TestApiProvider } from '@backstage/test-utils';
+ import { ComponentType, PropsWithChildren, ReactNode } from 'react';
+ import { EntityTagsPicker } from './EntityTagsPicker';
+diff --git a/plugins/scaffolder/src/components/fields/EntityTagsPicker/EntityTagsPicker.tsx b/plugins/scaffolder/src/components/fields/EntityTagsPicker/EntityTagsPicker.tsx
+index 7d63526fe4ae..fcaaa5dd9b4e 100644
+--- a/plugins/scaffolder/src/components/fields/EntityTagsPicker/EntityTagsPicker.tsx
++++ b/plugins/scaffolder/src/components/fields/EntityTagsPicker/EntityTagsPicker.tsx
+@@ -25,7 +25,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
+ import { EntityTagsPickerProps } from './schema';
+ import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
+ import { scaffolderTranslationRef } from '../../../translation';
+-import { ScaffolderField } from '@backstage/plugin-scaffolder-react/alpha';
++import { ScaffolderField } from '@bip-bih/plugin-scaffolder-react/alpha';
+ 
+ export { EntityTagsPickerSchema } from './schema';
+ 
+diff --git a/plugins/scaffolder/src/components/fields/EntityTagsPicker/schema.ts b/plugins/scaffolder/src/components/fields/EntityTagsPicker/schema.ts
+index 0162804ce186..9b9dc8a11b7f 100644
+--- a/plugins/scaffolder/src/components/fields/EntityTagsPicker/schema.ts
++++ b/plugins/scaffolder/src/components/fields/EntityTagsPicker/schema.ts
+@@ -13,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { makeFieldSchema } from '@backstage/plugin-scaffolder-react';
++import { makeFieldSchema } from '@bip-bih/plugin-scaffolder-react';
+ 
+ /**
+  * @public
+diff --git a/plugins/scaffolder/src/components/fields/MultiEntityPicker/MultiEntityPicker.test.tsx b/plugins/scaffolder/src/components/fields/MultiEntityPicker/MultiEntityPicker.test.tsx
+index fc824f20f9d8..c9ffb62bad37 100644
+--- a/plugins/scaffolder/src/components/fields/MultiEntityPicker/MultiEntityPicker.test.tsx
++++ b/plugins/scaffolder/src/components/fields/MultiEntityPicker/MultiEntityPicker.test.tsx
+@@ -27,7 +27,7 @@ import { userEvent } from '@testing-library/user-event';
+ import { PropsWithChildren, ComponentType, ReactNode } from 'react';
+ import { MultiEntityPicker } from './MultiEntityPicker';
+ import { MultiEntityPickerProps } from './schema';
+-import { ScaffolderRJSFFieldProps as FieldProps } from '@backstage/plugin-scaffolder-react';
++import { ScaffolderRJSFFieldProps as FieldProps } from '@bip-bih/plugin-scaffolder-react';
+ import { DefaultEntityPresentationApi } from '@backstage/plugin-catalog';
+ import { catalogApiMock } from '@backstage/plugin-catalog-react/testUtils';
+ import { useTranslationRef } from '@backstage/frontend-plugin-api';
+diff --git a/plugins/scaffolder/src/components/fields/MultiEntityPicker/MultiEntityPicker.tsx b/plugins/scaffolder/src/components/fields/MultiEntityPicker/MultiEntityPicker.tsx
+index 39130c4b78e6..30b2767cb92c 100644
+--- a/plugins/scaffolder/src/components/fields/MultiEntityPicker/MultiEntityPicker.tsx
++++ b/plugins/scaffolder/src/components/fields/MultiEntityPicker/MultiEntityPicker.tsx
+@@ -44,7 +44,7 @@ import {
+   MultiEntityPickerFilterQuery,
+ } from './schema';
+ import { VirtualizedListbox } from '../VirtualizedListbox';
+-import { ScaffolderField } from '@backstage/plugin-scaffolder-react/alpha';
++import { ScaffolderField } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import { useTranslationRef } from '@backstage/frontend-plugin-api';
+ import { scaffolderTranslationRef } from '../../../translation';
+ 
+diff --git a/plugins/scaffolder/src/components/fields/MultiEntityPicker/schema.ts b/plugins/scaffolder/src/components/fields/MultiEntityPicker/schema.ts
+index 667b4638b856..0c30c0bc47fb 100644
+--- a/plugins/scaffolder/src/components/fields/MultiEntityPicker/schema.ts
++++ b/plugins/scaffolder/src/components/fields/MultiEntityPicker/schema.ts
+@@ -14,7 +14,7 @@
+  * limitations under the License.
+  */
+ import { z as zod } from 'zod';
+-import { makeFieldSchema } from '@backstage/plugin-scaffolder-react';
++import { makeFieldSchema } from '@bip-bih/plugin-scaffolder-react';
+ 
+ export const entityQueryFilterExpressionSchema = zod.record(
+   zod
+diff --git a/plugins/scaffolder/src/components/fields/MyGroupsPicker/MyGroupsPicker.test.tsx b/plugins/scaffolder/src/components/fields/MyGroupsPicker/MyGroupsPicker.test.tsx
+index dcba013093dc..ec54e08b5701 100644
+--- a/plugins/scaffolder/src/components/fields/MyGroupsPicker/MyGroupsPicker.test.tsx
++++ b/plugins/scaffolder/src/components/fields/MyGroupsPicker/MyGroupsPicker.test.tsx
+@@ -33,7 +33,7 @@ import {
+   identityApiRef,
+ } from '@backstage/core-plugin-api';
+ import userEvent from '@testing-library/user-event';
+-import { ScaffolderRJSFFieldProps as FieldProps } from '@backstage/plugin-scaffolder-react';
++import { ScaffolderRJSFFieldProps as FieldProps } from '@bip-bih/plugin-scaffolder-react';
+ import { DefaultEntityPresentationApi } from '@backstage/plugin-catalog';
+ import { ComponentType, PropsWithChildren, ReactNode } from 'react';
+ import { useTranslationRef } from '@backstage/frontend-plugin-api';
+diff --git a/plugins/scaffolder/src/components/fields/MyGroupsPicker/MyGroupsPicker.tsx b/plugins/scaffolder/src/components/fields/MyGroupsPicker/MyGroupsPicker.tsx
+index e92057c713c1..b46d799aed3e 100644
+--- a/plugins/scaffolder/src/components/fields/MyGroupsPicker/MyGroupsPicker.tsx
++++ b/plugins/scaffolder/src/components/fields/MyGroupsPicker/MyGroupsPicker.tsx
+@@ -37,7 +37,7 @@ import { Entity, stringifyEntityRef } from '@backstage/catalog-model';
+ import { VirtualizedListbox } from '../VirtualizedListbox';
+ import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
+ import { scaffolderTranslationRef } from '../../../translation';
+-import { ScaffolderField } from '@backstage/plugin-scaffolder-react/alpha';
++import { ScaffolderField } from '@bip-bih/plugin-scaffolder-react/alpha';
+ 
+ export { MyGroupsPickerSchema };
+ 
+diff --git a/plugins/scaffolder/src/components/fields/MyGroupsPicker/schema.ts b/plugins/scaffolder/src/components/fields/MyGroupsPicker/schema.ts
+index 41e85793289e..290623fc08b2 100644
+--- a/plugins/scaffolder/src/components/fields/MyGroupsPicker/schema.ts
++++ b/plugins/scaffolder/src/components/fields/MyGroupsPicker/schema.ts
+@@ -14,7 +14,7 @@
+  * limitations under the License.
+  */
+ 
+-import { makeFieldSchema } from '@backstage/plugin-scaffolder-react';
++import { makeFieldSchema } from '@bip-bih/plugin-scaffolder-react';
+ 
+ /**
+  * Field schema for the MyGroupsPicker.
+diff --git a/plugins/scaffolder/src/components/fields/OwnedEntityPicker/OwnedEntityPicker.tsx b/plugins/scaffolder/src/components/fields/OwnedEntityPicker/OwnedEntityPicker.tsx
+index 2e93c8b71d58..ba3d92740151 100644
+--- a/plugins/scaffolder/src/components/fields/OwnedEntityPicker/OwnedEntityPicker.tsx
++++ b/plugins/scaffolder/src/components/fields/OwnedEntityPicker/OwnedEntityPicker.tsx
+@@ -24,7 +24,7 @@ import { OwnedEntityPickerProps } from './schema';
+ import { EntityPickerProps } from '../EntityPicker/schema';
+ import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
+ import { scaffolderTranslationRef } from '../../../translation';
+-import { ScaffolderField } from '@backstage/plugin-scaffolder-react/alpha';
++import { ScaffolderField } from '@bip-bih/plugin-scaffolder-react/alpha';
+ 
+ export { OwnedEntityPickerSchema } from './schema';
+ 
+diff --git a/plugins/scaffolder/src/components/fields/OwnerPicker/OwnerPicker.test.tsx b/plugins/scaffolder/src/components/fields/OwnerPicker/OwnerPicker.test.tsx
+index 3abe1c9353f1..a8cfc0eea056 100644
+--- a/plugins/scaffolder/src/components/fields/OwnerPicker/OwnerPicker.test.tsx
++++ b/plugins/scaffolder/src/components/fields/OwnerPicker/OwnerPicker.test.tsx
+@@ -22,7 +22,7 @@ import {
+ } from '@backstage/plugin-catalog-react';
+ import { catalogApiMock } from '@backstage/plugin-catalog-react/testUtils';
+ import { renderInTestApp, TestApiProvider } from '@backstage/test-utils';
+-import { ScaffolderRJSFFieldProps as FieldProps } from '@backstage/plugin-scaffolder-react';
++import { ScaffolderRJSFFieldProps as FieldProps } from '@bip-bih/plugin-scaffolder-react';
+ import { PropsWithChildren, ComponentType, ReactNode } from 'react';
+ import { OwnerPicker } from './OwnerPicker';
+ import { DefaultEntityPresentationApi } from '@backstage/plugin-catalog';
+diff --git a/plugins/scaffolder/src/components/fields/OwnerPicker/schema.ts b/plugins/scaffolder/src/components/fields/OwnerPicker/schema.ts
+index 5a5b2e9cf65e..edfebc2ca3c4 100644
+--- a/plugins/scaffolder/src/components/fields/OwnerPicker/schema.ts
++++ b/plugins/scaffolder/src/components/fields/OwnerPicker/schema.ts
+@@ -13,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { makeFieldSchema } from '@backstage/plugin-scaffolder-react';
++import { makeFieldSchema } from '@bip-bih/plugin-scaffolder-react';
+ import { createEntityQueryFilterExpressionSchema } from '../EntityPicker/schema';
+ 
+ /**
+diff --git a/plugins/scaffolder/src/components/fields/RepoBranchPicker/BitbucketRepoBranchPicker.test.tsx b/plugins/scaffolder/src/components/fields/RepoBranchPicker/BitbucketRepoBranchPicker.test.tsx
+index 2f2f186f6f52..ccaa41144043 100644
+--- a/plugins/scaffolder/src/components/fields/RepoBranchPicker/BitbucketRepoBranchPicker.test.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoBranchPicker/BitbucketRepoBranchPicker.test.tsx
+@@ -17,7 +17,7 @@
+ import {
+   ScaffolderApi,
+   scaffolderApiRef,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { BitbucketRepoBranchPicker } from './BitbucketRepoBranchPicker';
+ import {
+   act,
+diff --git a/plugins/scaffolder/src/components/fields/RepoBranchPicker/BitbucketRepoBranchPicker.tsx b/plugins/scaffolder/src/components/fields/RepoBranchPicker/BitbucketRepoBranchPicker.tsx
+index f2474e877491..6d443ad102b5 100644
+--- a/plugins/scaffolder/src/components/fields/RepoBranchPicker/BitbucketRepoBranchPicker.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoBranchPicker/BitbucketRepoBranchPicker.tsx
+@@ -15,7 +15,7 @@
+  */
+ 
+ import { useApi } from '@backstage/core-plugin-api';
+-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
++import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
+ import FormControl from '@material-ui/core/FormControl';
+ import FormHelperText from '@material-ui/core/FormHelperText';
+ import TextField from '@material-ui/core/TextField';
+diff --git a/plugins/scaffolder/src/components/fields/RepoBranchPicker/GitHubRepoBranchPicker.test.tsx b/plugins/scaffolder/src/components/fields/RepoBranchPicker/GitHubRepoBranchPicker.test.tsx
+index 2ad5ed2e4334..d8ead313861a 100644
+--- a/plugins/scaffolder/src/components/fields/RepoBranchPicker/GitHubRepoBranchPicker.test.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoBranchPicker/GitHubRepoBranchPicker.test.tsx
+@@ -17,7 +17,7 @@
+ import {
+   ScaffolderApi,
+   scaffolderApiRef,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { GitHubRepoBranchPicker } from './GitHubRepoBranchPicker';
+ import {
+   act,
+diff --git a/plugins/scaffolder/src/components/fields/RepoBranchPicker/GitHubRepoBranchPicker.tsx b/plugins/scaffolder/src/components/fields/RepoBranchPicker/GitHubRepoBranchPicker.tsx
+index ff8733905df4..bae18d7ae07e 100644
+--- a/plugins/scaffolder/src/components/fields/RepoBranchPicker/GitHubRepoBranchPicker.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoBranchPicker/GitHubRepoBranchPicker.tsx
+@@ -15,7 +15,7 @@
+  */
+ 
+ import { useApi } from '@backstage/core-plugin-api';
+-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
++import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
+ import FormControl from '@material-ui/core/FormControl';
+ import FormHelperText from '@material-ui/core/FormHelperText';
+ import TextField from '@material-ui/core/TextField';
+diff --git a/plugins/scaffolder/src/components/fields/RepoBranchPicker/RepoBranchPicker.test.tsx b/plugins/scaffolder/src/components/fields/RepoBranchPicker/RepoBranchPicker.test.tsx
+index 2d479d346a88..ffa500ff01e7 100644
+--- a/plugins/scaffolder/src/components/fields/RepoBranchPicker/RepoBranchPicker.test.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoBranchPicker/RepoBranchPicker.test.tsx
+@@ -14,7 +14,7 @@
+  * limitations under the License.
+  */
+ 
+-import { Form } from '@backstage/plugin-scaffolder-react/alpha';
++import { Form } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import validator from '@rjsf/validator-ajv8';
+ import { renderInTestApp, TestApiProvider } from '@backstage/test-utils';
+ import {
+@@ -30,7 +30,7 @@ import {
+   useTemplateSecrets,
+   ScaffolderRJSFField,
+   ScaffolderRJSFFormProps as FormProps,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { act, fireEvent, screen } from '@testing-library/react';
+ import { RepoBranchPicker } from './RepoBranchPicker';
+ import { ComponentType, PropsWithChildren, ReactNode } from 'react';
+diff --git a/plugins/scaffolder/src/components/fields/RepoBranchPicker/RepoBranchPicker.tsx b/plugins/scaffolder/src/components/fields/RepoBranchPicker/RepoBranchPicker.tsx
+index 34f968d0de9b..2cda4294e2e7 100644
+--- a/plugins/scaffolder/src/components/fields/RepoBranchPicker/RepoBranchPicker.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoBranchPicker/RepoBranchPicker.tsx
+@@ -21,7 +21,7 @@ import {
+ } from '@backstage/integration-react';
+ import { useEffect, useState, useCallback } from 'react';
+ import useDebounce from 'react-use/esm/useDebounce';
+-import { useTemplateSecrets } from '@backstage/plugin-scaffolder-react';
++import { useTemplateSecrets } from '@bip-bih/plugin-scaffolder-react';
+ import Box from '@material-ui/core/Box';
+ import Divider from '@material-ui/core/Divider';
+ import Typography from '@material-ui/core/Typography';
+diff --git a/plugins/scaffolder/src/components/fields/RepoBranchPicker/schema.ts b/plugins/scaffolder/src/components/fields/RepoBranchPicker/schema.ts
+index 4e76f4d9881c..4710acb650b6 100644
+--- a/plugins/scaffolder/src/components/fields/RepoBranchPicker/schema.ts
++++ b/plugins/scaffolder/src/components/fields/RepoBranchPicker/schema.ts
+@@ -13,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { makeFieldSchema } from '@backstage/plugin-scaffolder-react';
++import { makeFieldSchema } from '@bip-bih/plugin-scaffolder-react';
+ 
+ export const RepoBranchPickerFieldSchema = makeFieldSchema({
+   output: z => z.string(),
+diff --git a/plugins/scaffolder/src/components/fields/RepoUrlPicker/BitbucketRepoPicker.test.tsx b/plugins/scaffolder/src/components/fields/RepoUrlPicker/BitbucketRepoPicker.test.tsx
+index c42a4404b990..bce0e9839d15 100644
+--- a/plugins/scaffolder/src/components/fields/RepoUrlPicker/BitbucketRepoPicker.test.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoUrlPicker/BitbucketRepoPicker.test.tsx
+@@ -17,7 +17,7 @@
+ import {
+   ScaffolderApi,
+   scaffolderApiRef,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { renderInTestApp, TestApiProvider } from '@backstage/test-utils';
+ import { fireEvent, waitFor } from '@testing-library/react';
+ import userEvent from '@testing-library/user-event';
+diff --git a/plugins/scaffolder/src/components/fields/RepoUrlPicker/BitbucketRepoPicker.tsx b/plugins/scaffolder/src/components/fields/RepoUrlPicker/BitbucketRepoPicker.tsx
+index f5861d4946a2..327097fb3aa9 100644
+--- a/plugins/scaffolder/src/components/fields/RepoUrlPicker/BitbucketRepoPicker.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoUrlPicker/BitbucketRepoPicker.tsx
+@@ -16,7 +16,7 @@
+ import { Select, SelectItem } from '@backstage/core-components';
+ import { useApi } from '@backstage/core-plugin-api';
+ import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
+-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
++import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
+ import FormControl from '@material-ui/core/FormControl';
+ import FormHelperText from '@material-ui/core/FormHelperText';
+ import TextField from '@material-ui/core/TextField';
+diff --git a/plugins/scaffolder/src/components/fields/RepoUrlPicker/GithubRepoPicker.test.tsx b/plugins/scaffolder/src/components/fields/RepoUrlPicker/GithubRepoPicker.test.tsx
+index b990845c86c7..b6936d53fbe1 100644
+--- a/plugins/scaffolder/src/components/fields/RepoUrlPicker/GithubRepoPicker.test.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoUrlPicker/GithubRepoPicker.test.tsx
+@@ -21,7 +21,7 @@ import { renderInTestApp, TestApiProvider } from '@backstage/test-utils';
+ import {
+   ScaffolderApi,
+   scaffolderApiRef,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import userEvent from '@testing-library/user-event';
+ 
+ describe('GithubRepoPicker', () => {
+diff --git a/plugins/scaffolder/src/components/fields/RepoUrlPicker/GithubRepoPicker.tsx b/plugins/scaffolder/src/components/fields/RepoUrlPicker/GithubRepoPicker.tsx
+index 2260b89ba214..801757e95fb6 100644
+--- a/plugins/scaffolder/src/components/fields/RepoUrlPicker/GithubRepoPicker.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoUrlPicker/GithubRepoPicker.tsx
+@@ -22,7 +22,7 @@ import { BaseRepoUrlPickerProps } from './types';
+ import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
+ import { scaffolderTranslationRef } from '../../../translation';
+ import { useApi } from '@backstage/core-plugin-api';
+-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
++import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
+ import useDebounce from 'react-use/esm/useDebounce';
+ import Autocomplete from '@material-ui/lab/Autocomplete';
+ import uniq from 'lodash/uniq';
+diff --git a/plugins/scaffolder/src/components/fields/RepoUrlPicker/GitlabRepoPicker.test.tsx b/plugins/scaffolder/src/components/fields/RepoUrlPicker/GitlabRepoPicker.test.tsx
+index 0e461d745a14..1199334a43ff 100644
+--- a/plugins/scaffolder/src/components/fields/RepoUrlPicker/GitlabRepoPicker.test.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoUrlPicker/GitlabRepoPicker.test.tsx
+@@ -17,7 +17,7 @@
+ import {
+   ScaffolderApi,
+   scaffolderApiRef,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { renderInTestApp, TestApiProvider } from '@backstage/test-utils';
+ import { fireEvent } from '@testing-library/react';
+ import { GitlabRepoPicker } from './GitlabRepoPicker';
+diff --git a/plugins/scaffolder/src/components/fields/RepoUrlPicker/GitlabRepoPicker.tsx b/plugins/scaffolder/src/components/fields/RepoUrlPicker/GitlabRepoPicker.tsx
+index 0e869b44bf3f..96a04e510e1d 100644
+--- a/plugins/scaffolder/src/components/fields/RepoUrlPicker/GitlabRepoPicker.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoUrlPicker/GitlabRepoPicker.tsx
+@@ -16,7 +16,7 @@
+ import { Select, SelectItem } from '@backstage/core-components';
+ import { useApi } from '@backstage/core-plugin-api';
+ import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
+-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
++import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
+ import FormControl from '@material-ui/core/FormControl';
+ import FormHelperText from '@material-ui/core/FormHelperText';
+ import TextField from '@material-ui/core/TextField';
+diff --git a/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPicker.test.tsx b/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPicker.test.tsx
+index f23d8356acbb..a8d5d1ea700d 100644
+--- a/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPicker.test.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPicker.test.tsx
+@@ -14,7 +14,7 @@
+  * limitations under the License.
+  */
+ import { RepoUrlPicker } from './RepoUrlPicker';
+-import { Form } from '@backstage/plugin-scaffolder-react/alpha';
++import { Form } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import validator from '@rjsf/validator-ajv8';
+ import { renderInTestApp, TestApiProvider } from '@backstage/test-utils';
+ import {
+@@ -31,7 +31,7 @@ import {
+   useTemplateSecrets,
+   ScaffolderRJSFField,
+   ScaffolderRJSFFormProps as FormProps,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { act, fireEvent } from '@testing-library/react';
+ import userEvent from '@testing-library/user-event';
+ import { ComponentType, PropsWithChildren, ReactNode } from 'react';
+diff --git a/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPicker.tsx b/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPicker.tsx
+index 8f1e3a67b7d6..abe7ba70b55b 100644
+--- a/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPicker.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPicker.tsx
+@@ -18,7 +18,7 @@ import {
+   scmAuthApiRef,
+   scmIntegrationsApiRef,
+ } from '@backstage/integration-react';
+-import { useTemplateSecrets } from '@backstage/plugin-scaffolder-react';
++import { useTemplateSecrets } from '@bip-bih/plugin-scaffolder-react';
+ import Box from '@material-ui/core/Box';
+ import Divider from '@material-ui/core/Divider';
+ import Typography from '@material-ui/core/Typography';
+diff --git a/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPickerHost.test.tsx b/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPickerHost.test.tsx
+index cbafb368a019..eee2ea3d6f63 100644
+--- a/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPickerHost.test.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPickerHost.test.tsx
+@@ -15,7 +15,7 @@
+  */
+ import { RepoUrlPickerHost } from './RepoUrlPickerHost';
+ import { renderInTestApp, TestApiProvider } from '@backstage/test-utils';
+-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
++import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
+ import { fireEvent, within } from '@testing-library/react';
+ 
+ describe('RepoUrlPickerHostField', () => {
+diff --git a/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPickerHost.tsx b/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPickerHost.tsx
+index 535317cdfa17..0d4049b3ab15 100644
+--- a/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPickerHost.tsx
++++ b/plugins/scaffolder/src/components/fields/RepoUrlPicker/RepoUrlPickerHost.tsx
+@@ -18,7 +18,7 @@ import { Progress, Select, SelectItem } from '@backstage/core-components';
+ import FormControl from '@material-ui/core/FormControl';
+ import FormHelperText from '@material-ui/core/FormHelperText';
+ import { useApi } from '@backstage/core-plugin-api';
+-import { scaffolderApiRef } from '@backstage/plugin-scaffolder-react';
++import { scaffolderApiRef } from '@bip-bih/plugin-scaffolder-react';
+ import useAsync from 'react-use/esm/useAsync';
+ import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
+ import { scaffolderTranslationRef } from '../../../translation';
+diff --git a/plugins/scaffolder/src/components/fields/RepoUrlPicker/schema.ts b/plugins/scaffolder/src/components/fields/RepoUrlPicker/schema.ts
+index 1fec9cc8f7bc..47211c2ac9e7 100644
+--- a/plugins/scaffolder/src/components/fields/RepoUrlPicker/schema.ts
++++ b/plugins/scaffolder/src/components/fields/RepoUrlPicker/schema.ts
+@@ -14,7 +14,7 @@
+  * limitations under the License.
+  */
+ 
+-import { makeFieldSchema } from '@backstage/plugin-scaffolder-react';
++import { makeFieldSchema } from '@bip-bih/plugin-scaffolder-react';
+ 
+ /**
+  * @public
+diff --git a/plugins/scaffolder/src/components/fields/SecretInput/SecretInput.test.tsx b/plugins/scaffolder/src/components/fields/SecretInput/SecretInput.test.tsx
+index d4ddaea53722..ffb86b352d61 100644
+--- a/plugins/scaffolder/src/components/fields/SecretInput/SecretInput.test.tsx
++++ b/plugins/scaffolder/src/components/fields/SecretInput/SecretInput.test.tsx
+@@ -16,11 +16,11 @@
+ import {
+   SecretsContextProvider,
+   useTemplateSecrets,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { SecretInput } from './SecretInput';
+ import { renderInTestApp } from '@backstage/test-utils';
+-import { ScaffolderRJSFFormProps as FormProps } from '@backstage/plugin-scaffolder-react';
+-import { Form } from '@backstage/plugin-scaffolder-react/alpha';
++import { ScaffolderRJSFFormProps as FormProps } from '@bip-bih/plugin-scaffolder-react';
++import { Form } from '@bip-bih/plugin-scaffolder-react/alpha';
+ import validator from '@rjsf/validator-ajv8';
+ import { fireEvent, act, waitFor } from '@testing-library/react';
+ 
+diff --git a/plugins/scaffolder/src/components/fields/SecretInput/SecretInput.tsx b/plugins/scaffolder/src/components/fields/SecretInput/SecretInput.tsx
+index b21356d6a8bc..c4869876116a 100644
+--- a/plugins/scaffolder/src/components/fields/SecretInput/SecretInput.tsx
++++ b/plugins/scaffolder/src/components/fields/SecretInput/SecretInput.tsx
+@@ -13,11 +13,11 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import { ScaffolderRJSFFieldProps } from '@backstage/plugin-scaffolder-react';
++import { ScaffolderRJSFFieldProps } from '@bip-bih/plugin-scaffolder-react';
+ import {
+   ScaffolderField,
+   SecretWidget,
+-} from '@backstage/plugin-scaffolder-react/alpha';
++} from '@bip-bih/plugin-scaffolder-react/alpha';
+ 
+ export const SecretInput = (props: ScaffolderRJSFFieldProps) => {
+   const {
+diff --git a/plugins/scaffolder/src/components/fields/utils.ts b/plugins/scaffolder/src/components/fields/utils.ts
+index 2fa6aab1b346..69b2b9607f26 100644
+--- a/plugins/scaffolder/src/components/fields/utils.ts
++++ b/plugins/scaffolder/src/components/fields/utils.ts
+@@ -16,11 +16,11 @@
+ import { JSONSchema7 } from 'json-schema';
+ import { z } from 'zod';
+ import zodToJsonSchema from 'zod-to-json-schema';
+-import { FieldSchema as FieldSchemaType } from '@backstage/plugin-scaffolder-react';
++import { FieldSchema as FieldSchemaType } from '@bip-bih/plugin-scaffolder-react';
+ 
+ /**
+  * @public
+- * @deprecated - import from {@link @backstage/plugin-scaffolder-react#FieldSchema} instead
++ * @deprecated - import from {@link @bip-bih/plugin-scaffolder-react#FieldSchema} instead
+  */
+ export interface FieldSchema<T, P> extends FieldSchemaType<T, P> {}
+ 
+diff --git a/plugins/scaffolder/src/components/index.ts b/plugins/scaffolder/src/components/index.ts
+index abafd42ed26b..8d9f1e52bfa8 100644
+--- a/plugins/scaffolder/src/components/index.ts
++++ b/plugins/scaffolder/src/components/index.ts
+@@ -47,4 +47,4 @@ export { TemplateTypePicker } from './TemplateTypePicker';
+ export type { RouterProps } from './Router';
+ export { OngoingTask as TaskPage } from './OngoingTask';
+ 
+-export type { ReviewStepProps } from '@backstage/plugin-scaffolder-react';
++export type { ReviewStepProps } from '@bip-bih/plugin-scaffolder-react';
+diff --git a/plugins/scaffolder/src/deprecated.ts b/plugins/scaffolder/src/deprecated.ts
+index f3230ab28774..a2483553e4b3 100644
+--- a/plugins/scaffolder/src/deprecated.ts
++++ b/plugins/scaffolder/src/deprecated.ts
+@@ -53,7 +53,7 @@ import {
+   type FieldExtensionOptions as FieldExtensionOptionsTemp,
+   type FieldExtensionComponentProps as FieldExtensionComponentPropsTemp,
+   type FieldExtensionComponent as FieldExtensionComponentTemp,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ 
+ import { rootRouteRef as rootRouteRefTemp } from './routes';
+ 
+@@ -64,23 +64,23 @@ import { rootRouteRef as rootRouteRefTemp } from './routes';
+ export const rootRouteRef = rootRouteRefTemp;
+ /**
+  * @public
+- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#createScaffolderFieldExtension} instead as this has now been moved.
++ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#createScaffolderFieldExtension} instead as this has now been moved.
+  */
+ export const createScaffolderFieldExtension =
+   createScaffolderFieldExtensionTemp;
+ /**
+  * @public
+- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#ScaffolderFieldExtensions} instead as this has now been moved.
++ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#ScaffolderFieldExtensions} instead as this has now been moved.
+  */
+ export const ScaffolderFieldExtensions = ScaffolderFieldExtensionsTemp;
+ /**
+  * @public
+- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#useTemplateSecrets} instead as this has now been moved.
++ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#useTemplateSecrets} instead as this has now been moved.
+  */
+ export const useTemplateSecrets = useTemplateSecretsTemp;
+ /**
+  * @public
+- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#scaffolderApiRef} instead as this has now been moved.
++ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#scaffolderApiRef} instead as this has now been moved.
+  */
+ export const scaffolderApiRef = scaffolderApiRefTemp;
+ /**
+@@ -90,7 +90,7 @@ export const scaffolderApiRef = scaffolderApiRefTemp;
+ export type ScaffolderApi = ScaffolderApiTemp;
+ /**
+  * @public
+- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#ScaffolderUseTemplateSecrets} instead as this has now been moved.
++ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#ScaffolderUseTemplateSecrets} instead as this has now been moved.
+  */
+ export type ScaffolderUseTemplateSecrets = ScaffolderUseTemplateSecretsTemp;
+ /**
+@@ -100,23 +100,23 @@ export type ScaffolderUseTemplateSecrets = ScaffolderUseTemplateSecretsTemp;
+ export type TemplateParameterSchema = TemplateParameterSchemaTemp;
+ /**
+  * @public
+- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#CustomFieldExtensionSchema} instead as this has now been moved.
++ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#CustomFieldExtensionSchema} instead as this has now been moved.
+  */
+ export type CustomFieldExtensionSchema = CustomFieldExtensionSchemaTemp;
+ /**
+  * @public
+- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#CustomFieldValidator} instead as this has now been moved.
++ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#CustomFieldValidator} instead as this has now been moved.
+  */
+ export type CustomFieldValidator<TReturnFieldData> =
+   CustomFieldValidatorTemp<TReturnFieldData>;
+ /**
+  * @public
+- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#FieldExtensionOptions} instead as this has now been moved.
++ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#FieldExtensionOptions} instead as this has now been moved.
+  */
+ export type FieldExtensionOptions = FieldExtensionOptionsTemp;
+ /**
+  * @public
+- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#FieldExtensionComponentProps} instead as this has now been moved.
++ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#FieldExtensionComponentProps} instead as this has now been moved.
+  */
+ export type FieldExtensionComponentProps<
+   TFieldReturnValue,
+@@ -124,7 +124,7 @@ export type FieldExtensionComponentProps<
+ > = FieldExtensionComponentPropsTemp<TFieldReturnValue, TUiOptions>;
+ /**
+  * @public
+- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#FieldExtensionComponent} instead as this has now been moved.
++ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#FieldExtensionComponent} instead as this has now been moved.
+  */
+ export type FieldExtensionComponent<_TReturnValue, _TInputProps> =
+   FieldExtensionComponentTemp<_TReturnValue, _TInputProps>;
+@@ -197,22 +197,22 @@ export type ScaffolderTaskOutput = ScaffolderTaskOutputTemp;
+ export type ScaffolderTaskStatus = ScaffolderTaskStatusTemp;
+ /**
+  * @public
+- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#createScaffolderLayout} instead as this has now been moved.
++ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#createScaffolderLayout} instead as this has now been moved.
+  */
+ export const createScaffolderLayout = createScaffolderLayoutTemp;
+ /**
+  * @public
+- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#ScaffolderLayouts} instead as this has now been moved.
++ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#ScaffolderLayouts} instead as this has now been moved.
+  */
+ export const ScaffolderLayouts = ScaffolderLayoutsTemp;
+ /**
+  * @public
+- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#LayoutTemplate} instead as this has now been moved.
++ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#LayoutTemplate} instead as this has now been moved.
+  */
+ export type LayoutTemplate = LayoutTemplateTemp;
+ /**
+  * @public
+- * @deprecated use import from {@link @backstage/plugin-scaffolder-react#LayoutOptions} instead as this has now been moved.
++ * @deprecated use import from {@link @bip-bih/plugin-scaffolder-react#LayoutOptions} instead as this has now been moved.
+  */
+ export type LayoutOptions = LayoutOptionsTemp;
+ 
+diff --git a/plugins/scaffolder/src/plugin.tsx b/plugins/scaffolder/src/plugin.tsx
+index cda4ee461ce2..5db866feec83 100644
+--- a/plugins/scaffolder/src/plugin.tsx
++++ b/plugins/scaffolder/src/plugin.tsx
+@@ -18,7 +18,7 @@ import { scmIntegrationsApiRef } from '@backstage/integration-react';
+ import {
+   createScaffolderFieldExtension,
+   scaffolderApiRef,
+-} from '@backstage/plugin-scaffolder-react';
++} from '@bip-bih/plugin-scaffolder-react';
+ import { ScaffolderClient } from './api';
+ import {
+   EntityPicker,
+@@ -81,7 +81,7 @@ import { RepoBranchPicker } from './components/fields/RepoBranchPicker/RepoBranc
+ import { RepoBranchPickerSchema } from './components/fields/RepoBranchPicker/schema';
+ import { formDecoratorsApiRef } from './alpha/api/ref';
+ import { DefaultScaffolderFormDecoratorsApi } from './alpha/api/FormDecoratorsApi';
+-import { formFieldsApiRef } from '@backstage/plugin-scaffolder-react/alpha';
++import { formFieldsApiRef } from '@bip-bih/plugin-scaffolder-react/alpha';
+ 
+ /**
+  * The main plugin export for the scaffolder.
+-- 
+2.45.2
+

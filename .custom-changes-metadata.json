@@ -1,0 +1,161 @@
+{
+  "formatVersion": "1.0",
+  "sourceVersion": "1.44.2",
+  "description": "Metadata for custom changes to Backstage scaffolder plugins",
+  "generatedDate": "2026-04-01",
+  "changes": [
+    {
+      "id": "tasksteps-accordion-wrapper",
+      "title": "TaskSteps Accordion Wrapper",
+      "description": "Wrap MuiStepper in Material-UI Accordion component to provide collapsible task steps UI",
+      "type": "ui-enhancement",
+      "files": [
+        "plugins/scaffolder-react/src/next/components/TaskSteps/TaskSteps.tsx"
+      ],
+      "commitHash": "abec60a83d3c",
+      "author": "eliot-pitman-bah",
+      "date": "2026-01-14",
+      "criticalityIfDropped": "medium",
+      "buisnessValue": "Improves UX by making task steps collapsible",
+      "upstreamCompatibility": "medium",
+      "notes": "Changes to TaskSteps may affect stepper behavior. Test accordion state management carefully on upgrades.",
+      "testCases": [
+        "Accordion expands/collapses correctly",
+        "Task steps display properly in expanded state",
+        "Stepper click handlers still work"
+      ]
+    },
+    {
+      "id": "form-context-provider",
+      "title": "FormContextProvider - New Feature",
+      "description": "Add React Context for managing scaffolder form data across components. Enables cross-component form state sharing.",
+      "type": "new-feature",
+      "files": [
+        "plugins/scaffolder-react/src/formContext/FormContext.tsx",
+        "plugins/scaffolder-react/src/formContext/index.ts",
+        "plugins/scaffolder-react/src/index.ts"
+      ],
+      "commitHash": "9488a4c4f454",
+      "author": "wbaileydevva",
+      "date": "2026-01-29",
+      "criticalityIfDropped": "critical",
+      "businessValue": "Core functionality for form state management - used by custom Stepper",
+      "upstreamCompatibility": "high",
+      "notes": "This is a new addition not present in upstream. Safe to carry forward as custom feature. No conflicts expected.",
+      "dependencies": ["@backstage/types (JsonObject)"],
+      "testCases": [
+        "FormContextProvider wraps children correctly",
+        "useTemplateFormData hook returns form data",
+        "setFormData updates context state",
+        "Hook throws error when used outside provider"
+      ]
+    },
+    {
+      "id": "namespace-rebranding-bip-bih",
+      "title": "Package Namespace Rebranding to @bip-bih",
+      "description": "Rename plugin packages from @backstage/plugin-scaffolder* to @bip-bih/plugin-scaffolder* throughout codebase",
+      "type": "namespace-rebranding",
+      "files": [
+        "plugins/scaffolder/package.json",
+        "plugins/scaffolder/catalog-info.yaml",
+        "plugins/scaffolder/src/alpha/api/types.ts",
+        "plugins/scaffolder/src/alpha/api/FormDecoratorsApi.ts",
+        "plugins/scaffolder/src/components/Router/Router.tsx",
+        "plugins/scaffolder-react/package.json",
+        "plugins/scaffolder-react/catalog-info.yaml",
+        "plugins/scaffolder-react/src/index.ts",
+        "plugins/scaffolder-react/src/next/blueprints/types.ts",
+        "plugins/scaffolder-react/src/next/components/Form/Form.tsx",
+        "plugins/scaffolder-react/src/next/components/TaskSteps/TaskSteps.tsx",
+        "plugins/scaffolder-react/src/next/components/SecretWidget/SecretWidget.tsx",
+        "plugins/scaffolder-react/src/next/components/Stepper/Stepper.tsx",
+        "plugins/scaffolder-react/src/next/components/TemplateGroups/TemplateGroups.tsx",
+        "plugins/scaffolder-react/src/next/components/TemplateOutputs/DefaultTemplateOutputs.tsx",
+        "plugins/scaffolder-react/src/next/components/Workflow/Workflow.tsx",
+        "plugins/scaffolder-react/src/next/hooks/useFilteredSchemaProperties.ts",
+        "plugins/scaffolder-react/src/next/hooks/useTemplateParameterSchema.ts",
+        "plugins/scaffolder-react/src/next/hooks/useTemplateSchema.ts"
+      ],
+      "commitHashes": ["76b4daa30bef", "0f6ab8a81e3c"],
+      "authors": ["eliot-pitman-bah"],
+      "dates": ["2026-01-14"],
+      "criticalityIfDropped": "high",
+      "businessValue": "Maintains custom namespace consistency across all plugins",
+      "upstreamCompatibility": "low",
+      "notes": "This is a global search-and-replace pattern. Will conflict on EVERY file touched by upstream on upgrade. Requires systematic reapplication using automated find-replace.",
+      "pattern": "@backstage/plugin-scaffolder(.*?) => @bip-bih/plugin-scaffolder$1",
+      "automationApproach": "Use regex find-replace on all files under plugins/scaffolder*",
+      "testCases": [
+        "All imports resolve to @bip-bih packages",
+        "No remaining @backstage/plugin-scaffolder imports",
+        "Package.json registry points to custom location"
+      ]
+    },
+    {
+      "id": "nexus-publishing-config",
+      "title": "Nexus Registry Publishing Configuration",
+      "description": "Configure package.json and build artifacts for publishing to internal Nexus registry instead of npm",
+      "type": "publishing-config",
+      "files": [
+        "plugins/scaffolder/package.json",
+        "plugins/scaffolder-react/package.json"
+      ],
+      "commitHashes": ["034c5bb3d367", "f5c1dc5f4a84"],
+      "authors": ["eliot-pitman-bah"],
+      "dates": ["2026-01-14"],
+      "criticalityIfDropped": "medium",
+      "businessValue": "Enables publishing to internal Nexus for consumption by BAH environments",
+      "upstreamCompatibility": "high",
+      "notes": "Publishing config in package.json is safe to carry forward. Independent from upstream changes.",
+      "configChanges": {
+        "publishConfig.registry": "https://nexus.dev.bip.va.gov/repository/npm-internal/",
+        "version": "Updated from 1.19.2 to 1.19.7"
+      },
+      "testCases": [
+        "Publishing config is present in package.json",
+        "Registry URL is correct",
+        "Version matches expected"
+      ]
+    }
+  ],
+  "upgradeStrategy": {
+    "recommended": "patch-based-with-llm-validation",
+    "steps": [
+      "1. Generate patches from each commit using git format-patch",
+      "2. For each upstream version, validate patches with LLM",
+      "3. Handle namespace rebranding as automated global replace",
+      "4. Test thoroughly before committing"
+    ]
+  },
+  "conflictPatterns": {
+    "low": ["nexus-publishing-config"],
+    "medium": ["tasksteps-accordion-wrapper"],
+    "high": ["namespace-rebranding-bip-bih"],
+    "critical": ["form-context-provider"]
+  },
+  "automationRules": {
+    "form-context-provider": {
+      "action": "apply-patch",
+      "strategy": "three-way-merge",
+      "onConflict": "manual-review"
+    },
+    "tasksteps-accordion-wrapper": {
+      "action": "apply-patch",
+      "strategy": "three-way-merge",
+      "onConflict": "manual-review"
+    },
+    "namespace-rebranding-bip-bih": {
+      "action": "regex-replace",
+      "pattern": "@backstage/plugin-scaffolder",
+      "replacement": "@bip-bih/plugin-scaffolder",
+      "onConflict": "auto-resolve",
+      "files": "plugins/scaffolder*, plugins/*/src/**/*.ts(x)"
+    },
+    "nexus-publishing-config": {
+      "action": "merge-json",
+      "path": "publishConfig",
+      "strategy": "keep-custom",
+      "onConflict": "auto-resolve"
+    }
+  }
+}
